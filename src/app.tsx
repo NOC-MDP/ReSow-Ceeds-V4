@@ -8,6 +8,7 @@ import {fillLayer} from './map-style';
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKE;
 
 export default function App() {
+  const [mapStyle, setMapStyle] = useState(null);
 
   return (
     <>
@@ -17,17 +18,12 @@ export default function App() {
           longitude: -1.5442,
           zoom: 9
         }}
-        mapStyle="mapbox://styles/thopri/clbw6ibpa004j14mj5wpnqjqr"
+        mapStyle={mapStyle && mapStyle.toJS()}
+        styleDiffing
         mapboxAccessToken={MAPBOX_TOKEN}
       >
-        {(
-          <Source type="vector" url="http://localhost:8000/services/out">
-            <Layer source-layer="reprojectedseagrass" {...fillLayer}/>
-          </Source>
-        )}
       </MapGL>
-      <LeftPanel>
-      </LeftPanel>
+      <LeftPanel onChange={setMapStyle}/>
     </>
   );
 }

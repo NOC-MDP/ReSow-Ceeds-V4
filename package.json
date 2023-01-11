@@ -8,6 +8,7 @@
     "@mantine/hooks": "^5.10.0",
     "@tabler/icons": "^1.119.0",
     "dotenv": "^16.0.3",
+    "immutable": "^4.2.2",
     "mapbox-gl": "^2.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
