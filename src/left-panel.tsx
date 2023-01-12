@@ -1,19 +1,19 @@
 import * as React from 'react';
 import {fromJS} from 'immutable';
 import {useState, useEffect} from 'react';
-import {Button} from '@mantine/core';
+import {Button,Switch} from '@mantine/core';
 import MAP_STYLE from '../mapstyle.json';
 import { IconInfoCircle, IconLayersSubtract, IconPlus, IconSettings, IconShape, IconTableExport } from '@tabler/icons';
 
 const defaultMapStyle: any = fromJS(MAP_STYLE);
 const defaultLayers = defaultMapStyle.get('layers');
 
-const categories = ['seagrass','nat_cap'];
+const categories = ['Seagrass','Background'];
 
 // Layer id patterns by category
 const layerSelector = {
-  seagrass: /seagrass/,
-  nat_cap: /nat_cap/
+  Seagrass: /seagrass/,
+  Background: /background/
 };
 
 // Layer color class by type
@@ -45,13 +45,13 @@ function getMapStyle({visibility, color}) {
 
 function StyleControls(props) {
   const [visibility, setVisibility] = useState({
-    seagrass: true,
-    nat_cap: true,
+    Seagrass: true,
+    Background: true
   });
 
   const [color, setColor] = useState({
-    seagrass_dist: '#DBE2E6',
-    nat_cap: '#E6EAE9',
+    Seagrass: "#0080ff",
+    Background: "#dedede"
   });
 
   useEffect(() => {
@@ -74,12 +74,7 @@ function StyleControls(props) {
         <h3>Enable/Disable Layers</h3>
         {categories.map(name => (
         <div key={name} className="input">
-          <label>{name}</label>
-          <input
-            type="checkbox"
-            checked={visibility[name]}
-            onChange={evt => onVisibilityChange(name, evt.target.checked)}
-          />
+          <Switch labelPosition="left" size="md" label={name} checked={visibility[name]} onChange={evt => onVisibilityChange(name, evt.target.checked)}></Switch>
           <input
             type="color"
             value={color[name]}
@@ -88,14 +83,6 @@ function StyleControls(props) {
           />
         </div>
       ))}
-        <div className="layers">
-          <p>
-            <Button compact fullWidth leftIcon={<IconLayersSubtract size={14} />} variant="filled" onClick={() => console.log("clicked!!!!")}> Seagrass Distribution </Button>
-          </p>
-          <p>
-            <Button compact fullWidth leftIcon={<IconLayersSubtract size={14} />} variant="outline"> Natural Capital </Button>
-          </p>
-        </div>
       <hr />
       <div>
       <h3>Options</h3>
