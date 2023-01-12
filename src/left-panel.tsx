@@ -1,19 +1,24 @@
 import * as React from 'react';
 import {fromJS} from 'immutable';
 import {useState, useEffect} from 'react';
-import {Button,Switch} from '@mantine/core';
+import {DEFAULT_THEME,Button,Switch,ColorInput} from '@mantine/core';
 import MAP_STYLE from '../mapstyle.json';
 import { IconInfoCircle, IconLayersSubtract, IconPlus, IconSettings, IconShape, IconTableExport } from '@tabler/icons';
 
 const defaultMapStyle: any = fromJS(MAP_STYLE);
 const defaultLayers = defaultMapStyle.get('layers');
 
-const categories = ['Seagrass','Background'];
+const categories = ['Seagrass','Labels', 'Roads', 'Buildings', 'Parks', 'Water', 'Background'];
 
 // Layer id patterns by category
 const layerSelector = {
   Seagrass: /seagrass/,
-  Background: /background/
+  Background: /background/,
+  Water: /water/,
+  Parks: /park/,
+  Buildings: /building/,
+  Roads: /bridge|road|tunnel/,
+  Labels: /label|place|poi/
 };
 
 // Layer color class by type
@@ -46,12 +51,22 @@ function getMapStyle({visibility, color}) {
 function StyleControls(props) {
   const [visibility, setVisibility] = useState({
     Seagrass: true,
-    Background: true
+    Background: true,
+    Water: true,
+    Parks: true,
+    Buildings: true,
+    Roads: true,
+    Labels: true
   });
 
   const [color, setColor] = useState({
     Seagrass: "#0080ff",
-    Background: "#dedede"
+    Background: "#dedede",
+    Water: '#a0cfdf',
+    Parks: '#E6EAE9',
+    Buildings: '#c0c0c8',
+    Roads: '#ffffff',
+    Labels: '#78888a'
   });
 
   useEffect(() => {
@@ -66,15 +81,20 @@ function StyleControls(props) {
     setVisibility({...visibility, [name]: value});
   };
   
-
   return (
     <div className="control-panel">
-      <h2>CEEDS Tool</h2>
+      <h2>CEEDS Tool Version 4</h2>
       <hr />
         <h3>Enable/Disable Layers</h3>
         {categories.map(name => (
         <div key={name} className="input">
-          <Switch labelPosition="left" size="md" label={name} checked={visibility[name]} onChange={evt => onVisibilityChange(name, evt.target.checked)}></Switch>
+          <Switch styles={{body: {width:32}}}
+                  labelPosition="right" 
+                  size="md" 
+                  label={name} 
+                  checked={visibility[name]} 
+                  onChange={evt => onVisibilityChange(name, evt.target.checked)}>
+          </Switch>
           <input
             type="color"
             value={color[name]}
@@ -82,36 +102,23 @@ function StyleControls(props) {
             onChange={evt => onColorChange(name, evt.target.value)}
           />
         </div>
-      ))}
+        ))}
       <hr />
       <div>
       <h3>Options</h3>
-        <p>
-          <Button compact fullWidth leftIcon={<IconInfoCircle size={14} />} variant="filled"> Info </Button>
-        </p>
-        <p>
-          <Button compact fullWidth leftIcon={<IconShape size={14} />} variant="outline" > Select Area </Button>
-        </p>
-        <p>
-          <Button compact fullWidth leftIcon={<IconPlus size={14} />} variant="outline"> Add WMS Layer </Button>
-        </p>
-        <p>
-          <Button compact fullWidth leftIcon={<IconTableExport size={14} />} variant="outline"> Export Data</Button>
-        </p>
-        <p>
-          <Button compact fullWidth leftIcon={<IconSettings size={14} />} variant="filled"> Settings </Button>
-        </p>  
+          <Button compact left leftIcon={<IconInfoCircle size={14} />} variant="filled"> Info </Button>
+          <Button compact left leftIcon={<IconShape size={14} />} variant="outline" > Select Area </Button>
+          <Button compact left leftIcon={<IconPlus size={14} />} variant="outline"> Add WMS Layer </Button>
+          <Button compact left leftIcon={<IconTableExport size={14} />} variant="outline"> Export Data</Button>
+          <Button compact left leftIcon={<IconSettings size={14} />} variant="filled"> Settings </Button>
       </div>
       <hr />
       <div>
-        <p>
           Data source:{' '}
           <a href="http://localhost:8000/services/out">
           CEEDS mbtileserver
           </a>
-      </p>
       </div>
-
     </div>
   );
 }
