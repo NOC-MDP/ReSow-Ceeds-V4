@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {fromJS} from 'immutable';
 import {useState, useEffect} from 'react';
-import {DEFAULT_THEME,Button,Switch,ColorInput} from '@mantine/core';
+import {Button,Switch,Divider} from '@mantine/core';
 import MAP_STYLE from '../mapstyle.json';
 import { IconInfoCircle, IconLayersSubtract, IconPlus, IconSettings, IconShape, IconTableExport } from '@tabler/icons';
 
@@ -84,8 +84,10 @@ function StyleControls(props) {
   return (
     <div className="control-panel">
       <h2>CEEDS Tool Version 4</h2>
-      <hr />
-        <h3>Enable/Disable Layers</h3>
+      <Divider label="Enable/Disable Layers"
+               labelPosition="center"
+               size="lg"
+               my="sm"/>
         {categories.map(name => (
         <div key={name} className="input">
           <Switch styles={{body: {width:32}}}
@@ -103,17 +105,21 @@ function StyleControls(props) {
           />
         </div>
         ))}
-      <hr />
       <div>
-      <h3>Options</h3>
+      <Divider label="Options"
+               labelPosition="center"
+               size="lg"
+               my="sm"/>
           <Button compact left leftIcon={<IconInfoCircle size={14} />} variant="filled"> Info </Button>
           <Button compact left leftIcon={<IconShape size={14} />} variant="outline" > Select Area </Button>
           <Button compact left leftIcon={<IconPlus size={14} />} variant="outline"> Add WMS Layer </Button>
           <Button compact left leftIcon={<IconTableExport size={14} />} variant="outline"> Export Data</Button>
           <Button compact left leftIcon={<IconSettings size={14} />} variant="filled"> Settings </Button>
       </div>
-      <hr />
       <div>
+      <Divider label="Sources"
+               labelPosition="center"
+               size="lg"/>
           Data source:{' '}
           <a href="http://localhost:8000/services/out">
           CEEDS mbtileserver
