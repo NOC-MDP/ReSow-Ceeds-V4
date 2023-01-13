@@ -1,13 +1,12 @@
 import * as React from 'react';
-import {useState,useCallback} from 'react';
+import {useState} from 'react';
 import {createRoot} from 'react-dom/client';
-import MapGL,{
+import Map,{
   NavigationControl,
-  ScaleControl,
   GeolocateControl
 } from 'react-map-gl';
 import LeftPanel from './left-panel';
-
+import RightPanel from './right-panel';
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKE;
 
 export default function App() {
@@ -15,22 +14,21 @@ export default function App() {
 
   return (
     <>
-      <MapGL
+      <Map
         initialViewState={{
           latitude: 50.7028,
           longitude: -1.5442,
           zoom: 9
         }}
         mapStyle={mapStyle && mapStyle.toJS()}
-        styleDiffing
         mapboxAccessToken={MAPBOX_TOKEN}>
 
         <GeolocateControl position="top-right" />
         <NavigationControl position="top-right" />
-        <ScaleControl />
 
-      </MapGL>
+      </Map>
       <LeftPanel onChange={setMapStyle}/>
+      <RightPanel />
     </>
   );
 }
