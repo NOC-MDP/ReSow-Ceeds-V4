@@ -17,9 +17,10 @@ export default function App() {
 
   const onClick = useCallback(event => {
     const feature = event.features && event.features[0];
+    console.log(event.features)
 
     if (feature) {
-      window.alert(`Clicked layer ${feature.layer.id}`); // eslint-disable-line no-alert
+      window.alert(`Bio Class of Seaweed: ${feature.properties.BIO_CLASS}`); // eslint-disable-line no-alert
     }}, []);
 
   const onMouseEnter = useCallback(() => setCursor('pointer'), []);
