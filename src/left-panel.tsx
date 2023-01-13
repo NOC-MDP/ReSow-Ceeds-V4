@@ -3,7 +3,7 @@ import {fromJS} from 'immutable';
 import {useState, useEffect} from 'react';
 import {Button,Switch,Divider} from '@mantine/core';
 import MAP_STYLE from '../mapstyle.json';
-import { IconInfoCircle, IconLayersSubtract, IconPlus, IconSettings, IconShape, IconTableExport } from '@tabler/icons';
+import { IconInfoCircle, IconPlus, IconSettings, IconShape, IconTableExport } from '@tabler/icons';
 
 const defaultMapStyle: any = fromJS(MAP_STYLE);
 const defaultLayers = defaultMapStyle.get('layers');
@@ -85,6 +85,7 @@ function StyleControls(props) {
     <div className="control-panel">
       <h2>CEEDS Tool Version 4</h2>
       <Divider label="Enable/Disable Layers"
+               labelProps={{fz:"md",fw:700}}
                labelPosition="center"
                size="lg"
                my="sm"/>
@@ -92,7 +93,8 @@ function StyleControls(props) {
         <div key={name} className="input">
           <Switch styles={{body: {width:32}}}
                   labelPosition="right" 
-                  size="md" 
+                  size="md"
+                  my="5px" 
                   label={name} 
                   checked={visibility[name]} 
                   onChange={evt => onVisibilityChange(name, evt.target.checked)}>
@@ -107,17 +109,18 @@ function StyleControls(props) {
         ))}
       <div>
       <Divider label="Options"
+               labelProps={{fz:"md",fw:700}}
                labelPosition="center"
                size="lg"
                my="sm"/>
-          <Button compact left leftIcon={<IconInfoCircle size={14} />} variant="filled"> Info </Button>
-          <Button compact left leftIcon={<IconShape size={14} />} variant="outline" > Select Area </Button>
-          <Button compact left leftIcon={<IconPlus size={14} />} variant="outline"> Add WMS Layer </Button>
-          <Button compact left leftIcon={<IconTableExport size={14} />} variant="outline"> Export Data</Button>
-          <Button compact left leftIcon={<IconSettings size={14} />} variant="filled"> Settings </Button>
+          <Button compact left leftIcon={<IconInfoCircle size={14} />} variant="filled" my="5px" mx="5px"> Info </Button>
+          <Button compact left leftIcon={<IconShape size={14} />} variant="outline" my="5px" mx="5px"> Select Area </Button>
+          <Button compact left leftIcon={<IconTableExport size={14} />} variant="outline"my="5px" mx="5px"> Export </Button>
+          <Button compact left leftIcon={<IconSettings size={14} />} variant="outline" my="5px" mx="5px"> Settings </Button>
       </div>
       <div>
       <Divider label="Sources"
+               labelProps={{fz:"md",fw:700}}
                labelPosition="center"
                size="lg"/>
           Data source:{' '}
