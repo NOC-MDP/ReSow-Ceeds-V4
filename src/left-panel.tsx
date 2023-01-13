@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {fromJS} from 'immutable';
 import {useState, useEffect} from 'react';
-import {Button,Switch,Divider,SimpleGrid} from '@mantine/core';
+import {Button,Switch,Divider,SimpleGrid,Text} from '@mantine/core';
 import MAP_STYLE from '../mapstyle.json';
 import { IconInfoCircle, IconPlus, IconShape, IconTableExport } from '@tabler/icons';
 
@@ -83,12 +83,12 @@ function StyleControls(props) {
   
   return (
     <div className="control-panel">
-      <h2>CEEDS Tool Version 4</h2>
+      <Text fz="xl" fw={700} ta="center">CEEDS Tool Version 4</Text>
       <Divider label="Enable/Disable Layers"
                labelProps={{fz:"md",fw:700}}
                labelPosition="center"
                size="lg"
-               my="sm"/>
+               my="5px"/>
         {categories.map(name => (
         <div key={name} className="input">
         <SimpleGrid cols={2}>
@@ -119,14 +119,14 @@ function StyleControls(props) {
                labelProps={{fz:"md",fw:700}}
                labelPosition="center"
                size="lg"
-               my="sm"/>
-          <SimpleGrid cols={2}> 
+               my="5px"/>
+          <SimpleGrid cols={2} verticalSpacing="2px"> 
           <Button compact 
                   left 
                   leftIcon={<IconInfoCircle size={14} />} 
                   variant="filled" 
                   my="2px" 
-                  mx="2px"> Info </Button>
+                  mx="2px"> Feature Info </Button>
           <Button compact 
                   left 
                   leftIcon={<IconShape size={14} />} 
@@ -151,11 +151,22 @@ function StyleControls(props) {
       <Divider label="Sources"
                labelProps={{fz:"md",fw:700}}
                labelPosition="center"
-               size="lg"/>
-          Data source:{' '}
+               size="lg"
+               my="5px"/>
+          <SimpleGrid cols={1} verticalSpacing="2px">
+          <div>
+          Seagrass source:{' '}
           <a href="http://localhost:8000/services/out">
           CEEDS mbtileserver
           </a>
+          </div>
+          <div>
+          Map source:{' '}
+          <a href="https://www.mapbox.com/maps">
+          Mapbox Streets
+          </a>
+          </div>
+          </SimpleGrid>
       </div>
     </div>
   );
