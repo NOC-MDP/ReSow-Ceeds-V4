@@ -12,16 +12,19 @@ const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKE;
 
 export default function App() {
   const [mapStyle, setMapStyle] = useState(null); 
+  const [Record2, setRecord2] = useState(null);
   const [cursor, setCursor] = useState<string>('');
   const interactiveLayerIds = ["seagrass"];
 
   const onClick = useCallback(event => {
     const feature = event.features && event.features[0];
-    console.log(event.features)
 
     if (feature) {
-      window.alert(`Bio Class of Seaweed: ${feature.properties.BIO_CLASS}`); // eslint-disable-line no-alert
-    }}, []);
+      setRecord2([feature.properties]); // eslint-disable-line no-alert
+    }
+    else{
+      setRecord2(null);
+    }}, [Record2]);
 
   const onMouseEnter = useCallback(() => setCursor('pointer'), []);
   const onMouseLeave = useCallback(() => setCursor(''), []);
@@ -43,8 +46,8 @@ export default function App() {
         <NavigationControl position="bottom-left" />
       </Map>
       <LeftPanel onChange={setMapStyle}/>
-      <RightPanel />
-    </>
+      <RightPanel Record2={Record2}/>    
+      </>
   );
 }
 
