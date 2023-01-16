@@ -856,8 +856,7 @@
             "source-layer": "reprojectedseagrass",
             "paint": {
                 "fill-color": "#0080ff",
-                "fill-opacity": 0.8},
-            "interactive": true
+                "fill-opacity": 0.8}
 
         }
     ]

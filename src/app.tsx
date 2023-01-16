@@ -7,6 +7,7 @@ import Map,{
 } from 'react-map-gl';
 import LeftPanel from './left-panel';
 import RightPanel from './right-panel';
+import MAP_STYLE from '../mapstyle.json';
 
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKE;
 
@@ -14,7 +15,7 @@ export default function App() {
   const [mapStyle, setMapStyle] = useState(null); 
   const [Record2, setRecord2] = useState(null);
   const [cursor, setCursor] = useState<string>('');
-  const interactiveLayerIds = ["seagrass"];
+  const [interactiveLayerIds, setInteractiveLayerIds] = useState(["seagrass"]);
 
   const onClick = useCallback(event => {
     const feature = event.features && event.features[0];
@@ -28,6 +29,7 @@ export default function App() {
 
   const onMouseEnter = useCallback(() => setCursor('pointer'), []);
   const onMouseLeave = useCallback(() => setCursor(''), []);
+  
   return (
     <>
       <Map

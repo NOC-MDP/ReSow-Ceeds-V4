@@ -44,7 +44,7 @@ function getMapStyle({visibility, color}) {
       }
       return layer;
     });
-
+    console.log(layers);
   return defaultMapStyle.set('layers', layers);
 }
 
