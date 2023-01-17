@@ -7,7 +7,6 @@ import Map,{
 } from 'react-map-gl';
 import LeftPanel from './left-panel';
 import RightPanel from './right-panel';
-import MAP_STYLE from '../mapstyle.json';
 
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKE;
 
@@ -16,20 +15,18 @@ export default function App() {
   const [Record2, setRecord2] = useState(null);
   const [cursor, setCursor] = useState<string>('');
   const [interactiveLayerIds, setInteractiveLayerIds] = useState(["seagrass"]);
-
   const onClick = useCallback(event => {
     const feature = event.features && event.features[0];
-
-    if (feature) {
-      setRecord2([feature.properties]); // eslint-disable-line no-alert
-    }
-    else{
-      setRecord2(null);
+      if (feature) {
+        setRecord2([feature.properties]); // eslint-disable-line no-alert
+      }
+      else{
+        setRecord2(null);
     }}, [Record2]);
 
   const onMouseEnter = useCallback(() => setCursor('pointer'), []);
   const onMouseLeave = useCallback(() => setCursor(''), []);
-  
+
   return (
     <>
       <Map
@@ -47,7 +44,7 @@ export default function App() {
         <GeolocateControl position="bottom-left" />
         <NavigationControl position="bottom-left" />
       </Map>
-      <LeftPanel onChange={setMapStyle}/>
+      <LeftPanel onChange={setMapStyle} onUpdate={setInteractiveLayerIds} />
       <RightPanel Record2={Record2}/>    
       </>
   );

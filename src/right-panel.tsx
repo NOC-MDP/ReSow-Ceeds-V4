@@ -14,7 +14,7 @@ else{
   .reduce((pairs, obj) => [...pairs, Object.entries(obj)], [])
   .flat();
 return (
-    <div className="meta-panel">
+    <div className="meta-panel" >
       <Text fz="lg" fw={700} ta="center">Feature Information</Text> 
       <Table>
         <thead>

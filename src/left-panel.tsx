@@ -10,6 +10,7 @@ const defaultLayers = defaultMapStyle.get('layers');
 
 const categories = ['Seagrass','Labels','Roads','Buildings','Parks','Water','Background'];
 
+
 // Layer id patterns by category
 const layerSelector = {
   Seagrass: /seagrass/,
@@ -44,7 +45,7 @@ function getMapStyle({visibility, color}) {
       }
       return layer;
     });
-    console.log(layers);
+
   return defaultMapStyle.set('layers', layers);
 }
 
@@ -127,18 +128,6 @@ function StyleControls(props) {
                   variant="filled" 
                   my="2px" 
                   mx="2px"> Feature Info </Button>
-          <Button compact 
-                  left 
-                  leftIcon={<IconShape size={14} />} 
-                  variant="outline" 
-                  my="2px" 
-                  mx="2px"> Select Area </Button>
-          <Button compact 
-                  left 
-                  leftIcon={<IconTableExport size={14} />} 
-                  variant="outline"
-                  my="2px" 
-                  mx="2px"> Export </Button>
           <Button compact
                   left 
                   leftIcon={<IconPlus size={14} />} 
