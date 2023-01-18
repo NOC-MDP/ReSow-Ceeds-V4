@@ -1,53 +1,11 @@
 import * as React from 'react';
-import {fromJS} from 'immutable';
+
 import {useState, useEffect} from 'react';
 import {Button,Switch,Divider,SimpleGrid,Text} from '@mantine/core';
-import MAP_STYLE from '../mapstyle.json';
-import { IconInfoCircle, IconPlus, IconShape, IconTableExport } from '@tabler/icons';
 
-const defaultMapStyle: any = fromJS(MAP_STYLE);
-const defaultLayers = defaultMapStyle.get('layers');
+import { IconInfoCircle, IconPlus} from '@tabler/icons';
 
 const categories = ['Seagrass','Labels','Roads','Buildings','Parks','Water','Background'];
-
-
-// Layer id patterns by category
-const layerSelector = {
-  Seagrass: /seagrass/,
-  Background: /background/,
-  Water: /water/,
-  Parks: /park/,
-  Buildings: /building/,
-  Roads: /bridge|road|tunnel/,
-  Labels: /label|place|poi/
-};
-
-// Layer color class by type
-const colorClass = {
-  line: 'line-color',
-  fill: 'fill-color',
-  background: 'background-color',
-  symbol: 'text-color'
-};
-
-function getMapStyle({visibility, color}) {
-  const layers = defaultLayers
-    .filter(layer => {
-      const id = layer.get('id');
-      return categories.every(name => visibility[name] || !layerSelector[name].test(id));
-    })
-    .map(layer => {
-      const id = layer.get('id');
-      const type = layer.get('type');
-      const category = categories.find(name => layerSelector[name].test(id));
-      if (category && colorClass[type]) {
-        return layer.setIn(['paint', colorClass[type]], color[category]);
-      }
-      return layer;
-    });
-
-  return defaultMapStyle.set('layers', layers);
-}
 
 function StyleControls(props) {
   const [visibility, setVisibility] = useState({
