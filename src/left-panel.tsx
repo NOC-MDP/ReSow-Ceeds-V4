@@ -8,37 +8,16 @@ import { IconInfoCircle, IconPlus} from '@tabler/icons';
 const categories = ['Seagrass','Labels','Roads','Buildings','Parks','Water','Background'];
 
 function StyleControls(props) {
-  const [visibility, setVisibility] = useState({
-    Seagrass: true,
-    Background: true,
-    Water: true,
-    Parks: true,
-    Buildings: true,
-    Roads: true,
-    Labels: true
-  });
+  const { color, setColor, visibility, setVisibility } = props
 
-  const [color, setColor] = useState({
-    Seagrass: "#0080ff",
-    Background: "#dedede",
-    Water: '#a0cfdf',
-    Parks: '#E6EAE9',
-    Buildings: '#c0c0c8',
-    Roads: '#ffffff',
-    Labels: '#78888a'
-  });
+  const handleVisibilityChange = (e) => {
+    setVisibility({...visibility, [e.target.name]: e.target.checked})
+  }
 
-  useEffect(() => {
-    props.onChange(getMapStyle({visibility, color}));
-  }, [visibility, color]);
+  const handleColorChange = (e) => {
+    setColor({...color, [e.target.name]: e.target.checked})
+  }
 
-  const onColorChange = (name, value) => {
-    setColor({...color, [name]: value});
-  };
-
-  const onVisibilityChange = (name, value) => {
-    setVisibility({...visibility, [name]: value});
-  };
   
   return (
     <div className="control-panel">
@@ -57,8 +36,9 @@ function StyleControls(props) {
                   size="md"
                   my="5px" 
                   label={name} 
+                  name={name}
                   checked={visibility[name]} 
-                  onChange={evt => onVisibilityChange(name, evt.target.checked)}>
+                  onChange={handleVisibilityChange}>
           </Switch>
           </div>
           <div>
@@ -66,7 +46,8 @@ function StyleControls(props) {
             type="color"
             value={color[name]}
             disabled={!visibility[name]}
-            onChange={evt => onColorChange(name, evt.target.value)}
+            name={name}
+            onChange={handleColorChange}
           />
           </div>
           </SimpleGrid>
