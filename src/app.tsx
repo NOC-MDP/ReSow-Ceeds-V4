@@ -6,6 +6,7 @@ import LeftPanel from './left-panel';
 import RightPanel from './right-panel';
 import MAP_STYLE from '../mapstyle.json';
 import {fromJS} from 'immutable';
+import AppContext from './AppContext';
 
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKE;
 
@@ -103,7 +104,12 @@ export default function App() {
 
 
   return (
-    <>
+    <AppContext.Provider value={{
+      visibility,
+      setVisibility,
+      color,
+      setColor,
+    }}>
       <Map
         initialViewState={{
           latitude: 50.7028,
@@ -119,9 +125,9 @@ export default function App() {
         <GeolocateControl position="bottom-left" />
         <NavigationControl position="bottom-left" />
       </Map>
-      <LeftPanel color={color} setColor={setColor} visibility={visibility} setVisibility={setVisibility} />
+      <LeftPanel />
       <RightPanel Record2={Record2}/>
-      </>
+      </AppContext.Provider>
   );
 }
 

@@ -1,14 +1,15 @@
 import * as React from 'react';
 
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useContext} from 'react';
 import {Button,Switch,Divider,SimpleGrid,Text} from '@mantine/core';
 
 import { IconInfoCircle, IconPlus} from '@tabler/icons';
+import AppContext from './AppContext';
 
 const categories = ['Seagrass','Labels','Roads','Buildings','Parks','Water','Background'];
 
 function StyleControls(props) {
-  const { color, setColor, visibility, setVisibility } = props
+  const { color, setColor, visibility, setVisibility } = useContext(AppContext)
 
   const handleVisibilityChange = (e) => {
     setVisibility({...visibility, [e.target.name]: e.target.checked})
