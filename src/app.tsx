@@ -81,9 +81,6 @@ export default function App() {
       return layer;
     }))
 
-    console.log(mapStyle)
-
-
   }, [visibility, color])
 
   const [Record2, setRecord2] = useState(null);
