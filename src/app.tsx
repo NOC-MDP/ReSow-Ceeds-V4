@@ -65,21 +65,11 @@ export default function App() {
   useEffect(() => {
     const activeLayers = []
 
-    mapStyle.set('layers', layers
-    .filter(layer => {
-      const id = layer.get('id');
-      return categories.every(name => visibility[name] || !layerSelector[name].test(id));
-    })
-    .map(layer => {
-      const id = layer.get('id');
-      const type = layer.get('type');
-      const category = categories.find(name => layerSelector[name].test(id));
-      if (category && colorClass[type]) {
-        activeLayers.push(id)
-        return layer.setIn(['paint', colorClass[type]], color[category]);
-      }
-      return layer;
-    }))
+    if(layers) {
+      setMapStyle({...mapStyle, layers: layers.filter(layer => {
+        return categories.every(name => visibility[name] || !layerSelector[name].test(layer.id));
+      })})
+    }
 
   }, [visibility, color])
 
