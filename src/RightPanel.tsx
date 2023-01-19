@@ -5,9 +5,9 @@ function MetaData({Record2}){
 if(Record2==null){
   return(
     <div className="meta-panel" >
-    <Card shadow="md" radius="md" withBorder>
+    <Card shadow="md" radius="md">
       <Card.Section>
-        <Text fz="lg" fw={700} ta="center">No Feature Selected</Text>
+        <Text fz="lg" fw={700} ta="center" mx="5px">No Feature Selected</Text>
       </Card.Section>
     </Card>
     </div>   
@@ -21,11 +21,9 @@ return (
     <div className="meta-panel" >
       <Card shadow="md" radius="md" withBorder>
         <Card.Section>
-          <Text fz="lg" fw={700} ta="center">Feature Information</Text> 
-          <Table verticalSpacing="xs">
-            <thead>
-            {keyValuePairs.map(([key, val]) => (<tr key={key}><td>{<Text fw={700}>{key}:</Text>}<Text> {val}</Text></td></tr>))}    
-            </thead>
+          <Text fz="lg" fw={700} ta="center" mx="5px">Feature Information</Text> 
+          <Table>
+            {keyValuePairs.map(([key, val]) => (<tr key={key}><td >{<Text lh="1" mx="5px" mt="5px" fw={700}>{key}:</Text>}<Text mt="1px" lh="1" mx="5px"> {val}</Text></td></tr>))}    
           </Table>
         </Card.Section>
     </Card>
