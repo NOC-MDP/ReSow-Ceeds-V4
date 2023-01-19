@@ -1,15 +1,11 @@
 import * as React from 'react';
-
-import {useState, useEffect, useContext} from 'react';
+import {useContext} from 'react';
 import {Button,Switch,Divider,SimpleGrid,Text} from '@mantine/core';
-
 import { IconInfoCircle, IconPlus} from '@tabler/icons';
 import AppContext from './AppContext';
 
-const categories = ['Seagrass','Labels','Roads','Buildings','Parks','Water','Background'];
-
-function StyleControls(props) {
-  const { color, setColor, visibility, setVisibility } = useContext(AppContext)
+function StyleControls() {
+  const { color, setColor, visibility, setVisibility,categories } = useContext(AppContext)
 
   const handleVisibilityChange = (e) => {
     setVisibility({...visibility, [e.target.name]: e.target.checked})
@@ -19,7 +15,6 @@ function StyleControls(props) {
     setColor({...color, [e.target.name]: e.target.checked})
   }
 
-  
   return (
     <div className="control-panel">
       <Text fz="xl" fw={700} ta="center">CEEDS Tool Version 4</Text>

@@ -81,7 +81,8 @@ export default function App() {
       return layer;
     }))
 
-    console.log('active layers:', activeLayers)
+    console.log(mapStyle)
+
 
   }, [visibility, color])
 
@@ -109,6 +110,7 @@ export default function App() {
       setVisibility,
       color,
       setColor,
+      categories,
     }}>
       <Map
         initialViewState={{
@@ -125,7 +127,7 @@ export default function App() {
         <GeolocateControl position="bottom-left" />
         <NavigationControl position="bottom-left" />
       </Map>
-      <LeftPanel />
+      <LeftPanel onChange={setMapStyle}/>
       <RightPanel Record2={Record2}/>
       </AppContext.Provider>
   );
