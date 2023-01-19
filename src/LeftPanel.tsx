@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {useContext} from 'react';
-import {Button,Switch,Divider,SimpleGrid,Text} from '@mantine/core';
+import {Button,Switch,Divider,SimpleGrid,Text,Paper} from '@mantine/core';
 import { IconInfoCircle, IconPlus} from '@tabler/icons';
 import AppContext from './AppContext';
 
@@ -17,6 +17,7 @@ function StyleControls() {
 
   return (
     <div className="control-panel">
+    <Paper shadow="md" radius="sm" mx="5px">
       <Text fz="xl" fw={700} ta="center">CEEDS Tool Version 4</Text>
       <Divider
         label="Enable/Disable Layers"
@@ -24,16 +25,18 @@ function StyleControls() {
         labelPosition="center"
         size="lg"
         my="5px"
+        mx="5px"
       />
       {categories.map(name => (
         <div key={name} className="input">
-          <SimpleGrid cols={2}>
+          <SimpleGrid cols={2} mx="5px">
             <div>
               <Switch
                 styles={{body: {width:32}}}
                 labelPosition="right" 
                 size="md"
                 my="5px" 
+                mx="5px"
                 label={name} 
                 name={name}
                 checked={visibility[name]} 
@@ -43,6 +46,7 @@ function StyleControls() {
             <div>
               <input
                 type="color"
+                mx="5px"
                 value={color[name]}
                 disabled={!visibility[name]}
                 name={name}
@@ -59,6 +63,7 @@ function StyleControls() {
           labelPosition="center"
           size="lg"
           my="5px"
+          mx="5px"
         />
         <SimpleGrid cols={2} verticalSpacing="2px"> 
           <Button
@@ -67,7 +72,7 @@ function StyleControls() {
             leftIcon={<IconInfoCircle size={14} />} 
             variant="filled" 
             my="2px" 
-            mx="2px"
+            mx="10px"
           >
             Feature Info
           </Button>
@@ -77,7 +82,7 @@ function StyleControls() {
             leftIcon={<IconPlus size={14} />} 
             variant="outline" 
             my="2px" 
-            mx="2px"
+            mx="10px"
           >
             Add WMS
           </Button>
@@ -90,16 +95,18 @@ function StyleControls() {
           labelPosition="center"
           size="lg"
           my="5px"
+          mx="5px"
         />
-        <SimpleGrid cols={1} verticalSpacing="2px">
+        <SimpleGrid cols={1} verticalSpacing="5px" mx="5px">
           <div>
-            Seagrass source:{' '} <a href="http://localhost:8000/services/out">CEEDS mbtileserver</a>
+            <Text mx="5px">Seagrass source:{' '} <a href="http://localhost:8000/services/out">CEEDS mbtileserver</a></Text>
           </div>
           <div>
-            Map source:{' '} <a href="https://www.mapbox.com/maps">Mapbox Streets</a>
+            <Text mb="5px"mx="5px">Map source:{' '} <a href="https://www.mapbox.com/maps">Mapbox Streets</a></Text>
           </div>
         </SimpleGrid>
       </div>
+      </Paper>
     </div>
   );
 }

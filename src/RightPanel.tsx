@@ -5,7 +5,7 @@ function MetaData({Record2}){
 if(Record2==null){
   return(
     <div className="meta-panel" >
-    <Card shadow="md" radius="md">
+    <Card shadow="md" radius="sm">
       <Card.Section>
         <Text fz="lg" fw={700} ta="center" mx="5px">No Feature Selected</Text>
       </Card.Section>
@@ -19,7 +19,7 @@ else{
   .flat();
 return (
     <div className="meta-panel" >
-      <Card shadow="md" radius="md" withBorder>
+      <Card shadow="md" radius="sm" withBorder>
         <Card.Section>
           <Text fz="lg" fw={700} ta="center" mx="5px">Feature Information</Text> 
           <Table>
