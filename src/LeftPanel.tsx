@@ -5,14 +5,10 @@ import { IconInfoCircle, IconPlus} from '@tabler/icons';
 import AppContext from './AppContext';
 
 function StyleControls() {
-  const { color, setColor, visibility, setVisibility,categories } = useContext(AppContext)
+  const {visibility, setVisibility,categories } = useContext(AppContext)
 
   const handleVisibilityChange = (e) => {
     setVisibility({...visibility, [e.target.name]: e.target.checked})
-  }
-
-  const handleColorChange = (e) => {
-    setColor({...color, [e.target.name]: e.target.checked})
   }
 
   return (
@@ -62,8 +58,8 @@ function StyleControls() {
             left 
             leftIcon={<IconInfoCircle size={14} />} 
             variant="filled" 
-            my="2px" 
-            mx="10px"
+            my="5px" 
+            mx="25px"
           >
             Feature Info
           </Button>
@@ -72,8 +68,8 @@ function StyleControls() {
             left 
             leftIcon={<IconPlus size={14} />} 
             variant="outline" 
-            my="2px" 
-            mx="10px"
+            my="5px" 
+            mx="25px"
           >
             Add WMS
           </Button>
