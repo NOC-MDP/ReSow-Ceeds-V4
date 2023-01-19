@@ -20,7 +20,7 @@ export default function App() {
   const [cursor, setCursor] = useState<string>('');
   const [interactiveLayerIds, setInteractiveLayerIds] = useState(null);
 
-  const categories = ['Seagrass','Labels','Roads','Water','Background'];
+  const categories = ['Seagrass','Labels','Roads','Buildings','Parks','Water','Background'];
 
   // Layer id patterns by category
   const layerSelector = {
@@ -28,6 +28,8 @@ export default function App() {
     Background: /background/,
     Water: /water/,
     Roads: /bridge|road|tunnel/,
+    Parks: /park/,
+    Buildings: /building/,
     Labels: /label|place|poi/
   };
 
@@ -35,6 +37,8 @@ export default function App() {
     Seagrass: true,
     Background: true,
     Water: true,
+    Parks: true,
+    Buildings: true,
     Roads: true,
     Labels: true
   });
