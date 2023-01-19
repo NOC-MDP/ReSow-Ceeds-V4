@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useState, useCallback, useEffect} from 'react';
+import {useState, useCallback, useEffect,useMemo} from 'react';
 import {createRoot} from 'react-dom/client';
 import Map,{NavigationControl,GeolocateControl} from 'react-map-gl';
 import LeftPanel from './LeftPanel';
@@ -19,6 +19,7 @@ export default function App() {
   const [Record2, setRecord2] = useState(null);
   const [cursor, setCursor] = useState<string>('');
   const [interactiveLayerIds, setInteractiveLayerIds] = useState(null);
+  const [feature, setFeature] = useState(null);
 
   const categories = ['Seagrass','Labels','Roads','Buildings','Parks','Water','Background'];
 
@@ -68,17 +69,22 @@ export default function App() {
   }, [visibility])
   
   const onClick = useCallback(event => {
-    const feature = event.features && event.features[0];
-
-    if (feature) {
-      setRecord2([feature.properties]); // eslint-disable-line no-alert
+    const feature2 = event.features && event.features[0];
+    if (feature2) {
+      setFeature({
+        id: event.features[0].properties.datasetID
+      })
+      setRecord2([feature2.properties]); // eslint-disable-line no-alert
     }
     else{
       setRecord2(null);
     }}, [Record2]);
-
+  
   const onMouseEnter = useCallback(() => setCursor('pointer'), []);
   const onMouseLeave = useCallback(() => setCursor(''), []);
+
+  const filter = useMemo(()=> ['in','datasetID',feature],[feature]);
+  console.log(filter)
 
   useEffect(() => {
   }, [mapStyle])
