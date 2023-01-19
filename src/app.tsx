@@ -17,65 +17,44 @@ export default function App() {
    */
   const [mapStyle, setMapStyle] = useState(MAP_STYLE);
   const [layers, setLayers] = useState(mapStyle.layers);
+  const [Record2, setRecord2] = useState(null);
+  const [cursor, setCursor] = useState<string>('');
+  const [interactiveLayerIds, setInteractiveLayerIds] = useState(null);
 
-  const categories = ['Seagrass','Labels','Roads','Buildings','Parks','Water','Background'];
+  const categories = ['seagrass','Labels','Roads','Water','Background'];
 
   // Layer id patterns by category
   const layerSelector = {
-    Seagrass: /seagrass/,
+    seagrass: /seagrass/,
     Background: /background/,
     Water: /water/,
-    Parks: /park/,
-    Buildings: /building/,
     Roads: /bridge|road|tunnel/,
     Labels: /label|place|poi/
   };
 
-  // Layer color class by type
-  const colorClass = {
-    line: 'line-color',
-    fill: 'fill-color',
-    background: 'background-color',
-    symbol: 'text-color'
-  };
-
   const [visibility, setVisibility] = useState({
-    Seagrass: true,
+    seagrass: true,
     Background: true,
     Water: true,
-    Parks: true,
-    Buildings: true,
     Roads: true,
     Labels: true
-  });
-
-  const [color, setColor] = useState({
-    Seagrass: "#0080ff",
-    Background: "#dedede",
-    Water: '#a0cfdf',
-    Parks: '#E6EAE9',
-    Buildings: '#c0c0c8',
-    Roads: '#ffffff',
-    Labels: '#78888a'
   });
 
   /**
    * effect to update the mapStyle when visibility or color is updated.
    */
   useEffect(() => {
-    const activeLayers = []
-
+    var activeLayers = []
     if(layers) {
       setMapStyle({...mapStyle, layers: layers.filter(layer => {
         return categories.every(name => visibility[name] || !layerSelector[name].test(layer.id));
       })})
     }
-
-  }, [visibility, color])
-
-  const [Record2, setRecord2] = useState(null);
-  const [cursor, setCursor] = useState<string>('');
-  const [interactiveLayerIds, setInteractiveLayerIds] = useState(["seagrass"]);
+    activeLayers = Object.keys(visibility).filter(function(e) {return visibility[e];});
+    console.log(activeLayers)
+    setInteractiveLayerIds(Object.keys(visibility).filter(function(e) {return visibility[e];}));
+    console.log(interactiveLayerIds)
+  }, [visibility])
   
   const onClick = useCallback(event => {
     const feature = event.features && event.features[0];
@@ -95,8 +74,6 @@ export default function App() {
     <AppContext.Provider value={{
       visibility,
       setVisibility,
-      color,
-      setColor,
       categories,
     }}>
       <Map
@@ -114,7 +91,7 @@ export default function App() {
         <GeolocateControl position="bottom-left" />
         <NavigationControl position="bottom-left" />
       </Map>
-      <LeftPanel onChange={setMapStyle}/>
+      <LeftPanel/>
       <RightPanel Record2={Record2}/>
       </AppContext.Provider>
   );
