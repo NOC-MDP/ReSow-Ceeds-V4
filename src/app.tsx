@@ -15,8 +15,8 @@ export default function App() {
   /**
    * neither states are updated asynchronously and so do not use the setState function.
    */
-  const [mapStyle, setMapStyle] = useState(fromJS(MAP_STYLE));
-  const [layers, setLayers] = useState(mapStyle.get('layers'));
+  const [mapStyle, setMapStyle] = useState(MAP_STYLE);
+  const [layers, setLayers] = useState(mapStyle.layers);
 
   const categories = ['Seagrass','Labels','Roads','Buildings','Parks','Water','Background'];
 
