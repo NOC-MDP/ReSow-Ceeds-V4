@@ -44,16 +44,24 @@ export default function App() {
    * effect to update the mapStyle when visibility or color is updated.
    */
   useEffect(() => {
-    var activeLayers = []
     if(layers) {
       setMapStyle({...mapStyle, layers: layers.filter(layer => {
         return categories.every(name => visibility[name] || !layerSelector[name].test(layer.id));
       })})
     }
-    activeLayers = Object.keys(visibility).filter(function(e) {return visibility[e];});
-    console.log(activeLayers)
-    setInteractiveLayerIds(Object.keys(visibility).filter(function(e) {return visibility[e];}));
-    console.log(interactiveLayerIds)
+    
+    const newIds = layers.reduce((filtered, layer) => {
+      if(categories.every(name => visibility[name] || !layerSelector[name].test(layer.id))) {
+      // if(layer.id !== "seagrass") {
+        filtered.push(layer.id)
+      }
+
+      return filtered
+
+    }, [])
+
+    setInteractiveLayerIds(newIds);
+
   }, [visibility])
   
   const onClick = useCallback(event => {
@@ -68,6 +76,14 @@ export default function App() {
 
   const onMouseEnter = useCallback(() => setCursor('pointer'), []);
   const onMouseLeave = useCallback(() => setCursor(''), []);
+
+  useEffect(() => {
+    console.log(mapStyle.layers)
+  }, [mapStyle])
+
+  useEffect(() => {
+    console.log(interactiveLayerIds)
+  }, [interactiveLayerIds])
 
 
   return (
