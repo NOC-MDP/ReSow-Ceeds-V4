@@ -18,7 +18,8 @@ function StyleControls() {
   return (
     <div className="control-panel">
     <Paper shadow="md" radius="sm" mx="5px">
-      <Text fz="xl" fw={700} ta="center">CEEDS Tool V4</Text>
+      <Text fz="xl" fw={700} ta="center" mt="5px" pt="5px" mb="1px" lh="1">CEEDS Tool</Text>
+      <Text fz="md" c="dimmed" ta="center" mt="1px" lh="1">Version 4</Text>
       <Divider
         label="Layer Selection"
         labelProps={{fz:"md",fw:700}}
