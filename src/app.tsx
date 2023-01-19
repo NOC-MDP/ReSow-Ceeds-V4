@@ -5,7 +5,6 @@ import Map,{NavigationControl,GeolocateControl} from 'react-map-gl';
 import LeftPanel from './LeftPanel';
 import RightPanel from './RightPanel';
 import MAP_STYLE from '../mapstyle.json';
-import {fromJS} from 'immutable';
 import AppContext from './AppContext';
 
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKE;
@@ -21,11 +20,11 @@ export default function App() {
   const [cursor, setCursor] = useState<string>('');
   const [interactiveLayerIds, setInteractiveLayerIds] = useState(null);
 
-  const categories = ['seagrass','Labels','Roads','Water','Background'];
+  const categories = ['Seagrass','Labels','Roads','Water','Background'];
 
   // Layer id patterns by category
   const layerSelector = {
-    seagrass: /seagrass/,
+    Seagrass: /seagrass/,
     Background: /background/,
     Water: /water/,
     Roads: /bridge|road|tunnel/,
@@ -33,7 +32,7 @@ export default function App() {
   };
 
   const [visibility, setVisibility] = useState({
-    seagrass: true,
+    Seagrass: true,
     Background: true,
     Water: true,
     Roads: true,
@@ -52,7 +51,7 @@ export default function App() {
     
     const newIds = layers.reduce((filtered, layer) => {
       if(categories.every(name => visibility[name] || !layerSelector[name].test(layer.id))) {
-      // if(layer.id !== "seagrass") {
+      if(layer.id !== "water") 
         filtered.push(layer.id)
       }
 
@@ -78,11 +77,9 @@ export default function App() {
   const onMouseLeave = useCallback(() => setCursor(''), []);
 
   useEffect(() => {
-    console.log(mapStyle.layers)
   }, [mapStyle])
 
   useEffect(() => {
-    console.log(interactiveLayerIds)
   }, [interactiveLayerIds])
 
 
