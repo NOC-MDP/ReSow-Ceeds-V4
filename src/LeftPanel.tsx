@@ -18,9 +18,9 @@ function StyleControls() {
   return (
     <div className="control-panel">
     <Paper shadow="md" radius="sm" mx="5px">
-      <Text fz="xl" fw={700} ta="center">CEEDS Tool Version 4</Text>
+      <Text fz="xl" fw={700} ta="center">CEEDS Tool V4</Text>
       <Divider
-        label="Enable/Disable Layers"
+        label="Layer Selection"
         labelProps={{fz:"md",fw:700}}
         labelPosition="center"
         size="lg"
@@ -29,7 +29,7 @@ function StyleControls() {
       />
       {categories.map(name => (
         <div key={name} className="input">
-          <SimpleGrid cols={2} mx="5px">
+          <SimpleGrid cols={1} mx="5px">
             <div>
               <Switch
                 styles={{body: {width:32}}}
@@ -43,16 +43,6 @@ function StyleControls() {
                 onChange={handleVisibilityChange}>
               </Switch>
             </div>
-            <div>
-              <input
-                type="color"
-                mx="5px"
-                value={color[name]}
-                disabled={!visibility[name]}
-                name={name}
-                onChange={handleColorChange}
-              />
-            </div>
           </SimpleGrid>
         </div>
       ))}
@@ -65,7 +55,7 @@ function StyleControls() {
           my="5px"
           mx="5px"
         />
-        <SimpleGrid cols={2} verticalSpacing="2px"> 
+        <SimpleGrid cols={1} verticalSpacing="2px"> 
           <Button
             compact 
             left 
@@ -99,10 +89,10 @@ function StyleControls() {
         />
         <SimpleGrid cols={1} verticalSpacing="5px" mx="5px">
           <div>
-            <Text mx="5px">Seagrass source:{' '} <a href="http://localhost:8000/services/out">CEEDS mbtileserver</a></Text>
+            <Text mx="5px">Data:{' '} <a href="http://localhost:8000/services/out">CEEDS</a></Text>
           </div>
           <div>
-            <Text mb="5px"mx="5px">Map source:{' '} <a href="https://www.mapbox.com/maps">Mapbox Streets</a></Text>
+            <Text mb="5px"mx="5px">Map:{' '} <a href="https://www.mapbox.com/maps">Mapbox</a></Text>
           </div>
         </SimpleGrid>
       </div>
