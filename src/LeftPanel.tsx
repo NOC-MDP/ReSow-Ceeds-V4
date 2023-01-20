@@ -43,7 +43,7 @@ function StyleControls() {
           </SimpleGrid>
         </div>
       ))}
-      <div>
+      {/* <div>
         <Divider
           label="Options"
           labelProps={{fz:"md",fw:700}}
@@ -74,7 +74,7 @@ function StyleControls() {
             Add WMS
           </Button>
         </SimpleGrid>
-      </div>
+      </div> */}
       <div>
         <Divider
           label="Sources"
