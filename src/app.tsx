@@ -21,7 +21,7 @@ export default function App() {
   const [interactiveLayerIds, setInteractiveLayerIds] = useState(null);
   const mapRef = useRef()
 
-  const categories = ['Seagrass','Labels','Roads','Buildings','Parks','Water','Background',"GEBCO"];
+  const categories = ['Seagrass','Labels','Roads','Buildings','Parks','Water','Background',"GEBCO (Example WMS)"];
 
   // Layer id patterns by category
   const layerSelector = {
@@ -32,7 +32,7 @@ export default function App() {
     Parks: /park/,
     Buildings: /building/,
     Labels: /label|place|poi/,
-    GEBCO: /gebco/
+    "GEBCO (Example WMS)": /gebco/
   };
 
   const [visibility, setVisibility] = useState({
@@ -43,7 +43,7 @@ export default function App() {
     Buildings: true,
     Roads: true,
     Labels: true,
-    GEBCO: false
+    "GEBCO (Example WMS)": false
   });
 
   /**
@@ -106,7 +106,7 @@ export default function App() {
         initialViewState={{
           latitude: 50.7028,
           longitude: -1.5442,
-          zoom: 9}}
+          zoom: 4}}
         mapStyle={mapStyle}
         mapboxAccessToken={MAPBOX_TOKEN}
         onClick={onClick}
