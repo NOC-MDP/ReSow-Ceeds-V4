@@ -855,8 +855,12 @@
             "source": "CEEDS",
             "source-layer": "reprojectedseagrass",
             "paint": {
-                "fill-color": "#0080ff",
-                "fill-opacity": 0.8}
+                "fill-opacity": ["case",
+                ["boolean",["feature-state", "select"], false],1.0,0.75],
+                "fill-color": ["case",
+                ["boolean",["feature-state", "select"], false],"#FF0000","#0080ff"],
+                "fill-outline-color": ["case",
+                ["boolean",["feature-state", "select"], false],"#8B0000","#0080ff"]}
 
         }
     ]

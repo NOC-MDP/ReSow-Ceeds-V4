@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useState, useCallback, useEffect,useMemo} from 'react';
+import {useState, useCallback, useEffect,useRef} from 'react';
 import {createRoot} from 'react-dom/client';
 import Map,{NavigationControl,GeolocateControl} from 'react-map-gl';
 import LeftPanel from './LeftPanel';
@@ -19,7 +19,7 @@ export default function App() {
   const [Record2, setRecord2] = useState(null);
   const [cursor, setCursor] = useState<string>('');
   const [interactiveLayerIds, setInteractiveLayerIds] = useState(null);
-  const [feature, setFeature] = useState(null);
+  const mapRef = useRef()
 
   const categories = ['Seagrass','Labels','Roads','Buildings','Parks','Water','Background'];
 
@@ -69,12 +69,15 @@ export default function App() {
   }, [visibility])
   
   const onClick = useCallback(event => {
+    mapRef.current.removeFeatureState({source:"CEEDS",sourceLayer:"reprojectedseagrass"})
     const feature2 = event.features && event.features[0];
+    console.log(feature2)
     if (feature2) {
-      setFeature({
-        id: event.features[0].properties.datasetID
-      })
       setRecord2([feature2.properties]); // eslint-disable-line no-alert
+      mapRef.current.setFeatureState({source:"CEEDS", 
+                                      sourceLayer: "reprojectedseagrass", 
+                                      id: feature2.id}, 
+                                      {select:true})
     }
     else{
       setRecord2(null);
@@ -83,15 +86,11 @@ export default function App() {
   const onMouseEnter = useCallback(() => setCursor('pointer'), []);
   const onMouseLeave = useCallback(() => setCursor(''), []);
 
-  const filter = useMemo(()=> ['in','datasetID',feature],[feature]);
-  console.log(filter)
-
   useEffect(() => {
   }, [mapStyle])
 
   useEffect(() => {
   }, [interactiveLayerIds])
-
 
   return (
     <AppContext.Provider value={{
@@ -100,6 +99,7 @@ export default function App() {
       categories,
     }}>
       <Map
+      {...visualViewport} ref={ref => mapRef.current = ref && ref.getMap()}
         initialViewState={{
           latitude: 50.7028,
           longitude: -1.5442,
