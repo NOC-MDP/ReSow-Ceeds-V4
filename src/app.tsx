@@ -21,7 +21,7 @@ export default function App() {
   const [interactiveLayerIds, setInteractiveLayerIds] = useState(null);
   const mapRef = useRef()
 
-  const categories = ['Seagrass','Labels','Roads','Buildings','Parks','Water','Background'];
+  const categories = ['Seagrass','Labels','Roads','Buildings','Parks','Water','Background',"GEBCO"];
 
   // Layer id patterns by category
   const layerSelector = {
@@ -31,7 +31,8 @@ export default function App() {
     Roads: /bridge|road|tunnel/,
     Parks: /park/,
     Buildings: /building/,
-    Labels: /label|place|poi/
+    Labels: /label|place|poi/,
+    GEBCO: /gebco/
   };
 
   const [visibility, setVisibility] = useState({
@@ -41,7 +42,8 @@ export default function App() {
     Parks: true,
     Buildings: true,
     Roads: true,
-    Labels: true
+    Labels: true,
+    GEBCO: false
   });
 
   /**
