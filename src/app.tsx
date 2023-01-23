@@ -47,13 +47,14 @@ export default function App() {
   /**
    * effect to update the mapStyle when visibility or color is updated.
    */
+  
   useEffect(() => {
     if(layers) {
       setMapStyle({...mapStyle, layers: layers.filter(layer => {
         return categories.every(name => visibility[name] || !layerSelector[name].test(layer.id));
       })})
     }
-    
+    // TODO need to change this so interactive boolean in mapstyle is used rather than layerselector
     const newIds = layers.reduce((filtered, layer) => {
       if(categories.every(name => visibility[name] || !layerSelector[name].test(layer.id))) {
       if(layer.id !== "water") 
@@ -67,11 +68,11 @@ export default function App() {
     setInteractiveLayerIds(newIds);
 
   }, [visibility])
-  
+
+  // TODO need to use interactivelayerIDs to remove and set features rather than hardcoding
   const onClick = useCallback(event => {
     mapRef.current.removeFeatureState({source:"CEEDS",sourceLayer:"reprojectedseagrass"})
     const feature2 = event.features && event.features[0];
-    console.log(feature2)
     if (feature2) {
       setRecord2([feature2.properties]); // eslint-disable-line no-alert
       mapRef.current.setFeatureState({source:"CEEDS", 

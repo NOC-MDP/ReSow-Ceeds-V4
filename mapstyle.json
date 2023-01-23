@@ -858,10 +858,20 @@
                 "fill-opacity": ["case",
                 ["boolean",["feature-state", "select"], false],1.0,0.75],
                 "fill-color": ["case",
-                ["boolean",["feature-state", "select"], false],"#FF0000","#0080ff"],
-                "fill-outline-color": ["case",
-                ["boolean",["feature-state", "select"], false],"#8B0000","#0080ff"]}
-
+                ["boolean",["feature-state", "select"], false],"#ee6b6e","#0080ff"]},
+            "interactive": true
+        },
+        {
+            "id": "seagrass-highlighted",
+            "type": "line",
+            "source": "CEEDS",
+            "source-layer": "reprojectedseagrass",
+            "paint": {
+                "line-opacity": 1,
+                "line-color": "#FF0000",
+                "line-width": ["case",
+                ["boolean",["feature-state", "select"], false],2,0]},
+            "interactive": true
         }
     ]
 }
