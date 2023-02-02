@@ -2,6 +2,7 @@ import * as React from 'react';
 import {useState, useCallback, useEffect,useRef} from 'react';
 import {createRoot} from 'react-dom/client';
 import Map,{NavigationControl,GeolocateControl} from 'react-map-gl';
+import GeocoderControl from './geocoder-control';
 import LeftPanel from './LeftPanel';
 import RightPanel from './RightPanel';
 import MAP_STYLE from '../mapstyle.json';
@@ -56,10 +57,9 @@ export default function App() {
         return categories.every(name => visibility[name] || !layerSelector[name].test(layer.id));
       })})
     }
-    // TODO need to change this so interactive boolean in mapstyle is used rather than layerselector
     const newIds = layers.reduce((filtered, layer) => {
       if(categories.every(name => visibility[name] || !layerSelector[name].test(layer.id))) {
-      if(layer.id !== "water") 
+      if(layer.interactive) 
         filtered.push(layer.id)
       }
 
@@ -116,6 +116,7 @@ export default function App() {
         interactiveLayerIds={interactiveLayerIds}>
         <GeolocateControl position="bottom-left" />
         <NavigationControl position="bottom-left" />
+        <GeocoderControl mapboxAccessToken={MAPBOX_TOKEN} position="bottom-right" />
       </Map>
       <LeftPanel/>
       <RightPanel Record2={Record2}/>

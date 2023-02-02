@@ -75,7 +75,7 @@
             "paint": {
                 "fill-color": "#a0cfdf"
             },
-            "interactive": true
+            "interactive": false
         },
         {
             "id": "gebco-2022",

@@ -6,6 +6,7 @@
   "dependencies": {
     "@mantine/core": "^5.10.0",
     "@mantine/hooks": "^5.10.0",
+    "@mapbox/mapbox-gl-geocoder": "^5.0.1",
     "@tabler/icons": "^1.119.0",
     "dotenv": "^16.0.3",
     "immutable": "^4.2.2",
