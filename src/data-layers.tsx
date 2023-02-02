@@ -1,4 +1,8 @@
-
+// This file defines which layers are shown in side panel in CEEDS tool
+// category sets layer name that is displayed
+// layerSelector defines which layers in map styles make up the data layer e.g. base layer and highlighted layer
+// the words specified can be a substring of the layer name e.g. seagrass and seagrass-highlighted
+// visible sets if the layer is loaded by default
 export  const dataLayers = [{
                                 category: "Seagrass",
                                 layerSelector: /seagrass/,

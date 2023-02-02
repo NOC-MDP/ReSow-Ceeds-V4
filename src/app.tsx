@@ -22,16 +22,17 @@ export default function App() {
   const [interactiveLayerIds, setInteractiveLayerIds] = useState(null);
   const mapRef = useRef()
 
+  // build required objects from imported datalayer file
   const categories = []
   var layerSelector = {}
-  var visibileLayers = {}
+  var visibleLayers = {}
   dataLayers.filter(function (el){
     categories.push(el.category);
     layerSelector[el.category]=el.layerSelector
-    visibileLayers[el.category]=el.visible
+    visibleLayers[el.category]=el.visible
   });
 
-  const [visibility, setVisibility] = useState(visibileLayers);
+  const [visibility, setVisibility] = useState(visibleLayers);
 
   /**
    * effect to update the mapStyle when visibility or color is updated.
