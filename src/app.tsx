@@ -71,7 +71,7 @@ export default function App() {
 
   }, [visibility])
 
-  // TODO need to use interactivelayerIDs to remove and set features rather than hardcoding
+  // TODO need to use interactivelayerIDs to remove and set features rather than hardcoded sources
   const onClick = useCallback(event => {
     mapRef.current.removeFeatureState({source:"CEEDS",sourceLayer:"reprojectedseagrass"})
     const feature2 = event.features && event.features[0];
