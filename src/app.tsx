@@ -73,12 +73,12 @@ export default function App() {
 
   // TODO need to use interactivelayerIDs to remove and set features rather than hardcoded sources
   const onClick = useCallback(event => {
-    mapRef.current.removeFeatureState({source:"CEEDS",sourceLayer:"reprojectedseagrass"})
     const feature2 = event.features && event.features[0];
     if (feature2) {
+      mapRef.current.removeFeatureState({source:feature2.source,sourceLayer:feature2.sourceLayer})
       setRecord2([feature2.properties]); // eslint-disable-line no-alert
-      mapRef.current.setFeatureState({source:"CEEDS", 
-                                      sourceLayer: "reprojectedseagrass", 
+      mapRef.current.setFeatureState({source:feature2.source, 
+                                      sourceLayer: feature2.sourceLayer, 
                                       id: feature2.id}, 
                                       {select:true})
     }
