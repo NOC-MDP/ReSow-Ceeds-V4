@@ -7,11 +7,11 @@ import LeftPanel from './LeftPanel';
 import RightPanel from './RightPanel';
 import MAP_STYLE from '../mapstyle.json';
 import AppContext from './AppContext';
+import {dataLayers} from './data-layers'
 
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKE;
 
 export default function App() {
-
   /**
    * neither states are updated asynchronously and so do not use the setState function.
    */
@@ -22,30 +22,16 @@ export default function App() {
   const [interactiveLayerIds, setInteractiveLayerIds] = useState(null);
   const mapRef = useRef()
 
-  const categories = ['Seagrass','Labels','Roads','Buildings','Parks','Water','Background',"GEBCO (Example WMS)"];
-
-  // Layer id patterns by category
-  const layerSelector = {
-    Seagrass: /seagrass/,
-    Background: /background/,
-    Water: /water/,
-    Roads: /bridge|road|tunnel/,
-    Parks: /park/,
-    Buildings: /building/,
-    Labels: /label|place|poi/,
-    "GEBCO (Example WMS)": /gebco/
-  };
-
-  const [visibility, setVisibility] = useState({
-    Seagrass: true,
-    Background: true,
-    Water: true,
-    Parks: true,
-    Buildings: true,
-    Roads: true,
-    Labels: true,
-    "GEBCO (Example WMS)": false
+  const categories = []
+  var layerSelector = {}
+  var visibileLayers = {}
+  dataLayers.filter(function (el){
+    categories.push(el.category);
+    layerSelector[el.category]=el.layerSelector
+    visibileLayers[el.category]=el.visible
   });
+
+  const [visibility, setVisibility] = useState(visibileLayers);
 
   /**
    * effect to update the mapStyle when visibility or color is updated.
