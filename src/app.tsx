@@ -5,17 +5,17 @@ import Map,{NavigationControl,GeolocateControl} from 'react-map-gl';
 import GeocoderControl from './geocoder-control';
 import LeftPanel from './LeftPanel';
 import RightPanel from './RightPanel';
-import MAP_STYLE from '../mapstyle.json';
+import MapStyle from './mapstyle.json';
 import AppContext from './AppContext';
-import {dataLayers} from './data-layers'
+import {dataLayers} from './data-layers';
 
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKE;
 
 export default function App() {
   /**
-   * neither states are updated asynchronously and so do not use the setState function.
+   * layers states are updated asynchronously and so do not use the setState function.
    */
-  const [mapStyle, setMapStyle] = useState(MAP_STYLE);
+  const [mapStyle, setMapStyle] = useState(MapStyle);
   const [layers, setLayers] = useState(mapStyle.layers);
   const [Record2, setRecord2] = useState(null);
   const [cursor, setCursor] = useState<string>('');
@@ -58,7 +58,6 @@ export default function App() {
 
   }, [visibility])
 
-  // TODO need to use interactivelayerIDs to remove and set features rather than hardcoded sources
   const onClick = useCallback(event => {
     const feature2 = event.features && event.features[0];
     if (feature2) {
