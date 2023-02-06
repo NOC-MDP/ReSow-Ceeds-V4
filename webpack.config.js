@@ -22,7 +22,10 @@ const config = {
   },
 
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json']
+    extensions: ['.ts', '.tsx', '.js', '.json'],
+    fallback: {
+      fs: false
+    }
   },
 
   module: {

@@ -22,6 +22,7 @@ export default function App() {
   const [interactiveLayerIds, setInteractiveLayerIds] = useState(null);
   const mapRef = useRef()
 
+
   // build required objects from imported datalayer file
   const categories = []
   var layerSelector = {}
