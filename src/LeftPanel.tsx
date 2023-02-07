@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {useContext} from 'react';
-import {Switch,Divider,SimpleGrid,Text,Paper} from '@mantine/core';
+import {Button,Switch,Divider,SimpleGrid,Text,Paper} from '@mantine/core';
 //import { IconInfoCircle, IconPlus} from '@tabler/icons';
 import AppContext from './AppContext';
 

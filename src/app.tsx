@@ -25,8 +25,8 @@ export default function App() {
 
   // build required objects from imported datalayer file
   const categories = []
-  var layerSelector = {}
-  var visibleLayers = {}
+  const layerSelector = {};
+  const visibleLayers = {};
   dataLayers.filter(function (el){
     categories.push(el.category);
     layerSelector[el.category]=el.layerSelector
