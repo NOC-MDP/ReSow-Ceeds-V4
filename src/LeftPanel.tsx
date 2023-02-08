@@ -90,15 +90,9 @@ function StyleControls(props) {
             my="5px"
             mx="5px"
         />
-        <SimpleGrid cols={2} verticalSpacing="5px" mx="5px">
+        <SimpleGrid cols={1} verticalSpacing="5px" mx="5px">
           <div>
-            <Text mx="5px">Polygon Area:</Text>
-            {polygonArea > 0 && (
-                <p>
-                  {Math.round(polygonArea * 100) / 100} <br />
-                  square meters
-                </p>
-            )}
+            <Text mx="5px">Polygon Area: {(Math.round(polygonArea/1000000))} sq km </Text>
           </div>
         </SimpleGrid>
         
