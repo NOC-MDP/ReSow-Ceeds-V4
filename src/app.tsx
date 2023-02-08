@@ -5,6 +5,7 @@ import Map,{NavigationControl,GeolocateControl} from 'react-map-gl';
 import GeocoderControl from './geocoder-control';
 import LeftPanel from './LeftPanel';
 import RightPanel from './RightPanel';
+import DrawControl from './draw-control';
 import MapStyle from './mapstyle.json';
 import AppContext from './AppContext';
 import {dataLayers} from './data-layers';
@@ -20,10 +21,15 @@ export default function App() {
   const [Record2, setRecord2] = useState(null);
   const [cursor, setCursor] = useState<string>('');
   const [interactiveLayerIds, setInteractiveLayerIds] = useState(null);
+  const [features, setFeatures] = useState({});
   const mapRef = useRef()
 
 
-  // build required objects from imported datalayer file
+  /**
+   *   build required objects from imported datalayer file this defines the layer selectors
+   *   and initial visible layers as well as the categories that define the layer sets 
+   *   (i.e more than one map layer can be part of a single data layer)
+   */
   const categories = []
   const layerSelector = {};
   const visibleLayers = {};
@@ -36,7 +42,9 @@ export default function App() {
   const [visibility, setVisibility] = useState(visibleLayers);
 
   /**
-   * effect to update the mapStyle when visibility or color is updated.
+   * effect to update the mapStyle when visibility is updated. 
+   * LayerInteractiveIds are also filtered and updated based on 
+   * their visibility and interactive boolean in map style file.
    */
   
   useEffect(() => {
@@ -58,8 +66,12 @@ export default function App() {
     setInteractiveLayerIds(newIds);
 
   }, [visibility])
-
-  const onClick = useCallback(event => {
+  
+  /** when clicking on interactive layer, update right hand panel with feature info
+      remove any feature states that may be present (remove existing highlighted features)
+      if layer has "select" boolean as feature state set it to true (enables highlighted style for feature)
+  */
+   const onClick = useCallback(event => {
     const feature2 = event.features && event.features[0];
     if (feature2) {
       mapRef.current.removeFeatureState({source:feature2.source,sourceLayer:feature2.sourceLayer})
@@ -75,6 +87,26 @@ export default function App() {
   
   const onMouseEnter = useCallback(() => setCursor('pointer'), []);
   const onMouseLeave = useCallback(() => setCursor(''), []);
+
+  const onUpdate = useCallback(e => {
+        setFeatures(currFeatures => {
+            const newFeatures = {...currFeatures};
+            for (const f of e.features) {
+                newFeatures[f.id] = f;
+            }
+            return newFeatures;
+        });
+    }, []);
+
+  const onDelete = useCallback(e => {
+        setFeatures(currFeatures => {
+            const newFeatures = {...currFeatures};
+            for (const f of e.features) {
+                delete newFeatures[f.id];
+            }
+            return newFeatures;
+        });
+    }, []);
 
   useEffect(() => {
   }, [mapStyle])
@@ -104,8 +136,17 @@ export default function App() {
         <GeolocateControl position="bottom-left" />
         <NavigationControl position="bottom-left" />
         <GeocoderControl mapboxAccessToken={MAPBOX_TOKEN} position="bottom-right" />
+        <DrawControl position="bottom-right"
+                     displayControlsDefault={false}
+                     controls={{
+                            polygon: true,
+                            trash: true}}
+                    onCreate={onUpdate}
+                    onUpdate={onUpdate}
+                    onDelete={onDelete}
+        />
       </Map>
-      <LeftPanel/>
+      <LeftPanel polygons={Object.values(features)} />
       <RightPanel Record2={Record2}/>
       </AppContext.Provider>
   );

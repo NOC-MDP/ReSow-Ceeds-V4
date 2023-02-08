@@ -3,12 +3,17 @@ import {useContext} from 'react';
 import {Button,Switch,Divider,SimpleGrid,Text,Paper} from '@mantine/core';
 //import { IconInfoCircle, IconPlus} from '@tabler/icons';
 import AppContext from './AppContext';
+import area from '@turf/area';
 
-function StyleControls() {
+function StyleControls(props) {
   const {visibility, setVisibility,categories } = useContext(AppContext)
 
   const handleVisibilityChange = (e) => {
     setVisibility({...visibility, [e.target.name]: e.target.checked})
+  }
+  let polygonArea = 0;
+  for (const polygon of props.polygons) {
+    polygonArea += area(polygon);
   }
 
   return (
@@ -40,6 +45,7 @@ function StyleControls() {
                 onChange={handleVisibilityChange}>
               </Switch>
             </div>
+            
           </SimpleGrid>
         </div>
       ))}
@@ -75,6 +81,29 @@ function StyleControls() {
           </Button>
         </SimpleGrid>
       </div> */}
+      <div>
+        <Divider
+            label="Draw Polygon"
+            labelProps={{fz:"md",fw:700}}
+            labelPosition="center"
+            size="lg"
+            my="5px"
+            mx="5px"
+        />
+        <SimpleGrid cols={2} verticalSpacing="5px" mx="5px">
+          <div>
+            <Text mx="5px">Polygon Area:</Text>
+            {polygonArea > 0 && (
+                <p>
+                  {Math.round(polygonArea * 100) / 100} <br />
+                  square meters
+                </p>
+            )}
+          </div>
+        </SimpleGrid>
+        
+
+      </div>
       <div>
         <Divider
           label="Sources"
