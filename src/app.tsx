@@ -88,6 +88,7 @@ export default function App() {
   const onMouseEnter = useCallback(() => setCursor('pointer'), []);
   const onMouseLeave = useCallback(() => setCursor(''), []);
 
+  // Polygon updating, deleting callbacks
   const onUpdate = useCallback(e => {
         setFeatures(currFeatures => {
             const newFeatures = {...currFeatures};
