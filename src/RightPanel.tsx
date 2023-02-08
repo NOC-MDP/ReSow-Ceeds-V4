@@ -1,15 +1,13 @@
 import * as React from 'react';
-import {Text,Table,Card} from '@mantine/core';
+import {Text,Table,Paper} from '@mantine/core';
 
 function MetaData({Record2}){
 if(Record2==null){
   return(
     <div className="meta-panel" >
-    <Card shadow="md" radius="md">
-      <Card.Section>
+    <Paper shadow="md" radius="md">
         <Text fz="lg" fw={700} ta="center" mx="5px">No Feature Selected</Text>
-      </Card.Section>
-    </Card>
+    </Paper>
     </div>   
   )
 }
@@ -19,8 +17,7 @@ else{
   .flat();
 return (
     <div className="meta-panel" >
-      <Card shadow="md" radius="md" withBorder>
-        <Card.Section>
+      <Paper shadow="md" radius="md" withBorder>
           <Text fz="lg" fw={700} ta="center" mx="5px">Feature Information</Text> 
           <Table>
             <thead>
@@ -31,8 +28,7 @@ return (
                                                   </tr>))}    
             </thead>
           </Table>
-        </Card.Section>
-    </Card>
+    </Paper>
     </div>
     )
 }};

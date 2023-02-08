@@ -95,8 +95,6 @@ function StyleControls(props) {
             <Text mx="5px">Polygon Area: {(Math.round(polygonArea/1000000))} sq km </Text>
           </div>
         </SimpleGrid>
-        
-
       </div>
       <div>
         <Divider
