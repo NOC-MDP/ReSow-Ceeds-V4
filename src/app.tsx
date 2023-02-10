@@ -9,6 +9,7 @@ import DrawControl from './draw-control';
 import MapStyle from './mapstyle.json';
 import AppContext from './AppContext';
 import {dataLayers} from './data-layers';
+import {ExportToCsv} from 'export-to-csv';
 
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKE;
 
@@ -23,6 +24,22 @@ export default function App() {
   const [interactiveLayerIds, setInteractiveLayerIds] = useState(null);
   const [features, setFeatures] = useState({});
   const mapRef = useRef()
+    
+    const options = {
+        fieldSeparator: ',',
+        quoteStrings: '"',
+        decimalSeparator: '.',
+        showLabels: true,
+        showTitle: true,
+        title: 'My Awesome CSV',
+        useTextFile: false,
+        useBom: true,
+        useKeysAsHeaders: true,
+        // headers: ['Column 1', 'Column 2', etc...] <-- Won't work with useKeysAsHeaders present!
+    };
+
+    const csvExporter = new ExportToCsv(options);
+
 
 
   /**
@@ -73,7 +90,11 @@ export default function App() {
   */
    const onClick = useCallback(event => {
     const feature2 = event.features && event.features[0];
+      //const allfeatures = mapRef.current.queryRenderedFeatures({ layers: interactiveLayerIds });
+
     if (feature2) {
+        console.log(feature2.properties)
+        csvExporter.generateCsv([feature2.properties]);
       mapRef.current.removeFeatureState({source:feature2.source,sourceLayer:feature2.sourceLayer})
       setRecord2([feature2.properties]); // eslint-disable-line no-alert
       mapRef.current.setFeatureState({source:feature2.source, 
@@ -134,6 +155,8 @@ export default function App() {
         onMouseLeave={onMouseLeave}
         cursor={cursor}
         interactiveLayerIds={interactiveLayerIds}>
+        <LeftPanel polygons={Object.values(features)} />
+        <RightPanel Record2={Record2}/>
         <GeolocateControl position="bottom-left" />
         <NavigationControl position="bottom-left" />
         <GeocoderControl mapboxAccessToken={MAPBOX_TOKEN} position="bottom-right" />
@@ -147,8 +170,6 @@ export default function App() {
                     onDelete={onDelete}
         />
       </Map>
-      <LeftPanel polygons={Object.values(features)} />
-      <RightPanel Record2={Record2}/>
       </AppContext.Provider>
   );
 }
