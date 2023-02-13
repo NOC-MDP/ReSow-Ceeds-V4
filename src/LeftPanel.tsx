@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {useContext} from 'react';
 import {Button,Switch,Divider,SimpleGrid,Text,Paper} from '@mantine/core';
-//import { IconInfoCircle, IconPlus} from '@tabler/icons';
+import { IconDownload} from '@tabler/icons';
 import AppContext from './AppContext';
 import area from '@turf/area';
 function StyleControls(props) {
@@ -49,7 +49,7 @@ function StyleControls(props) {
           </SimpleGrid>
         </div>
       ))}
-      {/* <div>
+      {<div>
         <Divider
           label="Options"
           labelProps={{fz:"md",fw:700}}
@@ -59,31 +59,23 @@ function StyleControls(props) {
           mx="5px"
         />
         <SimpleGrid cols={1} verticalSpacing="2px"> 
-          <Button
+          <Button 
+            disabled
             compact 
             left 
-            leftIcon={<IconInfoCircle size={14} />} 
-            variant="filled" 
+            leftIcon={<IconDownload size={14} />} 
+            variant="filled"
+            
             my="5px" 
             mx="25px"
           >
-            Feature Info
-          </Button>
-          <Button
-            compact
-            left 
-            leftIcon={<IconPlus size={14} />} 
-            variant="outline" 
-            my="5px" 
-            mx="25px"
-          >
-            Add WMS
+            Download Data
           </Button>
         </SimpleGrid>
-      </div> */}
+      </div>}
       <div>
         <Divider
-            label="Draw Polygon"
+            label="Polygon Info"
             labelProps={{fz:"md",fw:700}}
             labelPosition="center"
             size="lg"

@@ -116,6 +116,7 @@ export default function App() {
             }
             return newFeatures;
         });
+        
         const line = lineString(e.features[0].geometry["coordinates"][0]);
         const boundaries = bbox(line)
         const SWpoint = mapRef.current.project([boundaries[0],boundaries[1]]);
