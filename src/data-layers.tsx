@@ -39,7 +39,7 @@ export  const dataLayers = [{
                                 visible: true
                             },
                             {
-                                category: "GEBCO (Example WMS)",
+                                category: "GEBCO",
                                 layerSelector: /gebco/,
                                 visible: false
                             }

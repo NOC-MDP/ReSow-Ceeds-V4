@@ -9,7 +9,6 @@ import DrawControl from './draw-control';
 import MapStyle from './mapstyle.json';
 import AppContext from './AppContext';
 import {dataLayers} from './data-layers';
-import {ExportToCsv} from 'export-to-csv';
 import bbox from '@turf/bbox'
 import {lineString} from '@turf/helpers'
 
@@ -25,22 +24,9 @@ export default function App() {
   const [cursor, setCursor] = useState<string>('');
   const [interactiveLayerIds, setInteractiveLayerIds] = useState(null);
   const [features, setFeatures] = useState({});
+  const [csventries, setCSVentries] = useState(null)
+  const [csvleng, setCSVleng] = useState(0)  
   const mapRef = useRef()
-    
-  const options = {
-        fieldSeparator: ',',
-        quoteStrings: '"',
-        decimalSeparator: '.',
-        showLabels: true,
-        showTitle: true,
-        title: 'My Awesome CSV',
-        useTextFile: false,
-        useBom: true,
-        useKeysAsHeaders: true,
-        // headers: ['Column 1', 'Column 2', etc...] <-- Won't work with useKeysAsHeaders present!
-  };
-
-  const csvExporter = new ExportToCsv(options);
   
   /**
    *   build required objects from imported datalayer file this defines the layer selectors
@@ -77,13 +63,9 @@ export default function App() {
       }
 
       return filtered
-
     }, [])
       
-
-
     setInteractiveLayerIds(newIds);
-
   }, [visibility])
 
     /** when clicking on interactive layer, update right hand panel with feature info
@@ -116,7 +98,9 @@ export default function App() {
             }
             return newFeatures;
         });
-        
+        // filter out rendered features by converting polygon coords into a line, then a bbox then corner points
+        // then feed into guery and then loop through cutting properties and adding to new array
+        // THEN generating that as a CSV phew! might be a better way
         const line = lineString(e.features[0].geometry["coordinates"][0]);
         const boundaries = bbox(line)
         const SWpoint = mapRef.current.project([boundaries[0],boundaries[1]]);
@@ -125,7 +109,9 @@ export default function App() {
         const csvEntries = []
         for (var i = 0; i < features2[0].length; i++){
             csvEntries.push(features2[0][i].properties)}
-        csvExporter.generateCsv(csvEntries);
+        setCSVentries(csvEntries)
+        setCSVleng(csvEntries.length)
+        
     }, []);
 
   const onDelete = useCallback(e => {
@@ -137,6 +123,7 @@ export default function App() {
             return newFeatures;
             
         });
+      setCSVleng(0)
     }, []);
 
   useEffect(() => {
@@ -145,7 +132,13 @@ export default function App() {
   useEffect(() => {
   }, [interactiveLayerIds])
     
-  return (
+  useEffect(() => {
+    }, [csventries])
+
+  useEffect(() => {
+    }, [csvleng])
+    
+    return (
     <AppContext.Provider value={{
       visibility,
       setVisibility,
@@ -164,19 +157,19 @@ export default function App() {
         onMouseLeave={onMouseLeave}
         cursor={cursor}
         interactiveLayerIds={interactiveLayerIds}>
-        <LeftPanel polygons={Object.values(features)} />
+        <LeftPanel csvleng={csvleng} csventries={csventries}/>
         <RightPanel Record2={Record2}/>
+        <GeocoderControl mapboxAccessToken={MAPBOX_TOKEN} position="bottom-right" />
         <GeolocateControl position="bottom-left" />
         <NavigationControl position="bottom-left" />
-        <GeocoderControl mapboxAccessToken={MAPBOX_TOKEN} position="bottom-right" />
-        <DrawControl position="bottom-right"
-                     displayControlsDefault={false}
-                     controls={{
-                            polygon: true,
-                            trash: true}}
-                    onCreate={onUpdate}
-                    onUpdate={onUpdate}
-                    onDelete={onDelete}
+        <DrawControl position="bottom-left"
+                       displayControlsDefault={false}
+                       controls={{
+                           polygon: true,
+                           trash: true}}
+                       onCreate={onUpdate}
+                       onUpdate={onUpdate}
+                       onDelete={onDelete}
         />
       </Map>
       </AppContext.Provider>
