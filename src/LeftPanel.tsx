@@ -88,9 +88,8 @@ function StyleControls(props) {
             left 
             leftIcon={<IconDownload size={14} />} 
             variant="filled"
-            
             my="5px" 
-            mx="25px"
+            mx="5px"
           >
             Download Features
           </Button>

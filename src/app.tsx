@@ -105,6 +105,7 @@ export default function App() {
         const boundaries = bbox(line)
         const SWpoint = mapRef.current.project([boundaries[0],boundaries[1]]);
         const NEpoint = mapRef.current.project([boundaries[2],boundaries[3]]);
+        // TODO fix this static hardcoded parameter. 
         const features2 = [mapRef.current.queryRenderedFeatures([SWpoint,NEpoint], {layers: ["seagrass"] })]
         const csvEntries = []
         for (var i = 0; i < features2[0].length; i++){
@@ -160,8 +161,8 @@ export default function App() {
         <LeftPanel csvleng={csvleng} csventries={csventries}/>
         <RightPanel Record2={Record2}/>
         <GeocoderControl mapboxAccessToken={MAPBOX_TOKEN} position="bottom-right" />
-        <GeolocateControl position="bottom-left" />
-        <NavigationControl position="bottom-left" />
+        <GeolocateControl position="bottom-right" />
+        <NavigationControl position="bottom-right" />
         <DrawControl position="bottom-left"
                        displayControlsDefault={false}
                        controls={{
