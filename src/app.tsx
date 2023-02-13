@@ -10,6 +10,8 @@ import MapStyle from './mapstyle.json';
 import AppContext from './AppContext';
 import {dataLayers} from './data-layers';
 import {ExportToCsv} from 'export-to-csv';
+import bbox from '@turf/bbox'
+import {lineString} from '@turf/helpers'
 
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKE;
 
@@ -25,7 +27,7 @@ export default function App() {
   const [features, setFeatures] = useState({});
   const mapRef = useRef()
     
-    const options = {
+  const options = {
         fieldSeparator: ',',
         quoteStrings: '"',
         decimalSeparator: '.',
@@ -36,12 +38,10 @@ export default function App() {
         useBom: true,
         useKeysAsHeaders: true,
         // headers: ['Column 1', 'Column 2', etc...] <-- Won't work with useKeysAsHeaders present!
-    };
+  };
 
-    const csvExporter = new ExportToCsv(options);
-
-
-
+  const csvExporter = new ExportToCsv(options);
+  
   /**
    *   build required objects from imported datalayer file this defines the layer selectors
    *   and initial visible layers as well as the categories that define the layer sets 
@@ -55,7 +55,7 @@ export default function App() {
     layerSelector[el.category]=el.layerSelector
     visibleLayers[el.category]=el.visible
   });
-
+  
   const [visibility, setVisibility] = useState(visibleLayers);
 
   /**
@@ -79,22 +79,20 @@ export default function App() {
       return filtered
 
     }, [])
+      
+
 
     setInteractiveLayerIds(newIds);
 
   }, [visibility])
-  
-  /** when clicking on interactive layer, update right hand panel with feature info
+
+    /** when clicking on interactive layer, update right hand panel with feature info
       remove any feature states that may be present (remove existing highlighted features)
       if layer has "select" boolean as feature state set it to true (enables highlighted style for feature)
   */
    const onClick = useCallback(event => {
     const feature2 = event.features && event.features[0];
-      //const allfeatures = mapRef.current.queryRenderedFeatures({ layers: interactiveLayerIds });
-
     if (feature2) {
-        console.log(feature2.properties)
-        csvExporter.generateCsv([feature2.properties]);
       mapRef.current.removeFeatureState({source:feature2.source,sourceLayer:feature2.sourceLayer})
       setRecord2([feature2.properties]); // eslint-disable-line no-alert
       mapRef.current.setFeatureState({source:feature2.source, 
@@ -118,6 +116,15 @@ export default function App() {
             }
             return newFeatures;
         });
+        const line = lineString(e.features[0].geometry["coordinates"][0]);
+        const boundaries = bbox(line)
+        const SWpoint = mapRef.current.project([boundaries[0],boundaries[1]]);
+        const NEpoint = mapRef.current.project([boundaries[2],boundaries[3]]);
+        const features2 = [mapRef.current.queryRenderedFeatures([SWpoint,NEpoint], {layers: ["seagrass"] })]
+        const csvEntries = []
+        for (var i = 0; i < features2[0].length; i++){
+            csvEntries.push(features2[0][i].properties)}
+        csvExporter.generateCsv(csvEntries);
     }, []);
 
   const onDelete = useCallback(e => {
@@ -127,6 +134,7 @@ export default function App() {
                 delete newFeatures[f.id];
             }
             return newFeatures;
+            
         });
     }, []);
 
@@ -135,7 +143,7 @@ export default function App() {
 
   useEffect(() => {
   }, [interactiveLayerIds])
-
+    
   return (
     <AppContext.Provider value={{
       visibility,

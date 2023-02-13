@@ -4,9 +4,9 @@ import {Button,Switch,Divider,SimpleGrid,Text,Paper} from '@mantine/core';
 //import { IconInfoCircle, IconPlus} from '@tabler/icons';
 import AppContext from './AppContext';
 import area from '@turf/area';
-
 function StyleControls(props) {
   const {visibility, setVisibility,categories } = useContext(AppContext)
+
 
   const handleVisibilityChange = (e) => {
     setVisibility({...visibility, [e.target.name]: e.target.checked})
@@ -15,7 +15,7 @@ function StyleControls(props) {
   for (const polygon of props.polygons) {
     polygonArea += area(polygon);
   }
-
+  
   return (
     <div className="control-panel">
     <Paper shadow="md" radius="sm" mx="5px">
