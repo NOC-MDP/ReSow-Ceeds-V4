@@ -1,11 +1,9 @@
 import * as React from 'react';
 import {useContext} from 'react';
 import {Button,Switch,Divider,SimpleGrid,Text,Paper} from '@mantine/core';
-import { IconDownload} from '@tabler/icons';
+import {IconDownload, IconGitBranchDeleted, IconShape, IconTrash} from '@tabler/icons';
 import AppContext from './AppContext';
 import {ExportToCsv} from 'export-to-csv';
-
-
 
 function Download(csventries){
   var currentdate = new Date();
@@ -35,9 +33,7 @@ function Download(csventries){
     csvExporter.generateCsv(csventries);
 }
 
-
 function StyleControls(props) {
-  console.log(props.csventries)
   const {visibility, setVisibility,categories } = useContext(AppContext)
   const handleVisibilityChange = (e) => {
     setVisibility({...visibility, [e.target.name]: e.target.checked})
@@ -77,28 +73,49 @@ function StyleControls(props) {
       ))}
       <div>
         <Divider
-          label="Features"
+          label="Select Features"
           labelProps={{fz:"md",fw:700}}
           labelPosition="center"
           size="lg"
           my="5px"
           mx="5px"
         />
-        <SimpleGrid cols={1} verticalSpacing="2px">
-          <div>
-            <Text mx="5px">Number of Features selected: {featureSel}</Text>
-          </div>
+        <SimpleGrid cols={2} verticalSpacing="2px">
           <Button
+              styles={(theme) => ({
+                root: {width:85}})}
+              leftIcon={<IconShape size={14} />}
+              variant="filled"
+              my="5px"
+              mx="5px"
+              size="xs">
+            Draw
+          </Button>
+          <Button
+              styles={(theme) => ({
+                root: {width:85}})}
+              leftIcon={<IconTrash size={14} />}
+              disabled
+              variant="filled"
+              my="5px"
+              mx="5px"
+              size="xs">
+            Delete
+          </Button>
+        </SimpleGrid>
+        <SimpleGrid cols={1} verticalSpacing="2px">
+          <Text fz="md" mx="10px">Features selected: {featureSel}</Text>
+          <Button 
+            styles={(theme) => ({
+                root: {width:110}})}
             onClick={()=> Download(props.csventries)}  
             disabled={featureSel<1}
-            compact 
-            left 
             leftIcon={<IconDownload size={14} />} 
             variant="filled"
             my="5px" 
             mx="5px"
-          >
-            Download Features
+            size="xs">
+            Download
           </Button>
         </SimpleGrid>
       </div>

@@ -872,7 +872,8 @@
                 ["boolean",["feature-state", "select"], false],1.0,0.75],
                 "fill-color": ["case",
                 ["boolean",["feature-state", "select"], false],"#ee6b6e","#0080ff"]},
-            "interactive": true
+            "interactive": true,
+            "downloadable": true
         },
         {
             "id": "seagrass-boundary",

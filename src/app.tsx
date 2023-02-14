@@ -23,6 +23,7 @@ export default function App() {
   const [Record2, setRecord2] = useState(null);
   const [cursor, setCursor] = useState<string>('');
   const [interactiveLayerIds, setInteractiveLayerIds] = useState(null);
+  const [downloadableLayerIds, setDownloadableLayerIds] = useState(null);
   const [features, setFeatures] = useState({});
   const [csventries, setCSVentries] = useState(null)
   const [csvleng, setCSVleng] = useState(0)  
@@ -40,6 +41,7 @@ export default function App() {
     categories.push(el.category);
     layerSelector[el.category]=el.layerSelector
     visibleLayers[el.category]=el.visible
+    
   });
   
   const [visibility, setVisibility] = useState(visibleLayers);
@@ -64,8 +66,16 @@ export default function App() {
 
       return filtered
     }, [])
-      
+    const newIds2 = layers.reduce((filtered2, layer) => {
+          if(categories.every(name => visibility[name] || !layerSelector[name].test(layer.id))) {
+              if(layer.downloadable)
+                  filtered2.push(layer.id)
+          }
+
+          return filtered2
+      }, [])
     setInteractiveLayerIds(newIds);
+    setDownloadableLayerIds(newIds2);
   }, [visibility])
 
     /** when clicking on interactive layer, update right hand panel with feature info
@@ -105,8 +115,8 @@ export default function App() {
         const boundaries = bbox(line)
         const SWpoint = mapRef.current.project([boundaries[0],boundaries[1]]);
         const NEpoint = mapRef.current.project([boundaries[2],boundaries[3]]);
-        // TODO fix this static hardcoded parameter. 
-        const features2 = [mapRef.current.queryRenderedFeatures([SWpoint,NEpoint], {layers: ["seagrass"] })]
+        // TODO fix this static hardcoded parameter, downloadablelayerIDs is not updating correctly
+        const features2 = [mapRef.current.queryRenderedFeatures([SWpoint,NEpoint], {layers: [ "seagrass" ] })]
         const csvEntries = []
         for (var i = 0; i < features2[0].length; i++){
             csvEntries.push(features2[0][i].properties)}
@@ -132,6 +142,10 @@ export default function App() {
 
   useEffect(() => {
   }, [interactiveLayerIds])
+
+  useEffect(() => {
+      console.log(downloadableLayerIds)
+    }, [downloadableLayerIds])  
     
   useEffect(() => {
     }, [csventries])
