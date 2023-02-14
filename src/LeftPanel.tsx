@@ -80,12 +80,12 @@ function StyleControls(props) {
           my="5px"
           mx="5px"
         />
-        <SimpleGrid cols={2} verticalSpacing="2px">
-          <Button
+         <SimpleGrid cols={2} verticalSpacing="2px">
+{/*          <Button
               styles={(theme) => ({
                 root: {width:85}})}
               leftIcon={<IconShape size={14} />}
-              variant="filled"
+              variant="outline"
               my="5px"
               mx="5px"
               size="xs">
@@ -101,10 +101,10 @@ function StyleControls(props) {
               mx="5px"
               size="xs">
             Delete
-          </Button>
+          </Button>*/}
         </SimpleGrid>
         <SimpleGrid cols={1} verticalSpacing="2px">
-          <Text fz="md" mx="10px">Features selected: {featureSel}</Text>
+          <Text fz="md" fw="700" mx="10px" ta="center">Features selected: {featureSel}</Text>
           <Button 
             styles={(theme) => ({
                 root: {width:110}})}
@@ -117,7 +117,7 @@ function StyleControls(props) {
             size="xs">
             Download
           </Button>
-        </SimpleGrid>
+        </SimpleGrid> 
       </div>
       <div>
         <Divider
