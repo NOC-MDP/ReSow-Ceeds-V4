@@ -5,25 +5,33 @@ import { IconDownload} from '@tabler/icons';
 import AppContext from './AppContext';
 import {ExportToCsv} from 'export-to-csv';
 
-const options = {
-  fieldSeparator: ',',
-  quoteStrings: '"',
-  decimalSeparator: '.',
-  showLabels: true,
-  showTitle: true,
-  title: 'My Awesome CSV',
-  useTextFile: false,
-  useBom: true,
-  useKeysAsHeaders: true,
-  // headers: ['Column 1', 'Column 2', etc...] <-- Won't work with useKeysAsHeaders present!
-};
 
-const csvExporter = new ExportToCsv(options);
 
 function Download(csventries){
+  var currentdate = new Date();
+  var datetime = String(currentdate.getDate()).padStart(2,'0')  + "/"
+      + String(currentdate.getMonth()+1).padStart(2,'0')  + "/"
+      + String(currentdate.getFullYear()).padStart(4,'0')  + " at "
+      + String(currentdate.getHours()).padStart(2,'0')  + ":"
+      + String(currentdate.getMinutes()).padStart(2,'0')  + ":"
+      + String(currentdate.getSeconds()).padStart(2,'0') ;
     if(csventries == null){
       alert("No Features Selected")
       return}
+  const options = {
+    fieldSeparator: ',',
+    quoteStrings: '"',
+    decimalSeparator: '.',
+    showLabels: true,
+    showTitle: true,
+    title: 'CEEDS Seagrass Data Downloaded on '+datetime,
+    useTextFile: false,
+    useBom: true,
+    useKeysAsHeaders: true,
+    // headers: ['Column 1', 'Column 2', etc...] <-- Won't work with useKeysAsHeaders present!
+  };
+
+  const csvExporter = new ExportToCsv(options);
     csvExporter.generateCsv(csventries);
 }
 
@@ -64,7 +72,6 @@ function StyleControls(props) {
                 onChange={handleVisibilityChange}>
               </Switch>
             </div>
-            
           </SimpleGrid>
         </div>
       ))}
