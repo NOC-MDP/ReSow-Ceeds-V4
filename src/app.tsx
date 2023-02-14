@@ -101,6 +101,10 @@ export default function App() {
 
   // Polygon updating, deleting callbacks
   const onUpdate = useCallback(e => {
+        if (downloadableLayerIds.length > 1){
+            alert("There are "+downloadableLayerIds.length+" layers enabled please only enable 1")
+            return
+        }
         setFeatures(currFeatures => {
             const newFeatures = {...currFeatures};
             for (const f of e.features) {
@@ -115,15 +119,14 @@ export default function App() {
         const boundaries = bbox(line)
         const SWpoint = mapRef.current.project([boundaries[0],boundaries[1]]);
         const NEpoint = mapRef.current.project([boundaries[2],boundaries[3]]);
-        // TODO fix this static hardcoded parameter, downloadablelayerIDs is not updating correctly
-        const features2 = [mapRef.current.queryRenderedFeatures([SWpoint,NEpoint], {layers: [ "seagrass" ] })]
+        const features2 = [mapRef.current.queryRenderedFeatures([SWpoint,NEpoint], {layers: downloadableLayerIds })]
         const csvEntries = []
         for (var i = 0; i < features2[0].length; i++){
             csvEntries.push(features2[0][i].properties)}
         setCSVentries(csvEntries)
         setCSVleng(csvEntries.length)
         
-    }, []);
+    }, [downloadableLayerIds]);
 
   const onDelete = useCallback(e => {
         setFeatures(currFeatures => {
@@ -144,7 +147,6 @@ export default function App() {
   }, [interactiveLayerIds])
 
   useEffect(() => {
-      console.log(downloadableLayerIds)
     }, [downloadableLayerIds])  
     
   useEffect(() => {
