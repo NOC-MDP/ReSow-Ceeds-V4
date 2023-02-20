@@ -26,7 +26,6 @@ function Download(csventries){
     useTextFile: false,
     useBom: true,
     useKeysAsHeaders: true,
-    // headers: ['Column 1', 'Column 2', etc...] <-- Won't work with useKeysAsHeaders present!
   };
 
   const csvExporter = new ExportToCsv(options);
@@ -39,6 +38,7 @@ function StyleControls(props) {
     setVisibility({...visibility, [e.target.name]: e.target.checked})
   }
   const featureSel = props.csvleng
+  
   return (
     <div className="control-panel">
     <Paper shadow="md" radius="sm" mx="5px">
@@ -54,19 +54,33 @@ function StyleControls(props) {
       />
       {categories.map(name => (
         <div key={name} className="input">
-          <SimpleGrid cols={1} mx="5px">
+          <SimpleGrid cols={1}>
             <div>
-              <Switch
-                styles={{body: {width:32}}}
+              {
+                props.downloadable.includes(name) && <Switch
                 labelPosition="right" 
                 size="md"
                 my="5px" 
                 mx="5px"
-                label={name} 
+                label={name}
+                onLabel={<IconDownload size={14}/>}
                 name={name}
                 checked={visibility[name]} 
                 onChange={handleVisibilityChange}>
               </Switch>
+              }
+              {
+                  !props.downloadable.includes(name) && <Switch
+                      labelPosition="right"
+                      size="md"
+                      my="5px"
+                      mx="5px"
+                      label={name}
+                      name={name}
+                      checked={visibility[name]}
+                      onChange={handleVisibilityChange}>
+                  </Switch>
+              }
             </div>
           </SimpleGrid>
         </div>

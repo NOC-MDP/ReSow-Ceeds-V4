@@ -25,6 +25,7 @@ export default function App() {
   const [cursor, setCursor] = useState<string>('');
   const [interactiveLayerIds, setInteractiveLayerIds] = useState(null);
   const [downloadableLayerIds, setDownloadableLayerIds] = useState(null);
+  const [downloadablecats, setDownloadableCats] = useState(null);
   const [features, setFeatures] = useState({});
   const [csventries, setCSVentries] = useState(null)
   const [csvleng, setCSVleng] = useState(0)  
@@ -61,22 +62,28 @@ export default function App() {
     }
     const newIds = layers.reduce((filtered, layer) => {
       if(categories.every(name => visibility[name] || !layerSelector[name].test(layer.id))) {
-      if(layer.interactive) 
-        filtered.push(layer.id)
+        if(layer.interactive) 
+            filtered.push(layer.id)
       }
-
       return filtered
     }, [])
     const newIds2 = layers.reduce((filtered2, layer) => {
-          if(categories.every(name => visibility[name] || !layerSelector[name].test(layer.id))) {
-              if(layer.downloadable)
-                  filtered2.push(layer.id)
-          }
-
+        if(categories.every(name => visibility[name] || !layerSelector[name].test(layer.id))) {
+            if (layer.downloadable)
+                filtered2.push(layer.id)
+        }
           return filtered2
       }, [])
+      const newIds3 = layers.reduce((filtered3, layer) => {
+          if(categories.every(name2 => visibility[name2] || !layerSelector[name2].test(layer.id))) {
+              if (layer.downloadable)
+                  filtered3.push("Seagrass")
+          }
+          return filtered3
+      }, [])  
     setInteractiveLayerIds(newIds);
     setDownloadableLayerIds(newIds2);
+    setDownloadableCats(newIds3)
   }, [visibility])
 
     /** when clicking on interactive layer, update right hand panel with feature info
@@ -151,7 +158,10 @@ export default function App() {
   }, [interactiveLayerIds])
 
   useEffect(() => {
-    }, [downloadableLayerIds])  
+    }, [downloadableLayerIds])
+  
+  useEffect(() => {
+    }, [downloadablecats])
     
   useEffect(() => {
     }, [csventries])
@@ -178,7 +188,7 @@ export default function App() {
         onMouseLeave={onMouseLeave}
         cursor={cursor}
         interactiveLayerIds={interactiveLayerIds}>
-        <LeftPanel csvleng={csvleng} csventries={csventries}/>
+        <LeftPanel csvleng={csvleng} csventries={csventries} downloadable={downloadablecats}/>
         <RightPanel Record2={Record2}/>
         <GeocoderControl mapboxAccessToken={MAPBOX_TOKEN} position="bottom-right" />
         <GeolocateControl position="bottom-right" />
