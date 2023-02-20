@@ -73,41 +73,16 @@ function StyleControls(props) {
       ))}
       <div>
         <Divider
-          label="Features"
+          label="Download"
           labelProps={{fz:"md",fw:700}}
           labelPosition="center"
           size="lg"
           my="5px"
           mx="5px"
         />
-{/*         <SimpleGrid cols={2} verticalSpacing="2px">
-          <Button
-              styles={(theme) => ({
-                root: {width:85}})}
-              leftIcon={<IconShape size={14} />}
-              variant="outline"
-              my="5px"
-              mx="5px"
-              size="xs">
-            Draw
-          </Button>
-          <Button
-              styles={(theme) => ({
-                root: {width:85}})}
-              leftIcon={<IconTrash size={14} />}
-              disabled
-              variant="filled"
-              my="5px"
-              mx="5px"
-              size="xs">
-            Delete
-          </Button>
-        </SimpleGrid>*/}
         <SimpleGrid cols={1} verticalSpacing="2px">
-          <Text fz="md" fw="700" mx="10px" ta="center">Features selected: {featureSel}</Text>
-          <Button 
-            styles={(theme) => ({
-                root: {width:110}})}
+          <Text fz="sm" fw="700" mx="10px" ta="center">Features in polygon: {featureSel}</Text>
+          <Button
             onClick={()=> Download(props.csventries)}  
             disabled={featureSel<1}
             leftIcon={<IconDownload size={14} />} 
