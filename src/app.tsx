@@ -74,6 +74,7 @@ export default function App() {
         }
           return filtered2
       }, [])
+      // TODO check how robust this is....
       const newIds3 = layers.reduce((filtered3, layer) => {
           if(categories.every(name2 => visibility[name2] || !layerSelector[name2].test(layer.id))) {
               if (layer.downloadable)
