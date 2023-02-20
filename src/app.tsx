@@ -77,10 +77,14 @@ export default function App() {
       const newIds3 = layers.reduce((filtered3, layer) => {
           if(categories.every(name2 => visibility[name2] || !layerSelector[name2].test(layer.id))) {
               if (layer.downloadable)
-                  filtered3.push("Seagrass")
+                for (let i in layerSelector){
+                    if(layerSelector[i].source.includes(layer.id)) {
+                        filtered3.push(i)
+                    }
+                }
           }
           return filtered3
-      }, [])  
+      }, [])
     setInteractiveLayerIds(newIds);
     setDownloadableLayerIds(newIds2);
     setDownloadableCats(newIds3)
