@@ -21,6 +21,7 @@ export default function App() {
   const [mapStyle, setMapStyle] = useState(MapStyle);
   const [layers, setLayers] = useState(mapStyle.layers);
   const [Record2, setRecord2] = useState(null);
+  const [featureState, setFeatureState] = useState(null);
   const [cursor, setCursor] = useState<string>('');
   const [interactiveLayerIds, setInteractiveLayerIds] = useState(null);
   const [downloadableLayerIds, setDownloadableLayerIds] = useState(null);
@@ -83,14 +84,17 @@ export default function App() {
       if layer has "select" boolean as feature state set it to true (enables highlighted style for feature)
   */
    const onClick = useCallback(event => {
+    if (featureState != null) {
+            mapRef.current.setFeatureState({source:featureState.source,
+                                                    sourceLayer: featureState.sourceLayer,
+                                                    id: featureState.id}, {select:false})}
     const feature2 = event.features && event.features[0];
     if (feature2) {
-      mapRef.current.removeFeatureState({source:feature2.source,sourceLayer:feature2.sourceLayer})
-      setRecord2([feature2.properties]); // eslint-disable-line no-alert
-      mapRef.current.setFeatureState({source:feature2.source, 
-                                      sourceLayer: feature2.sourceLayer, 
-                                      id: feature2.id}, 
-                                      {select:true})
+        setRecord2([feature2.properties]);
+        setFeatureState(feature2)// eslint-disable-line no-alert
+        mapRef.current.setFeatureState({source:feature2.source, 
+                                                sourceLayer: feature2.sourceLayer, 
+                                                id: feature2.id}, {select:true})
     }
     else{
       setRecord2(null);
@@ -179,7 +183,7 @@ export default function App() {
         <GeocoderControl mapboxAccessToken={MAPBOX_TOKEN} position="bottom-right" />
         <GeolocateControl position="bottom-right" />
         <NavigationControl position="bottom-right" />
-        <DrawControl position="bottom-left"
+        <DrawControl position="bottom-right"
                        displayControlsDefault={false}
                        controls={{
                            polygon: true,

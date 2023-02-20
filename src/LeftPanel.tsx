@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {useContext} from 'react';
 import {Button,Switch,Divider,SimpleGrid,Text,Paper} from '@mantine/core';
-import {IconDownload, IconGitBranchDeleted, IconShape, IconTrash} from '@tabler/icons';
+import {IconDownload} from '@tabler/icons';
 import AppContext from './AppContext';
 import {ExportToCsv} from 'export-to-csv';
 
@@ -73,15 +73,15 @@ function StyleControls(props) {
       ))}
       <div>
         <Divider
-          label="Select Features"
+          label="Features"
           labelProps={{fz:"md",fw:700}}
           labelPosition="center"
           size="lg"
           my="5px"
           mx="5px"
         />
-         <SimpleGrid cols={2} verticalSpacing="2px">
-{/*          <Button
+{/*         <SimpleGrid cols={2} verticalSpacing="2px">
+          <Button
               styles={(theme) => ({
                 root: {width:85}})}
               leftIcon={<IconShape size={14} />}
@@ -101,8 +101,8 @@ function StyleControls(props) {
               mx="5px"
               size="xs">
             Delete
-          </Button>*/}
-        </SimpleGrid>
+          </Button>
+        </SimpleGrid>*/}
         <SimpleGrid cols={1} verticalSpacing="2px">
           <Text fz="md" fw="700" mx="10px" ta="center">Features selected: {featureSel}</Text>
           <Button 
