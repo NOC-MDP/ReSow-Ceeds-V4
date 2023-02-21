@@ -9,7 +9,7 @@ import {Button,
         Tabs, 
         Space,
         Accordion} from '@mantine/core';
-import {IconDownload, IconBook} from '@tabler/icons';
+import {IconDownload, IconBook, IconHelp} from '@tabler/icons';
 import AppContext from './AppContext';
 import {ExportToCsv} from 'export-to-csv';
 
@@ -106,23 +106,23 @@ function StyleControls(props) {
             children={undefined} >
           <Accordion.Item value="Download">
             <Accordion.Control icon={<IconDownload/>}>
-              <Text fz="sm" fw="700">Download Data</Text>
+              <Text fz="sm" fw="700" mt="1px" pt="1px" mb="1px" lh="1">Download Data</Text>
             </Accordion.Control>
-            <Accordion.Panel>
-        <SimpleGrid cols={1} verticalSpacing="2px">
-          <Text fz="sm" mx="10px" ta="center">Features in polygon: {featureSel}</Text>
-          <Button
-            onClick={()=> Download(props.csventries)}  
-            disabled={featureSel<1}
-            leftIcon={<IconDownload size={14} />} 
-            variant="filled"
-            radius="md"
-            my="5px" 
-            mx="5px"
-            size="xs">
-            Download
-          </Button>
-        </SimpleGrid>
+              <Accordion.Panel>
+                <SimpleGrid cols={1} verticalSpacing="2px">
+                  <Text fz="sm" mx="10px" ta="center">Features in polygon: {featureSel}</Text>
+                  <Button
+                    onClick={()=> Download(props.csventries)}  
+                    disabled={featureSel<1}
+                    leftIcon={<IconDownload size={14} />} 
+                    variant="filled"
+                    radius="md"
+                    my="5px" 
+                    mx="5px"
+                    size="xs">
+                    Download
+                  </Button>
+                </SimpleGrid>
             </Accordion.Panel>
           </Accordion.Item>
         </Accordion>
@@ -134,7 +134,7 @@ function StyleControls(props) {
             children={undefined} >
           <Accordion.Item value="Sources">
             <Accordion.Control icon={<IconBook/>}>
-              <Text fz="sm" fw="700">Sources</Text>
+              <Text fz="sm" fw="700" mt="1px" pt="1px" mb="1px" lh="1">Sources</Text>
             </Accordion.Control>
             <Accordion.Panel>
               <SimpleGrid cols={1} verticalSpacing="5px" mx="5px">
@@ -150,7 +150,20 @@ function StyleControls(props) {
               </SimpleGrid>
             </Accordion.Panel>
           </Accordion.Item>
-        </Accordion>   
+        </Accordion>
+        <Accordion
+            variant="filled"
+            radius="md"
+            children={undefined} >
+          <Accordion.Item value="Help">
+            <Accordion.Control icon={<IconHelp/>}>
+              <Text fz="sm" fw="700" mt="1px" pt="1px" mb="1px" lh="1">Help</Text>
+            </Accordion.Control>
+            <Accordion.Panel>
+              <Text>Help!</Text>
+            </Accordion.Panel>
+          </Accordion.Item>
+        </Accordion>    
       </div>
       </Tabs.Panel>
       <Tabs.Panel value="Map Layers">

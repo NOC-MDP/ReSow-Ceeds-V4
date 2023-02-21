@@ -6,7 +6,7 @@ if(Record2==null){
   return(
     <div className="meta-panel" >
     <Paper shadow="md" radius="md">
-        <Text fz="lg" fw={700} ta="center" mx="5px">No Feature Selected</Text>
+            <Text fz="lg" fw={700} ta="center" mx="5px">No Feature Selected</Text>
     </Paper>
     </div>   
   )
@@ -19,7 +19,7 @@ return (
     <div className="meta-panel" >
       <Paper shadow="md" radius="md" withBorder>
           <Text fz="lg" fw={700} ta="center" mx="5px">Feature Information</Text>
-            <ScrollArea style={{ height: 450 }}>
+            <ScrollArea style={{ height: "60vh" }} type="auto">
               <Table>
                 <thead>
                   {keyValuePairs.map(([key, val]) => (<tr key={key}>
