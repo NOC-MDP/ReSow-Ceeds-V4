@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {useContext} from 'react';
-import {Button,Switch,Divider,SimpleGrid,Text,Paper} from '@mantine/core';
+import {Button, Switch, Divider, SimpleGrid, Text, Paper, Tabs, Space} from '@mantine/core';
 import {IconDownload} from '@tabler/icons';
 import AppContext from './AppContext';
 import {ExportToCsv} from 'export-to-csv';
@@ -33,7 +33,7 @@ function Download(csventries){
 }
 
 function StyleControls(props) {
-  const {visibility, setVisibility,categories } = useContext(AppContext)
+  const {visibility, setVisibility,datcats,layercats } = useContext(AppContext)
   const handleVisibilityChange = (e) => {
     setVisibility({...visibility, [e.target.name]: e.target.checked})
   }
@@ -43,18 +43,17 @@ function StyleControls(props) {
     <div className="control-panel">
     <Paper shadow="md" radius="sm" mx="5px">
       <Text fz="xl" fw={700} ta="center" mt="5px" pt="5px" mb="1px" lh="1">CEEDS Tool</Text>
-      <Text fz="md" c="dimmed" ta="center" mt="1px" lh="1">Version 4.1</Text>
-      <Divider
-        label="Layer Selection"
-        labelProps={{fz:"md",fw:700}}
-        labelPosition="center"
-        size="lg"
-        my="5px"
-        mx="5px"
-      />
-      {categories.map(name => (
-        <div key={name} className="input">
-          <SimpleGrid cols={1}>
+      <Text fz="md" c="dimmed" ta="center" mt="1px" lh="1">Version 4.2</Text>
+      <Tabs defaultValue="Data Layers">
+        <Tabs.List>
+          <Tabs.Tab value="Data Layers"> <Text fz="sm" fw={700} ta="center" mt="5px" pt="5px" mb="1px" lh="1">Data Layers</Text> </Tabs.Tab>
+          <Tabs.Tab value="Map Layers"> <Text fz="sm" fw={700} ta="center" mt="5px" pt="5px" mb="1px" lh="1">Map Layers</Text> </Tabs.Tab>
+        </Tabs.List>
+      <Tabs.Panel value="Data Layers">
+        <Space size="lg" my="10px" mx="5px"/>
+          {datcats.map(name => (
+          <div key={name} className="input">
+            <SimpleGrid cols={1}>
             <div>
               {
                 props.downloadable.includes(name) && <Switch
@@ -119,14 +118,37 @@ function StyleControls(props) {
         />
         <SimpleGrid cols={1} verticalSpacing="5px" mx="5px">
           <div>
-            <Text mx="5px">Data:{' '} <a href="http://localhost:8000/services/out">CEEDS</a></Text>
+            <Text mx="5px">Source Code:{' '} <a href="https://github.com/NOC-MDP/ReSow-Ceeds-V4">CEEDS</a></Text>
           </div>
           <div>
             <Text mb="5px"mx="5px">Map:{' '} <a href="https://www.mapbox.com/maps">Mapbox</a></Text>
           </div>
         </SimpleGrid>
       </div>
-      </Paper>
+      </Tabs.Panel>
+      <Tabs.Panel value="Map Layers">
+          <Space size="lg" my="10px" mx="5px"/>
+          {layercats.map(name => (
+              <div key={name} className="input">
+                <SimpleGrid cols={1}>
+                  <div>
+                    <Switch
+                            labelPosition="right"
+                            size="md"
+                            my="5px"
+                            mx="5px"
+                            label={name}
+                            name={name}
+                            checked={visibility[name]}
+                            onChange={handleVisibilityChange}>
+                        </Switch>
+                  </div>
+                </SimpleGrid>
+              </div>
+          ))}
+      </Tabs.Panel>    
+    </Tabs>
+    </Paper>  
     </div>
   );
 }

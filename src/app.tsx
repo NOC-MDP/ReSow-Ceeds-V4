@@ -6,9 +6,9 @@ import GeocoderControl from './geocoder-control';
 import LeftPanel from './LeftPanel';
 import RightPanel from './RightPanel';
 import DrawControl from './draw-control';
-import MapStyle from './mapstyle.json';
+import MapStyle from '../mapstyle.json';
 import AppContext from './AppContext';
-import {dataLayers} from './data-layers';
+import {dataLayers} from '../data-layers';
 import bbox from '@turf/bbox'
 import {lineString} from '@turf/helpers'
 
@@ -36,16 +36,22 @@ export default function App() {
    *   and initial visible layers as well as the categories that define the layer sets 
    *   (i.e more than one map layer can be part of a single data layer)
    */
-  const categories = []
+  const datcats = []
+  const layercats = []  
   const layerSelector = {};
   const visibleLayers = {};
   dataLayers.filter(function (el){
-    categories.push(el.category);
+      if(el.data == true){
+          datcats.push(el.category);
+      }
+      else{
+          layercats.push(el.category)
+      }
     layerSelector[el.category]=el.layerSelector
     visibleLayers[el.category]=el.visible
     
   });
-  
+  const allcats = datcats.concat(layercats) 
   const [visibility, setVisibility] = useState(visibleLayers);
 
   /**
@@ -57,18 +63,18 @@ export default function App() {
   useEffect(() => {
     if(layers) {
       setMapStyle({...mapStyle, layers: layers.filter(layer => {
-        return categories.every(name => visibility[name] || !layerSelector[name].test(layer.id));
+        return allcats.every(name => visibility[name] || !layerSelector[name].test(layer.id));
       })})
     }
     const newIds = layers.reduce((filtered, layer) => {
-      if(categories.every(name => visibility[name] || !layerSelector[name].test(layer.id))) {
+      if(allcats.every(name => visibility[name] || !layerSelector[name].test(layer.id))) {
         if(layer.interactive) 
             filtered.push(layer.id)
       }
       return filtered
     }, [])
     const newIds2 = layers.reduce((filtered2, layer) => {
-        if(categories.every(name => visibility[name] || !layerSelector[name].test(layer.id))) {
+        if(allcats.every(name => visibility[name] || !layerSelector[name].test(layer.id))) {
             if (layer.downloadable)
                 filtered2.push(layer.id)
         }
@@ -76,7 +82,7 @@ export default function App() {
       }, [])
       // TODO check how robust this is....
       const newIds3 = layers.reduce((filtered3, layer) => {
-          if(categories.every(name2 => visibility[name2] || !layerSelector[name2].test(layer.id))) {
+          if(allcats.every(name2 => visibility[name2] || !layerSelector[name2].test(layer.id))) {
               if (layer.downloadable)
                 for (let i in layerSelector){
                     if(layerSelector[i].source.includes(layer.id)) {
@@ -178,7 +184,8 @@ export default function App() {
     <AppContext.Provider value={{
       visibility,
       setVisibility,
-      categories,
+      datcats,
+      layercats,
     }}>
       <Map
       {...visualViewport} ref={ref => mapRef.current = ref && ref.getMap()}
