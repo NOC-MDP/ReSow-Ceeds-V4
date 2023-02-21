@@ -1,7 +1,15 @@
 import * as React from 'react';
 import {useContext} from 'react';
-import {Button, Switch, Divider, SimpleGrid, Text, Paper, Tabs, Space} from '@mantine/core';
-import {IconDownload} from '@tabler/icons';
+import {Button, 
+        Switch, 
+        Divider, 
+        SimpleGrid, 
+        Text, 
+        Paper, 
+        Tabs, 
+        Space,
+        Accordion} from '@mantine/core';
+import {IconDownload, IconBook} from '@tabler/icons';
 import AppContext from './AppContext';
 import {ExportToCsv} from 'export-to-csv';
 
@@ -92,45 +100,57 @@ function StyleControls(props) {
         </div>
       ))}
       <div>
-        <Divider
-          label="Download"
-          labelProps={{fz:"md",fw:700}}
-          labelPosition="center"
-          size="lg"
-          my="5px"
-          mx="5px"
-        />
+        <Accordion
+            variant="filled"
+            radius="md"
+            children={undefined} >
+          <Accordion.Item value="Download">
+            <Accordion.Control icon={<IconDownload/>}>
+              <Text fz="sm" fw="700">Download Data</Text>
+            </Accordion.Control>
+            <Accordion.Panel>
         <SimpleGrid cols={1} verticalSpacing="2px">
-          <Text fz="sm" fw="700" mx="10px" ta="center">Features in polygon: {featureSel}</Text>
+          <Text fz="sm" mx="10px" ta="center">Features in polygon: {featureSel}</Text>
           <Button
             onClick={()=> Download(props.csventries)}  
             disabled={featureSel<1}
             leftIcon={<IconDownload size={14} />} 
             variant="filled"
+            radius="md"
             my="5px" 
             mx="5px"
             size="xs">
             Download
           </Button>
-        </SimpleGrid> 
+        </SimpleGrid>
+            </Accordion.Panel>
+          </Accordion.Item>
+        </Accordion>
       </div>
       <div>
-        <Divider
-          label="Sources"
-          labelProps={{fz:"md",fw:700}}
-          labelPosition="center"
-          size="lg"
-          my="5px"
-          mx="5px"
-        />
-        <SimpleGrid cols={1} verticalSpacing="5px" mx="5px">
-          <div>
-            <Text mx="5px">Source Code:{' '} <a href="https://github.com/NOC-MDP/ReSow-Ceeds-V4">CEEDS</a></Text>
-          </div>
-          <div>
-            <Text mb="5px"mx="5px">Map:{' '} <a href="https://www.mapbox.com/maps">Mapbox</a></Text>
-          </div>
-        </SimpleGrid>
+        <Accordion
+            variant="filled"
+            radius="md"
+            children={undefined} >
+          <Accordion.Item value="Sources">
+            <Accordion.Control icon={<IconBook/>}>
+              <Text fz="sm" fw="700">Sources</Text>
+            </Accordion.Control>
+            <Accordion.Panel>
+              <SimpleGrid cols={1} verticalSpacing="5px" mx="5px">
+                <div>
+                  <Text>Source code:{' '} <a href="https://github.com/NOC-MDP/ReSow-Ceeds-V4">Github</a></Text>
+                </div>
+                <div>
+                  <Text>Source data:{' '} <a href="https://139.166.145.156/services/out">CEEDS</a></Text>
+                </div>
+                <div>
+                  <Text>Map source:{' '} <a href="https://www.mapbox.com/maps">Mapbox</a></Text>
+                </div>
+              </SimpleGrid>
+            </Accordion.Panel>
+          </Accordion.Item>
+        </Accordion>   
       </div>
       </Tabs.Panel>
       <Tabs.Panel value="Map Layers">
