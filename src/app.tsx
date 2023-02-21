@@ -58,6 +58,8 @@ export default function App() {
    * effect to update the mapStyle when visibility is updated. 
    * LayerInteractiveIds are also filtered and updated based on 
    * their visibility and interactive boolean in map style file.
+   * Downloadable layers are also updated. 
+   * Finally Downloadable categories are also updated
    */
   
   useEffect(() => {
@@ -117,11 +119,20 @@ export default function App() {
     else{
       setRecord2(null);
     }}, [Record2]);
-  
+
+    /**
+     *  Change cursor to "pointing" when over a interactive feature
+      */ 
   const onMouseEnter = useCallback(() => setCursor('pointer'), []);
   const onMouseLeave = useCallback(() => setCursor(''), []);
 
-  // Polygon updating, deleting callbacks
+    /**
+     *     Polygon updating, callback
+     *     When updating it ensures only one downloadable layer is enabled
+     *     sets the features then does a complicated thing to get data entries from all the features
+     *     into a CSV entry array. Finally it sets the CSV length (number of features selected)
+     */
+
   const onUpdate = useCallback(e => {
         if (downloadableLayerIds.length > 1){
             alert("There are "+downloadableLayerIds.length+" layers enabled please only enable 1")
@@ -134,22 +145,25 @@ export default function App() {
             }
             return newFeatures;
         });
-        // filter out rendered features by converting polygon coords into a line, then a bbox then corner points
+        /** filter out rendered features by converting polygon coords into a line, then a bbox then corner points
         // then feed into guery and then loop through cutting properties and adding to new array
         // THEN generating that as a CSV phew! might be a better way
+         */
         const line = lineString(e.features[0].geometry["coordinates"][0]);
         const boundaries = bbox(line)
         const SWpoint = mapRef.current.project([boundaries[0],boundaries[1]]);
         const NEpoint = mapRef.current.project([boundaries[2],boundaries[3]]);
         const features2 = [mapRef.current.queryRenderedFeatures([SWpoint,NEpoint], {layers: downloadableLayerIds })]
-        const csvEntries = []
+        const csvfeatures = []
         for (var i = 0; i < features2[0].length; i++){
-            csvEntries.push(features2[0][i].properties)}
-        setCSVentries(csvEntries)
-        setCSVleng(csvEntries.length)
+            csvfeatures.push(features2[0][i].properties)}
+        setCSVentries(csvfeatures)
+        setCSVleng(csvfeatures.length)
         
     }, [downloadableLayerIds]);
-
+    /**
+     * Delete polygon callback, deletes the features sets CSV entries to null and sets CSV length to zero
+     */
   const onDelete = useCallback(e => {
         setFeatures(currFeatures => {
             const newFeatures = {...currFeatures};
@@ -160,6 +174,7 @@ export default function App() {
             
         });
       setCSVleng(0)
+      setCSVentries(null)  
     }, []);
 
   useEffect(() => {

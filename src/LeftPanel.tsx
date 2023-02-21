@@ -5,6 +5,13 @@ import {IconDownload} from '@tabler/icons';
 import AppContext from './AppContext';
 import {ExportToCsv} from 'export-to-csv';
 
+/**
+ * @param csventries
+ * @constructor 
+ * This function will create a CSV file from the csv entries array passed to it
+ * Get the current datetime and add that as a title and generate a CSV file
+ * 
+ */
 function Download(csventries){
   var currentdate = new Date();
   var datetime = String(currentdate.getDate()).padStart(2,'0')  + "/"
@@ -81,7 +88,7 @@ function StyleControls(props) {
                   </Switch>
               }
             </div>
-          </SimpleGrid>
+            </SimpleGrid>
         </div>
       ))}
       <div>

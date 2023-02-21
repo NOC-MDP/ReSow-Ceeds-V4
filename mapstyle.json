@@ -27,8 +27,7 @@
             "type": "background",
             "paint": {
                 "background-color": "#dedede"
-            },
-            "interactive": true
+            }
         },
         {
             "id": "waterway",
@@ -65,7 +64,7 @@
                     ]
                 }
             },
-            "interactive": true
+            "interactive": false
         },
         {
             "id": "water",
@@ -97,7 +96,7 @@
             "paint": {
                 "fill-color": "#d2edae"
             },
-            "interactive": true
+            "interactive": false
         },
         {
             "id": "building",
@@ -107,10 +106,10 @@
             "paint": {
                 "fill-color": "#d6d6d6"
             },
-            "interactive": true
+            "interactive": false
         },
         {
-            "interactive": true,
+            "interactive": false,
             "layout": {
                 "line-cap": "butt",
                 "line-join": "miter"
@@ -169,7 +168,7 @@
             "source-layer": "road"
         },
         {
-            "interactive": true,
+            "interactive": false,
             "layout": {
                 "line-cap": "butt",
                 "line-join": "miter"
@@ -225,7 +224,7 @@
             "source-layer": "road"
         },
         {
-            "interactive": true,
+            "interactive": false,
             "layout": {
                 "line-cap": "round",
                 "line-join": "round"
@@ -281,7 +280,7 @@
             "source-layer": "road"
         },
         {
-            "interactive": true,
+            "interactive": false,
             "layout": {
                 "line-cap": "round",
                 "line-join": "round"
@@ -334,7 +333,7 @@
             "source-layer": "road"
         },
         {
-            "interactive": true,
+            "interactive": false,
             "layout": {
                 "line-cap": "butt",
                 "line-join": "miter"
@@ -402,7 +401,7 @@
             "source-layer": "road"
         },
         {
-            "interactive": true,
+            "interactive": false,
             "layout": {
                 "line-cap": "butt",
                 "line-join": "miter"
@@ -467,7 +466,7 @@
             "source-layer": "road"
         },
         {
-            "interactive": true,
+            "interactive": false,
             "layout": {
                 "line-cap": "round",
                 "line-join": "round"
@@ -522,7 +521,7 @@
             "source-layer": "road"
         },
         {
-            "interactive": true,
+            "interactive": false,
             "layout": {
                 "line-cap": "round",
                 "line-join": "round"
@@ -574,7 +573,7 @@
             "source-layer": "road"
         },
         {
-            "interactive": true,
+            "interactive": false,
             "layout": {
                 "line-cap": "round",
                 "line-join": "round"
@@ -622,7 +621,7 @@
             "source-layer": "admin"
         },
         {
-            "interactive": true,
+            "interactive": false,
             "minzoom": 5,
             "layout": {
                 "icon-image": "{maki}-11",
@@ -673,7 +672,7 @@
             "source-layer": "poi_label"
         },
         {
-            "interactive": true,
+            "interactive": false,
             "layout": {
                 "symbol-placement": "line",
                 "text-field": "{name_en}",
@@ -725,7 +724,7 @@
             "source-layer": "road_label"
         },
         {
-            "interactive": true,
+            "interactive": false,
             "minzoom": 8,
             "layout": {
                 "text-field": "{name_en}",
@@ -777,7 +776,7 @@
             "source-layer": "place_label"
         },
         {
-            "interactive": true,
+            "interactive": false,
             "layout": {
                 "text-field": "{name_en}",
                 "text-font": [
@@ -824,7 +823,7 @@
             "source-layer": "place_label"
         },
         {
-            "interactive": true,
+            "interactive": false,
             "layout": {
                 "text-field": "{name_en}",
                 "text-font": [
