@@ -185,7 +185,7 @@ function StyleControls() {
               <Text fz="sm" c="dimmed" mx="5px" mt="1px" pt="5px" mb="1px" lh="1">4. Click download to get CSV file</Text>
               <Space my="10px"/>
               <div>
-                <Text>More Help:{' '} <a href="https://www.mapbox.com/maps">Readthedocs</a></Text>
+                <Text fz="md" mx="5px" mt="5px" pt="5px" mb="1px" lh="1">More Help:{' '} <a href="https://noc-mdp.github.io/ReSow-Ceeds-V4/">Github Pages</a></Text>
               </div>
               <Space my="10px"/>
             </Accordion.Panel>
@@ -195,7 +195,7 @@ function StyleControls() {
       </Tabs.Panel>
       <Tabs.Panel value="Map Layers">
         <Space my="10px"/>
-        <Text fz="sm" c="dimmed" ta="center" mt="5px" pt="5px" mb="1px" lh="1">Explain map layers here</Text>
+        <Text fz="sm" c="dimmed" mx="5px" mt="5px" pt="5px" mb="1px" lh="1">Different parts of the basemap can be enabled and disabled here.</Text>
         <Space my="20px"/>
         <SimpleGrid cols={1}>
           {layercats.map(name => (
