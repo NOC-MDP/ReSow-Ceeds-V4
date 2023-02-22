@@ -6,7 +6,7 @@
     },
     "sources": {
         "CEEDS": {
-            "url": "http://localhost:8000/services/out",
+            "url": "https://139.166.145.156/services/out",
             "type": "vector"
         },
         "mapbox":{

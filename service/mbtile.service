@@ -1,0 +1,17 @@
+# This service unit is for the mbtileserver
+# by thopri for National Oceanograpy Centre
+#
+
+[Unit]
+Description=service for mbtileserver for CEEDS
+#OnFailure=fail-CEEDS.service
+
+[Service]
+Type=simple
+WorkingDirectory=/home/thopri/mbtileserver
+ExecStart=/home/thopri/mbtileserver/mbtileserver -c /etc/ssl/certs/selfsigned.crt -k /etc/ssl/private/selfsigned.key -p 8000
+Restart=on-failure
+RestartSec=1s
+
+[Install]
+WantedBy=multi-user.target
