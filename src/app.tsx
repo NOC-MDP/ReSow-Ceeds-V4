@@ -104,7 +104,7 @@ export default function App() {
       if layer has "select" boolean as feature state set it to true (enables highlighted style for feature)
   */
    const onClick = useCallback(event => {
-    if (featureState != null) {
+        if (featureState != null) {
             mapRef.current.setFeatureState({source:featureState.source,
                                                     sourceLayer: featureState.sourceLayer,
                                                     id: featureState.id}, {select:false})}
@@ -194,7 +194,9 @@ export default function App() {
 
   useEffect(() => {
     }, [csvleng])
-    
+  
+
+  
     return (
     <AppContext.Provider value={{
       visibility,

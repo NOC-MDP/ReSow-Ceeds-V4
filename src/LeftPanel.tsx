@@ -1,13 +1,15 @@
 import * as React from 'react';
 import {useContext} from 'react';
-import {Button, 
-        Switch,
-        SimpleGrid, 
-        Text, 
-        Paper, 
-        Tabs, 
-        Space,
-        Accordion} from '@mantine/core';
+import {
+  Button,
+  Switch,
+  SimpleGrid,
+  Text,
+  Paper,
+  Tabs,
+  Space,
+  Accordion, Divider
+} from '@mantine/core';
 import {IconDownload, IconBook, IconHelp} from '@tabler/icons';
 import AppContext from './AppContext';
 import {ExportToCsv} from 'export-to-csv';
@@ -79,7 +81,6 @@ function StyleControls() {
                 downloadablecats.includes(name) && <Switch
                 labelPosition="right" 
                 size="md"
-                my="5px" 
                 mx="10px"
                 label={name}
                 onLabel={<IconDownload size={14}/>}
@@ -93,23 +94,21 @@ function StyleControls() {
                   !downloadablecats.includes(name) && <Switch
                       labelPosition="right"
                       size="md"
-                      my="5px"
                       mx="10px"
                       label={name}
                       name={name}
                       checked={visibility[name]}
                       onChange={handleVisibilityChange}>
                   </Switch>
+                  
               }
-            <Space my="5px"/>
+            <Space my="10px"/>
             </div>
             </SimpleGrid>
-            
         </div>
       ))}
-
-        <Text fz="sm" c="dimmed" mx="5px" mt="1px" pt="1px" mb="1px" lh="1">*<IconDownload size={14}/> layers can be downloaded</Text>
         <Space my="5px"/>
+        <Divider size="sm" ></Divider>
       <div className="accordion">
         <Accordion
             variant="filled"
@@ -120,9 +119,8 @@ function StyleControls() {
               <Text fz="sm" fw="700" mt="1px" pt="1px" mb="1px" lh="1">Download Data</Text>
             </Accordion.Control>
               <Accordion.Panel>
-
                 <SimpleGrid cols={1} verticalSpacing="2px">
-                  <Text fz="sm" mx="10px" ta="center">Features in polygon: {featureSel}</Text>
+                  <Text fz="sm" mx="10px">Features inside polygon: {featureSel}</Text>
                   <Button
                     onClick={()=> Download(csventries)}  
                     disabled={featureSel<1}
@@ -134,6 +132,7 @@ function StyleControls() {
                     size="xs">
                     Download
                   </Button>
+                  <Text fz="sm" c="dimmed" mx="10px">Note: enabled layers must have this icon <IconDownload size={14}/></Text>
                 </SimpleGrid>
             </Accordion.Panel>
           </Accordion.Item>
@@ -197,6 +196,8 @@ function StyleControls() {
         <Space my="10px"/>
         <Text fz="sm" c="dimmed" mx="5px" mt="5px" pt="5px" mb="1px" lh="1">Different parts of the basemap can be enabled and disabled here.</Text>
         <Space my="20px"/>
+        <Divider size="sm" ></Divider>
+        <Space my="20px"/>
         <SimpleGrid cols={1}>
           {layercats.map(name => (
               <div key={name} className="input">
@@ -204,7 +205,6 @@ function StyleControls() {
                     <Switch
                             labelPosition="right"
                             size="md"
-                            my="1px"
                             mx="10px"
                             label={name}
                             name={name}
