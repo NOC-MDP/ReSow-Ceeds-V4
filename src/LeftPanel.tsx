@@ -8,7 +8,9 @@ import {
   Paper,
   Tabs,
   Space,
-  Accordion, Divider
+  Accordion, 
+  Divider,
+  List  
 } from '@mantine/core';
 import {IconDownload, IconBook, IconHelp} from '@tabler/icons';
 import AppContext from './AppContext';
@@ -178,10 +180,20 @@ function StyleControls() {
               <Space my="10px"/>
               <Text fz="md" mx="5px" mt="5px" pt="5px" mb="1px" lh="1">Downloading features:</Text>
               <Space my="10px"/>
-              <Text fz="sm" c="dimmed" mx="5px" mt="1px" pt="5px" mb="1px" lh="1">1. Enable downloadable layer</Text>
-              <Text fz="sm" c="dimmed" mx="5px" mt="1px" pt="5px" mb="1px" lh="1">2. Draw/delete polygon using controls on right side of map</Text>
-              <Text fz="sm" c="dimmed" mx="5px" mt="1px" pt="5px" mb="1px" lh="1">3. Open download menu and check number of features highlighted</Text>
-              <Text fz="sm" c="dimmed" mx="5px" mt="1px" pt="5px" mb="1px" lh="1">4. Click download to get CSV file</Text>
+              <List children={undefined} size="sm" type="ordered">
+                <List.Item>
+                  <Text c="dimmed">Enable downloadable layer</Text>
+                </List.Item>
+                <List.Item>
+                  <Text c="dimmed">Draw/delete polygon using controls on bottom right side of map</Text>
+                </List.Item>
+                <List.Item>
+                  <Text c="dimmed">Open download menu above</Text>
+                </List.Item>
+                <List.Item>
+                  <Text c="dimmed">Click download to get CSV file</Text>
+                </List.Item>
+              </List>  
               <Space my="10px"/>
               <div>
                 <Text fz="md" mx="5px" mt="5px" pt="5px" mb="1px" lh="1">More Help:{' '} <a href="https://noc-mdp.github.io/ReSow-Ceeds-V4/">Github Pages</a></Text>
