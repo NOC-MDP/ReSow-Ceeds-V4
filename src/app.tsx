@@ -155,7 +155,7 @@ export default function App() {
         const NEpoint = mapRef.current.project([boundaries[2],boundaries[3]]);
         const features2 = [mapRef.current.queryRenderedFeatures([SWpoint,NEpoint], {layers: downloadableLayerIds })]
         const csvfeatures = []
-        for (var i = 0; i < features2[0].length; i++){
+        for (let i = 0; i < features2[0].length; i++){
             csvfeatures.push(features2[0][i].properties)}
         setCSVentries(csvfeatures)
         setCSVleng(csvfeatures.length)
@@ -201,6 +201,9 @@ export default function App() {
       setVisibility,
       datcats,
       layercats,
+      csvleng,
+      csventries,
+      downloadablecats  
     }}>
       <Map
       {...visualViewport} ref={ref => mapRef.current = ref && ref.getMap()}
@@ -215,7 +218,7 @@ export default function App() {
         onMouseLeave={onMouseLeave}
         cursor={cursor}
         interactiveLayerIds={interactiveLayerIds}>
-        <LeftPanel csvleng={csvleng} csventries={csventries} downloadable={downloadablecats}/>
+        <LeftPanel />
         <RightPanel Record2={Record2}/>
         <GeocoderControl mapboxAccessToken={MAPBOX_TOKEN} position="bottom-right" />
         <GeolocateControl position="bottom-right" />

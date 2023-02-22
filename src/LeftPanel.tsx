@@ -1,8 +1,7 @@
 import * as React from 'react';
 import {useContext} from 'react';
 import {Button, 
-        Switch, 
-        Divider, 
+        Switch,
         SimpleGrid, 
         Text, 
         Paper, 
@@ -21,8 +20,8 @@ import {ExportToCsv} from 'export-to-csv';
  * 
  */
 function Download(csventries){
-  var currentdate = new Date();
-  var datetime = String(currentdate.getDate()).padStart(2,'0')  + "/"
+  let currentdate = new Date();
+  let datetime = String(currentdate.getDate()).padStart(2,'0')  + "/"
       + String(currentdate.getMonth()+1).padStart(2,'0')  + "/"
       + String(currentdate.getFullYear()).padStart(4,'0')  + " at "
       + String(currentdate.getHours()).padStart(2,'0')  + ":"
@@ -47,12 +46,18 @@ function Download(csventries){
     csvExporter.generateCsv(csventries);
 }
 
-function StyleControls(props) {
-  const {visibility, setVisibility,datcats,layercats } = useContext(AppContext)
+function StyleControls() {
+  const { visibility,
+          setVisibility,
+          datcats,
+          layercats,
+          csvleng,
+          csventries,
+          downloadablecats} = useContext(AppContext)
   const handleVisibilityChange = (e) => {
     setVisibility({...visibility, [e.target.name]: e.target.checked})
   }
-  const featureSel = props.csvleng
+  const featureSel = csvleng
   
   return (
     <div className="control-panel">
@@ -65,41 +70,47 @@ function StyleControls(props) {
           <Tabs.Tab value="Map Layers"> <Text fz="sm" fw={700} ta="center" mt="5px" pt="5px" mb="1px" lh="1">Map Layers</Text> </Tabs.Tab>
         </Tabs.List>
       <Tabs.Panel value="Data Layers">
-        <Space size="lg" my="10px" mx="5px"/>
+        <Space my="10px"/>
           {datcats.map(name => (
           <div key={name} className="input">
             <SimpleGrid cols={1}>
             <div>
               {
-                props.downloadable.includes(name) && <Switch
+                downloadablecats.includes(name) && <Switch
                 labelPosition="right" 
                 size="md"
                 my="5px" 
-                mx="5px"
+                mx="10px"
                 label={name}
                 onLabel={<IconDownload size={14}/>}
+                offLabel={<IconDownload size={14}/>}
                 name={name}
                 checked={visibility[name]} 
                 onChange={handleVisibilityChange}>
               </Switch>
               }
               {
-                  !props.downloadable.includes(name) && <Switch
+                  !downloadablecats.includes(name) && <Switch
                       labelPosition="right"
                       size="md"
                       my="5px"
-                      mx="5px"
+                      mx="10px"
                       label={name}
                       name={name}
                       checked={visibility[name]}
                       onChange={handleVisibilityChange}>
                   </Switch>
               }
+            <Space my="5px"/>
             </div>
             </SimpleGrid>
+            
         </div>
       ))}
-      <div>
+
+        <Text fz="sm" c="dimmed" mx="5px" mt="1px" pt="1px" mb="1px" lh="1">*<IconDownload size={14}/> layers can be downloaded</Text>
+        <Space my="5px"/>
+      <div className="accordion">
         <Accordion
             variant="filled"
             radius="md"
@@ -109,10 +120,11 @@ function StyleControls(props) {
               <Text fz="sm" fw="700" mt="1px" pt="1px" mb="1px" lh="1">Download Data</Text>
             </Accordion.Control>
               <Accordion.Panel>
+
                 <SimpleGrid cols={1} verticalSpacing="2px">
                   <Text fz="sm" mx="10px" ta="center">Features in polygon: {featureSel}</Text>
                   <Button
-                    onClick={()=> Download(props.csventries)}  
+                    onClick={()=> Download(csventries)}  
                     disabled={featureSel<1}
                     leftIcon={<IconDownload size={14} />} 
                     variant="filled"
@@ -127,7 +139,7 @@ function StyleControls(props) {
           </Accordion.Item>
         </Accordion>
       </div>
-      <div>
+      <div className="accordion">
         <Accordion
             variant="filled"
             radius="md"
@@ -151,6 +163,8 @@ function StyleControls(props) {
             </Accordion.Panel>
           </Accordion.Item>
         </Accordion>
+      </div>
+      <div className="accordion">  
         <Accordion
             variant="filled"
             radius="md"
@@ -160,33 +174,49 @@ function StyleControls(props) {
               <Text fz="sm" fw="700" mt="1px" pt="1px" mb="1px" lh="1">Help</Text>
             </Accordion.Control>
             <Accordion.Panel>
-              <Text>Help!</Text>
+              <Space my="10px"/>
+              <Text fz="xl" c="dimmed" ta="center" mt="5px" pt="5px" mb="1px" lh="1">Help Info</Text>
+              <Space my="10px"/>
+              <Text fz="md" mx="5px" mt="5px" pt="5px" mb="1px" lh="1">Downloading features:</Text>
+              <Space my="10px"/>
+              <Text fz="sm" c="dimmed" mx="5px" mt="1px" pt="5px" mb="1px" lh="1">1. Enable downloadable layer</Text>
+              <Text fz="sm" c="dimmed" mx="5px" mt="1px" pt="5px" mb="1px" lh="1">2. Draw/delete polygon using controls on right side of map</Text>
+              <Text fz="sm" c="dimmed" mx="5px" mt="1px" pt="5px" mb="1px" lh="1">3. Open download menu and check number of features highlighted</Text>
+              <Text fz="sm" c="dimmed" mx="5px" mt="1px" pt="5px" mb="1px" lh="1">4. Click download to get CSV file</Text>
+              <Space my="10px"/>
+              <div>
+                <Text>More Help:{' '} <a href="https://www.mapbox.com/maps">Readthedocs</a></Text>
+              </div>
+              <Space my="10px"/>
             </Accordion.Panel>
           </Accordion.Item>
         </Accordion>    
       </div>
       </Tabs.Panel>
       <Tabs.Panel value="Map Layers">
-          <Space size="lg" my="10px" mx="5px"/>
+        <Space my="10px"/>
+        <Text fz="sm" c="dimmed" ta="center" mt="5px" pt="5px" mb="1px" lh="1">Explain map layers here</Text>
+        <Space my="20px"/>
+        <SimpleGrid cols={1}>
           {layercats.map(name => (
               <div key={name} className="input">
-                <SimpleGrid cols={1}>
                   <div>
                     <Switch
                             labelPosition="right"
                             size="md"
-                            my="5px"
-                            mx="5px"
+                            my="1px"
+                            mx="10px"
                             label={name}
                             name={name}
                             checked={visibility[name]}
                             onChange={handleVisibilityChange}>
-                        </Switch>
+                    </Switch>
                   </div>
-                </SimpleGrid>
               </div>
           ))}
-      </Tabs.Panel>    
+          <Space my="10px"/>
+        </SimpleGrid>
+      </Tabs.Panel>
     </Tabs>
     </Paper>  
     </div>
