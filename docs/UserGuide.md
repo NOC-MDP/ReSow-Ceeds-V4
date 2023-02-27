@@ -6,7 +6,7 @@ nav_order: 3
 # CEEDS Tool User Guide
 This guide details how to use the CEEDS decision support tool. Most of the operation should be intuitive for the average user to understand but there are some functions that are likely to need explanation, (downloading data, connecting to GIS programs etc) and this document should serve as a helpful look up guide.
 
-## CEEDS Capabilities
+## CEEDS Capabilities
 
 1. The CEEDS tool has the following capabilities
 2. Displays ReSOW project output in visual spatial layers
@@ -93,7 +93,7 @@ Ultimatly the CEEDS tool may be a bit limiting to technical users who wish to do
  3.2 Name
  3.3 Expand this!!
 4. Click add
-5. 
+ 
 ##### ArcGIS online
 
 Not working yet
