@@ -46,8 +46,6 @@ This is the main control for CEEDS, it contains two lists of layers data and map
 | *Default left panel* | *map layer panel* |
 
 </div>
-  
-Left panel with map layers
 
 Under the data layers are three accordion (they collapse up) menus. By default these are closed but the user can open them as needed. The menu names are download, sources and help. Each one when opened shows some extra information. Source provides links to the source code and data source of CEEDS, help provides a short description of how to use different parts of the tool with a link to the user guide. Finally download shows a download button along with a number of features selected readout. Be default these are greyed out unless a user has drawn a polygon (please see downloading section for me details) 
 
