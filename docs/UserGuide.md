@@ -104,6 +104,10 @@ Ultimatly the CEEDS tool may be a bit limiting to technical users who wish to do
  3.2 Name
  3.3 Expand this!!
 4. Click add
+
+![Example of a layer in QGIS](assets/example-QGIS.png)| 
+|:--:| 
+| *Example of a layer in QGIS* |
  
 #### ArcGIS online
 
