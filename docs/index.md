@@ -1,9 +1,8 @@
-# Documentation for CEEDS Tool Version 4
+---
+layout: default
+title: Documentation for CEEDS Tool Version 4
+nav_exclude: true
+---
 
-# Install/Setup Guide
-
-# Adminstrator guide (add new layers)
-
-# User Guide
 
 
