@@ -17,19 +17,19 @@ This guide details how to use the CEEDS decision support tool. Most of the opera
 
 <mark> NOTE: Third party or downloadable layers can only be added by administrators following instructions in admin guide <mark>
 
-### How to use:
+## How to use:
 
 CEEDS comprises of a map base layer that takes up the whole browser window. Overlaid on this are two panels, the left containing the layer toggles and other options hidden in sub menus and the right which is not usually open unless a feature is selected. There are also various controls on the bottom right of the map screen for drawing and deleting polygons, navigating the map and searching for locations. 
 
-#### Description of User Interface
+### Description of User Interface
 
-##### Map view
+#### Map view
 
 This displays a map of the world, by default the tool opens over NW europe but the user can pan and zoom to anywhere in the world. 
 
 Default View of CEEDS Tool
 
-##### Left Panel
+#### Left Panel
 
 This is the main control for CEEDS, it contains two lists of layers data and map. By default it will show the data layers which can be toggled on and off as required, by default most are disabled when loading. The user can also select the map layers tab which allows the user to remove aspects of the base map layer, e.g. labels. This may be useful for screen shots or similar and allows some tailoring of the appearance of the map.
 
@@ -41,7 +41,7 @@ Under the data layers are three accordion (they collapse up) menus. By default t
 
 Left panel with all menus extended
 
-##### Right Panel
+#### Right Panel
 
 Upon opening this panel is minimised, saying no feature selected. Once a user selects a feature in an interactive layer (mouse cursor turns to pointer on hover) then the data held in that feature is populated into the right panel. The panel takes up 60% of the height of the map view and if the data held is longer than this then scroll bars appear allowing the user to scroll and see all the data held. 
 
@@ -49,21 +49,21 @@ Default right panel
 
 Right panel with example data
 
-##### Drawing control
+#### Drawing control
 
 Located on the bottom right side of the map, this contains two buttons. The top one allows you to draw a polygon on the map by left clicking vertices. Double left click will complete the polygon. To delete the polygon the user can select it so it is highlighted then click the second button which will delete it. 
 
-##### Geocoder (search)
+#### Geocoder (search)
 
 At the bottom left there is also a search box, here the user can search for locations where the map will then pan too. It supports place names, post codes and can also find locations based on latitude and longitude. By writing in two number seperated by a comma the option to set them as lat/lon should pop up. The user can then select them to center the map on this location.
 
-##### Navigation control
+#### Navigation control
 
 Located in the bottom left above the geo coder and below the drawing control are navigation controls, these allow the user to pan and zoom the map as they desire. There is also a pan to location control where the map can center on the users location. (they will need to provide permission)
 
 Controls on bottom left of map
 
-#### Downloading Data as CSV file
+### Downloading Data as CSV file
 
 CEEDS provides the option to download a subset of the ReSOW data. This is useful if users wish to have data for a certain area and would like to do some analysis or statistics etc. Not all data layers are downloadable, if they are then they will have a download icon on their enable/disable switch. At the moment only one layer can be downloaded at a time. So ensuring the data layer they want to download is enabled and all others are disabled, the following steps are required.
 
@@ -79,11 +79,11 @@ The web browser will download a CSV of the data subset and save it in the defaul
 
 Example of a polygon
 
-#### Connect ReSOW data source to GIS programs
+### Connect ReSOW data source to GIS programs
 
 Ultimatly the CEEDS tool may be a bit limiting to technical users who wish to do complicated geo spatial operations/workflows, so the option is also present to allow these users who are familar with GIS programs/workflows to import the ReSOW data directly into the program. This process is detailed below:
 
-##### QGIS
+#### QGIS
 
 1. Open new project
 2. Select import new layer => vector tile
@@ -93,6 +93,6 @@ Ultimatly the CEEDS tool may be a bit limiting to technical users who wish to do
  3.3 Expand this!!
 4. Click add
  
-##### ArcGIS online
+#### ArcGIS online
 
 Not working yet
