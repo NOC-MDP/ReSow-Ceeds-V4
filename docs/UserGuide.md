@@ -69,7 +69,7 @@ Located in the bottom left above the geo coder and below the drawing control are
 |:--:| 
 | *Controls on bottom left of map* |
 
- ### Downloading Data as CSV file
+### Downloading Data as CSV file
 
 CEEDS provides the option to download a subset of the ReSOW data. This is useful if users wish to have data for a certain area and would like to do some analysis or statistics etc. Not all data layers are downloadable, if they are then they will have a download icon on their enable/disable switch. At the moment only one layer can be downloaded at a time. So ensuring the data layer they want to download is enabled and all others are disabled, the following steps are required.
 
