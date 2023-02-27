@@ -1,7 +1,6 @@
 ---
 layout: default
 title: User Guide
-nav_order: 3
 ---
 # CEEDS Tool User Guide
 This guide details how to use the CEEDS decision support tool. Most of the operation should be intuitive for the average user to understand but there are some functions that are likely to need explanation, (downloading data, connecting to GIS programs etc) and this document should serve as a helpful look up guide.
