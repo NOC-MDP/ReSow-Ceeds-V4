@@ -67,10 +67,11 @@ At the bottom left there is also a search box, here the user can search for loca
 
 Located in the bottom left above the geo coder and below the drawing control are navigation controls, these allow the user to pan and zoom the map as they desire. There is also a pan to location control where the map can center on the users location. (they will need to provide permission)
 
+<center> 
 | ![Controls on bottom left of map](assets/controls.png) | 
 |:--:| 
 | *Controls on bottom left of map* |
-
+</center>
 
 ### Downloading Data as CSV file
 
