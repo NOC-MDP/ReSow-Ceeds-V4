@@ -16,7 +16,7 @@ This guide details how to use the CEEDS decision support tool. Most of the opera
 6. Able to download subsets of layers by drawing a polygon and downloading features inside
 7. Use GIS program (e.g. QGIS) to connect to tile server backend and get ReSOW data directly
 
-` NOTE: Third party or downloadable layers can only be added by administrators following instructions in admin guide`
+<mark> NOTE: Third party or downloadable layers can only be added by administrators following instructions in admin guide <mark>
 
 ### How to use:
 
