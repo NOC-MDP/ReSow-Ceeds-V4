@@ -65,11 +65,15 @@ At the bottom left there is also a search box, here the user can search for loca
 
 Located in the bottom left above the geo coder and below the drawing control are navigation controls, these allow the user to pan and zoom the map as they desire. There is also a pan to location control where the map can center on the users location. (they will need to provide permission)
 
+ <div align="center">
+ 
 | ![Controls on bottom left of map](assets/controls.png) | 
 |:--:| 
 | *Controls on bottom left of map* |
+ 
+ </div>
 
-### Downloading Data as CSV file
+ ### Downloading Data as CSV file
 
 CEEDS provides the option to download a subset of the ReSOW data. This is useful if users wish to have data for a certain area and would like to do some analysis or statistics etc. Not all data layers are downloadable, if they are then they will have a download icon on their enable/disable switch. At the moment only one layer can be downloaded at a time. So ensuring the data layer they want to download is enabled and all others are disabled, the following steps are required.
 
