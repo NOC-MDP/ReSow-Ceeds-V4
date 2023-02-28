@@ -37,8 +37,8 @@ This is the main control for CEEDS, it contains two lists of layers data and map
  
 | ![Example of a polygon](assets/default-left.png)| ![Left panel with all menus extended](assets/extended-left.png)|  
 |:--:| :--:| 
-| *Default left panel* | *Left panel with all menus extended* |
-
+| *Default left panel* | *Left panel with all menus extended* |  
+ 
 Under the data layers are three accordion (they collapse up) menus. By default these are closed but the user can open them as needed. The menu names are download, sources and help. Each one when opened shows some extra information. Source provides links to the source code and data source of CEEDS, help provides a short description of how to use different parts of the tool with a link to the user guide. Finally download shows a download button along with a number of features selected readout. Be default these are greyed out unless a user has drawn a polygon (please see downloading section for me details) 
 
 #### Right Panel
@@ -47,8 +47,8 @@ Upon opening this panel is minimised, saying no feature selected. Once a user se
 
 | ![Default right panel](assets/default-right.png) | ![Right panel with example data](assets/data-right.png) |
 |:--:| :--:| 
-| *Default right panel* | *Right panel with example data* |
-
+| *Default right panel* | *Right panel with example data* |  
+ 
 #### Drawing control
 
 Located on the bottom right side of the map, this contains two buttons. The top one allows you to draw a polygon on the map by left clicking vertices. Double left click will complete the polygon. To delete the polygon the user can select it so it is highlighted then click the second button which will delete it. 
@@ -63,7 +63,7 @@ Located in the bottom left above the geo coder and below the drawing control are
   
 | ![Controls on bottom left of map](assets/controls.png)| 
 |:--:| 
-| *Controls on bottom left of map* |
+| *Controls on bottom left of map* |  
  
 ### Downloading Data as CSV file
 
@@ -81,9 +81,8 @@ The web browser will download a CSV of the data subset and save it in the defaul
 
 | ![Example of a polygon](assets/polygon.png)| 
 |:--:| 
-| *Example of polygon* |
-
-
+| *Example of polygon* |  
+ 
 ### Connect ReSOW data source to GIS programs
 
 Ultimatly the CEEDS tool may be a bit limiting to technical users who wish to do complicated geo spatial operations/workflows, so the option is also present to allow these users who are familar with GIS programs/workflows to import the ReSOW data directly into the program. This process is detailed below:
