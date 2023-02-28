@@ -10,3 +10,8 @@ sticky_navigation: true
 prev_next_buttons_location: bottom
 search_enabled: true
 hljs_style: github-gist
+
+url: https://noc-mdp.github.io/ReSow-Ceeds-V4
+
+aux_links: # remove if you don't want this link to appear on your pages
+  Template Repository: https://github.com/NOC-MDP/ReSow-Ceeds-V4
