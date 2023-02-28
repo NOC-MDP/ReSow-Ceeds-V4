@@ -27,7 +27,7 @@ CEEDS comprises of a map base layer that takes up the whole browser window. Over
 
 This displays a map of the world, by default the tool opens over NW europe but the user can pan and zoom to anywhere in the world. 
 
-![Default view of CEEDS Tool](assets/default-map.png)| 
+| ![Default view of CEEDS Tool](assets/default-map.png)| 
 |:--:| 
 | *Default view of CEEDS Tool* |  
  
@@ -35,8 +35,8 @@ This displays a map of the world, by default the tool opens over NW europe but t
 
 This is the main control for CEEDS, it contains two lists of layers data and map. By default it will show the data layers which can be toggled on and off as required, by default most are disabled when loading. The user can also select the map layers tab which allows the user to remove aspects of the base map layer, e.g. labels. This may be useful for screen shots or similar and allows some tailoring of the appearance of the map.
  
-![Example of a polygon](assets/default-left.png)| ![Left panel with all menus extended](assets/extended-left.png)|  
-|:--:|:--:| 
+| ![Example of a polygon](assets/default-left.png)| ![Left panel with all menus extended](assets/extended-left.png)|  
+|:--:| :--:| 
 | *Default left panel* | *Left panel with all menus extended* |
 
 Under the data layers are three accordion (they collapse up) menus. By default these are closed but the user can open them as needed. The menu names are download, sources and help. Each one when opened shows some extra information. Source provides links to the source code and data source of CEEDS, help provides a short description of how to use different parts of the tool with a link to the user guide. Finally download shows a download button along with a number of features selected readout. Be default these are greyed out unless a user has drawn a polygon (please see downloading section for me details) 
@@ -61,7 +61,7 @@ At the bottom left there is also a search box, here the user can search for loca
 
 Located in the bottom left above the geo coder and below the drawing control are navigation controls, these allow the user to pan and zoom the map as they desire. There is also a pan to location control where the map can center on the users location. (they will need to provide permission)
   
-![Controls on bottom left of map](assets/controls.png)| 
+| ![Controls on bottom left of map](assets/controls.png)| 
 |:--:| 
 | *Controls on bottom left of map* |
  
@@ -79,7 +79,7 @@ CEEDS provides the option to download a subset of the ReSOW data. This is useful
 
 The web browser will download a CSV of the data subset and save it in the default location (usually user downloads directory). This can be easily opened in Excel or similar. 
 
-![Example of a polygon](assets/polygon.png)| 
+| ![Example of a polygon](assets/polygon.png)| 
 |:--:| 
 | *Example of polygon* |
 
@@ -98,7 +98,7 @@ Ultimatly the CEEDS tool may be a bit limiting to technical users who wish to do
  3.3 Expand this!!
 4. Click add
 
-![Example of a data layer in QGIS](assets/example-QGIS.png)| 
+| ![Example of a data layer in QGIS](assets/example-QGIS.png)| 
 |:--:| 
 | *Example of a data layer in QGIS* |  
  
