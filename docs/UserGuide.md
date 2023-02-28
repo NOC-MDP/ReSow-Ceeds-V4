@@ -31,7 +31,7 @@ This displays a map of the world, by default the tool opens over NW europe but t
 |:--:| 
 | *Default view of CEEDS Tool* |  
 
-#### 
+
 #### Left Panel
 
 This is the main control for CEEDS, it contains two lists of layers data and map. By default it will show the data layers which can be toggled on and off as required, by default most are disabled when loading. The user can also select the map layers tab which allows the user to remove aspects of the base map layer, e.g. labels. This may be useful for screen shots or similar and allows some tailoring of the appearance of the map.
