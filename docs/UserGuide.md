@@ -30,7 +30,6 @@ This displays a map of the world, by default the tool opens over NW europe but t
 | ![Default view of CEEDS Tool](assets/default-map.png)| 
 |:--:| 
 | *Default view of CEEDS Tool* |  
-<br/>
  
 #### Left Panel
 
@@ -39,7 +38,6 @@ This is the main control for CEEDS, it contains two lists of layers data and map
 | ![Example of a polygon](assets/default-left.png)| ![Left panel with all menus extended](assets/extended-left.png)|  
 |:--:| :--:| 
 | *Default left panel* | *Left panel with all menus extended* |  
-<br/>
  
 Under the data layers are three accordion (they collapse up) menus. By default these are closed but the user can open them as needed. The menu names are download, sources and help. Each one when opened shows some extra information. Source provides links to the source code and data source of CEEDS, help provides a short description of how to use different parts of the tool with a link to the user guide. Finally download shows a download button along with a number of features selected readout. Be default these are greyed out unless a user has drawn a polygon (please see downloading section for me details) 
 
@@ -50,7 +48,6 @@ Upon opening this panel is minimised, saying no feature selected. Once a user se
 | ![Default right panel](assets/default-right.png) | ![Right panel with example data](assets/data-right.png) |
 |:--:| :--:| 
 | *Default right panel* | *Right panel with example data* |  
- <br/>
 
 #### Drawing control
 
@@ -67,7 +64,6 @@ Located in the bottom left above the geo coder and below the drawing control are
 | ![Controls on bottom left of map](assets/controls.png)| 
 |:--:| 
 | *Controls on bottom left of map* |  
- <br/>
 
 ### Downloading Data as CSV file
 
@@ -86,7 +82,6 @@ The web browser will download a CSV of the data subset and save it in the defaul
 | ![Example of a polygon](assets/polygon.png)| 
 |:--:| 
 | *Example of polygon* |  
- <br/>
 
 ### Connect ReSOW data source to GIS programs
 
@@ -105,7 +100,6 @@ Ultimatly the CEEDS tool may be a bit limiting to technical users who wish to do
 | ![Example of a data layer in QGIS](assets/example-QGIS.png)| 
 |:--:| 
 | *Example of a data layer in QGIS* |  
- <br/>
 
 #### ArcGIS online
 
