@@ -1,5 +1,6 @@
 title: CEEDS Tool documentation
 description: CEEDS Tool Version 4 documentation
+theme: linaro-jekyll-theme
 
 # Theme settings:
 site_author: thopri
