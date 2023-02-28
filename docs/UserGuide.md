@@ -35,15 +35,11 @@ This displays a map of the world, by default the tool opens over NW europe but t
 
 This is the main control for CEEDS, it contains two lists of layers data and map. By default it will show the data layers which can be toggled on and off as required, by default most are disabled when loading. The user can also select the map layers tab which allows the user to remove aspects of the base map layer, e.g. labels. This may be useful for screen shots or similar and allows some tailoring of the appearance of the map.
  
-![Example of a polygon](assets/default-left.png)| 
-|:--:| 
-| *Default left panel* |  
+![Example of a polygon](assets/default-left.png)| ![Left panel with all menus extended](assets/extended-left.png)|  
+|:--:|:--:| 
+| *Default left panel* | *Left panel with all menus extended* |
 
 Under the data layers are three accordion (they collapse up) menus. By default these are closed but the user can open them as needed. The menu names are download, sources and help. Each one when opened shows some extra information. Source provides links to the source code and data source of CEEDS, help provides a short description of how to use different parts of the tool with a link to the user guide. Finally download shows a download button along with a number of features selected readout. Be default these are greyed out unless a user has drawn a polygon (please see downloading section for me details) 
-
-![Left panel with all menus extended](assets/extended-left.png)| 
-|:--:| 
-| *Left panel with all menus extended* |
 
 #### Right Panel
 
