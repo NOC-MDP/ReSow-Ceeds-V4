@@ -54,6 +54,7 @@ Under the data layers are three accordion (they collapse up) menus. By default t
   <figcaption>Left panel with all menus extended</figcaption>
 </figure>
 
+
 #### Right Panel
 
 Upon opening this panel is minimised, saying no feature selected. Once a user selects a feature in an interactive layer (mouse cursor turns to pointer on hover) then the data held in that feature is populated into the right panel. The panel takes up 60% of the height of the map view and if the data held is longer than this then scroll bars appear allowing the user to scroll and see all the data held. 
