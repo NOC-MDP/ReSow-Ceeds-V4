@@ -26,24 +26,26 @@ CEEDS comprises of a map base layer that takes up the whole browser window. Over
 #### Map view
 
 This displays a map of the world, by default the tool opens over NW europe but the user can pan and zoom to anywhere in the world. 
- 
-| ![Default View of CEEDS Tool](assets/default-map.png) | 
-|:--:| 
-| *Default View of CEEDS Tool* |
+
+<figure>
+  <img
+  src="assets/default-map.png"
+  alt="Default View of CEEDS Tool">
+  <figcaption>Default view of CEEDS Tool</figcaption>
+</figure> 
  
 #### Left Panel
 
 This is the main control for CEEDS, it contains two lists of layers data and map. By default it will show the data layers which can be toggled on and off as required, by default most are disabled when loading. The user can also select the map layers tab which allows the user to remove aspects of the base map layer, e.g. labels. This may be useful for screen shots or similar and allows some tailoring of the appearance of the map.
  
-| ![Default left panel](assets/default-left.png) | ![map layer panel](assets/map-left.png) | 
-|:--:| :--:| 
-| *Default left panel* | *map layer panel* |
+<figure>
+  <img
+  src="assets/default-left.png"
+  alt="Default left panel">
+  <figcaption>Default left panel</figcaption>
+</figure> 
 
 Under the data layers are three accordion (they collapse up) menus. By default these are closed but the user can open them as needed. The menu names are download, sources and help. Each one when opened shows some extra information. Source provides links to the source code and data source of CEEDS, help provides a short description of how to use different parts of the tool with a link to the user guide. Finally download shows a download button along with a number of features selected readout. Be default these are greyed out unless a user has drawn a polygon (please see downloading section for me details) 
- 
-| ![Left panel with all menus extended](assets/extended-left.png) | 
-|:--:| 
-| *Left panel with all menus extended* |
 
 <figure>
   <img
@@ -52,15 +54,23 @@ Under the data layers are three accordion (they collapse up) menus. By default t
   <figcaption>Left panel with all menus extended</figcaption>
 </figure>
  
- 
 #### Right Panel
 
 Upon opening this panel is minimised, saying no feature selected. Once a user selects a feature in an interactive layer (mouse cursor turns to pointer on hover) then the data held in that feature is populated into the right panel. The panel takes up 60% of the height of the map view and if the data held is longer than this then scroll bars appear allowing the user to scroll and see all the data held. 
 
-| ![Default right panel](assets/default-right.png) | ![Right panel with example data](assets/data-right.png) |
-|:--:| :--:| 
-| *Default right panel* | *Right panel with example data* |
-
+<figure>
+  <img
+  src="assets/default-right.png"
+  alt="Default right panel">
+  <figcaption>Default right panel</figcaption>
+</figure>
+ 
+<figure>
+  <img
+  src="assets/data-right.png"
+  alt="Right panel with example data">
+  <figcaption>Right panel with example data</figcaption>
+</figure> 
  
 #### Drawing control
 
@@ -73,11 +83,13 @@ At the bottom left there is also a search box, here the user can search for loca
 #### Navigation control
 
 Located in the bottom left above the geo coder and below the drawing control are navigation controls, these allow the user to pan and zoom the map as they desire. There is also a pan to location control where the map can center on the users location. (they will need to provide permission)
- 
-| ![Controls on bottom left of map](assets/controls.png) | 
-|:--:| 
-| *Controls on bottom left of map* |
 
+<figure>
+  <img
+  src="assets/controls.png"
+  alt="Controls on bottpm left of map">
+  <figcaption>Controls on bottom left of map</figcaption>
+</figure>
  
 ### Downloading Data as CSV file
 
@@ -93,10 +105,12 @@ CEEDS provides the option to download a subset of the ReSOW data. This is useful
 
 The web browser will download a CSV of the data subset and save it in the default location (usually user downloads directory). This can be easily opened in Excel or similar. 
 
-![Example of a polygon](assets/polygon.png)| 
-|:--:| 
-| *Example of polygon* |
-
+<figure>
+  <img
+  src="assets/polygon.png"
+  alt="Example of a polygon">
+  <figcaption>Example of a polygon</figcaption>
+</figure>
  
 ### Connect ReSOW data source to GIS programs
 
@@ -111,11 +125,13 @@ Ultimatly the CEEDS tool may be a bit limiting to technical users who wish to do
  3.2 Name
  3.3 Expand this!!
 4. Click add
- 
-![Example of a layer in QGIS](assets/example-QGIS.png)| 
-|:--:| 
-| *Example of a layer in QGIS* |
 
+<figure>
+  <img
+  src="assets/example-QGIS.png"
+  alt="example-QGIS">
+  <figcaption>Example of a data layer in QGIS</figcaption>
+</figure> 
  
 #### ArcGIS online
 
