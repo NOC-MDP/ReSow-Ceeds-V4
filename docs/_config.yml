@@ -1,6 +1,6 @@
 title: CEEDS Tool documentation
 description: CEEDS Tool Version 4 documentation
-theme: just-the-docs
+remote_theme: chrisrhymes/bulma-clean-theme
 
 # Theme settings:
 site_author: thopri
