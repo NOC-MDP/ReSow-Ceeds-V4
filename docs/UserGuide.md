@@ -30,7 +30,6 @@ This displays a map of the world, by default the tool opens over NW europe but t
 | ![Default View of CEEDS Tool](assets/default-map.png) | 
 |:--:| 
 | *Default View of CEEDS Tool* |
-
  
 #### Left Panel
 
@@ -46,6 +45,12 @@ Under the data layers are three accordion (they collapse up) menus. By default t
 |:--:| 
 | *Left panel with all menus extended* |
 
+<figure>
+  <img
+  src="assets/extended-left.png"
+  alt="Left panel with all menus extended">
+  <figcaption>Left panel with all menus extended</figcaption>
+</figure>
  
  
 #### Right Panel
