@@ -30,6 +30,7 @@ This displays a map of the world, by default the tool opens over NW europe but t
 | ![Default view of CEEDS Tool](assets/default-map.png)| 
 |:--:| 
 | *Default view of CEEDS Tool* |  
+
 #### 
 #### Left Panel
 
