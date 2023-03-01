@@ -1,6 +1,6 @@
 title: CEEDS Tool documentation
 description: CEEDS Tool Version 4 documentation
-remote_theme: just-the-docs/just-the-docs
+remote_theme: rundocs/jekyll-rtd-theme
 
 # Theme settings:
 site_author: thopri
