@@ -105,12 +105,9 @@ Ultimately the CEEDS tool may be a bit limiting to technical users who wish to d
  3.3 Expand this!!
 4. Click add
 
-<figure>
-  <img
-  src="assets/example-QGIS.png"
-  alt="example-QGIS">
-  <figcaption>Example of a data layer in QGIS</figcaption>
-</figure> 
+![Example of a data layer in QGIS](assets/example-QGIS.png)| 
+|:--:| 
+| *Example of a data layer in QGIS* |
  
 #### ArcGIS online
 
