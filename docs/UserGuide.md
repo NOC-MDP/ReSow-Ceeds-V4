@@ -82,7 +82,7 @@ Located in the bottom left above the geo coder and below the drawing control are
 <figure>
   <img
   src="assets/controls.png"
-  alt="Controls on bottpm left of map">
+  alt="Controls on bottom left of map">
   <figcaption>Controls on bottom left of map</figcaption>
 </figure>
  
@@ -91,7 +91,7 @@ Located in the bottom left above the geo coder and below the drawing control are
 CEEDS provides the option to download a subset of the ReSOW data. This is useful if users wish to have data for a certain area and would like to do some analysis or statistics etc. Not all data layers are downloadable, if they are then they will have a download icon on their enable/disable switch. At the moment only one layer can be downloaded at a time. So ensuring the data layer they want to download is enabled and all others are disabled, the following steps are required.
 
 1. Pan to area of interest
-2. Click draw polygon buttion in bottom right
+2. Click draw polygon button in bottom right
 3. Left click around area of interest ensuring all features are within
 4. Double click to complete polygon
 5. Open download sub menu
@@ -107,7 +107,7 @@ The web browser will download a CSV of the data subset and save it in the defaul
 
 ### Connect ReSOW data source to GIS programs
 
-Ultimatly the CEEDS tool may be a bit limiting to technical users who wish to do complicated geo spatial operations/workflows, so the option is also present to allow these users who are familar with GIS programs/workflows to import the ReSOW data directly into the program. This process is detailed below:
+Ultimately the CEEDS tool may be a bit limiting to technical users who wish to do complicated geo spatial operations/workflows, so the option is also present to allow these users who are familar with GIS programs/workflows to import the ReSOW data directly into the program. This process is detailed below:
 
 #### QGIS
 
