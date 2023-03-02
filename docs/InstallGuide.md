@@ -17,8 +17,8 @@ The host linux system (CEEDS is currently built on Debian 11) has the following 
     - git
     - mapbox API token
 
-==NOTE: do not use the go availible in the debian apt repository 
-use install instructions at== https://go.dev/doc/install
+> **NOTE: do not use the go available in the debian apt repository 
+use install instructions [here](https://go.dev/doc/install)**
 
 ---
 ## Setup/Install CEEDS
@@ -37,7 +37,7 @@ For development use the web app can be started
 ````shell
 $ npm start
 ````
-The web app should be availble on 
+The web app should be available on 
 
 ````http request
 localhost:8080
@@ -49,7 +49,7 @@ The tileserver needs to be built as follows
 ````shell
 $ go install github.com/consbio/mbtileserver@latest
 ````
-<mark> NOTE: the binary will be saved to the user home directory in go/bin. </mark>
+> **NOTE: the binary will be saved to the user home directory in go/bin.**
 
 Create a tileset directory next to the tileserver binary 
 (passing a tileset path is an option when starting if a different location is desired)
