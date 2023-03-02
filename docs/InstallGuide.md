@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Install Guide
+title: Installation Guide
 ---
 # Install Guide for ReSOW CEEDS tool (technical guide)
 This guide shows the basic steps to install the CEEDS tool, it is not fully comprehensive
@@ -9,7 +9,6 @@ e.g. systemd
 
 ---
 ## Requirements
-
 The host linux system (CEEDS is currently built on Debian 11) has the following requirements:
     
     - NPM
@@ -22,7 +21,6 @@ use install instructions [here](https://go.dev/doc/install)**
 
 ---
 ## Setup/Install CEEDS
-
 To install CEEDS the project needs to be cloned from the github repository.
 
 ````shell
@@ -39,13 +37,12 @@ $ npm start
 ````
 The web app should be available on 
 
-````http request
+````
 http://localhost:8080
 ````
 ### Setup MbTileserver
 The backend uses mbtileserver this is a vector tile server written in go. 
 The tileserver needs to be built as follows
-
 ````shell
 $ go install github.com/consbio/mbtileserver@latest
 ````
@@ -54,9 +51,6 @@ $ go install github.com/consbio/mbtileserver@latest
 Create a tileset directory next to the tileserver binary 
 (passing a tileset path is an option when starting if a different location is desired)
 and save the mbtiles datasets into it (see Creating Datasets Guide)
-
-
-
 
 ### Setup NginX reverse proxy server
 
