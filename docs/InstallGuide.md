@@ -40,7 +40,7 @@ $ npm start
 The web app should be available on 
 
 ````http request
-localhost:8080
+http://localhost:8080
 ````
 ### Setup MbTileserver
 The backend uses mbtileserver this is a vector tile server written in go. 
@@ -49,7 +49,7 @@ The tileserver needs to be built as follows
 ````shell
 $ go install github.com/consbio/mbtileserver@latest
 ````
-> **NOTE: the binary will be saved to the user home directory in go/bin.**
+> **NOTE: the binary will be saved to the user home directory in /home/$USER/go/bin.**
 
 Create a tileset directory next to the tileserver binary 
 (passing a tileset path is an option when starting if a different location is desired)
