@@ -4,45 +4,49 @@ title: Install Guide
 ---
 # Install Guide for ReSOW CEEDS tool (technical guide)
 This guide shows the basic steps to install the CEEDS tool, it is not fully comprehensive
-and so far only tested on Debian 11
+and so far only tested on Debian 11 and other distributions may need more dependencies installed
+e.g. systemd
 
+---
 ## Requirements
 
 The host linux system (CEEDS is currently built on Debian 11) has the following requirements:
     
     - NPM
-    - systemd
-    - go 1.17+ (do not use go in the debian apt repository)
+    - go 1.17+ 
     - git
-    - mapbox API
+    - mapbox API token
 
+==NOTE: do not use the go availible in the debian apt repository 
+use install instructions at== https://go.dev/doc/install
+
+---
 ## Setup/Install CEEDS
 
 To install CEEDS the project needs to be cloned from the github repository.
 
-````
+````shell
 $ git clone https://github.com/noc-mdp/ReSow-Ceeds-V4
 ````
 ### Setup React Frontend
-To set up the react front end use NPM to install the required dependancies
-`````
+To set up the react front end use NPM to install the required dependencies
+`````shell
 $ npm install
 `````
-For developement use the web app can be started 
-````
+For development use the web app can be started 
+````shell
 $ npm start
 ````
 The web app should be availble on 
 
-````
+````http request
 localhost:8080
 ````
-
 ### Setup MbTileserver
 The backend uses mbtileserver this is a vector tile server written in go. 
 The tileserver needs to be built as follows
 
-````
+````shell
 $ go install github.com/consbio/mbtileserver@latest
 ````
 <mark> NOTE: the binary will be saved to the user home directory in go/bin. </mark>
