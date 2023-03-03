@@ -2,9 +2,6 @@ title: CEEDS Tool documentation
 description: CEEDS Tool Version 4 documentation
 remote_theme: rundocs/jekyll-rtd-theme
 
-readme_index:
-  with_frontmatter: true
-
 # Theme settings:
 site_author: thopri
 edit_on_github: true

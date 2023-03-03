@@ -15,36 +15,33 @@ This guide details how to use the CEEDS decision support tool. Most of the opera
 6. Able to download subsets of layers by drawing a polygon and downloading features inside
 7. Use GIS program (e.g. QGIS) to connect to tile server backend and get ReSOW data directly
 
-<mark> NOTE: Third party or downloadable layers can only be added by administrators following instructions in admin guide <mark>
+> **NOTE: Third party or downloadable layers can only be added by administrators following instructions in admin guide**
 
 ## How to use:
-
 CEEDS comprises of a map base layer that takes up the whole browser window. Overlaid on this are two panels, the left containing the layer toggles and other options hidden in sub menus and the right which is not usually open unless a feature is selected. There are also various controls on the bottom right of the map screen for drawing and deleting polygons, navigating the map and searching for locations. 
 
 ### Description of User Interface
 
 #### Map view
-
-This displays a map of the world, by default the tool opens over NW europe but the user can pan and zoom to anywhere in the world. 
-
-|![Default View of CEEDS Tool](assets/default-map.png)| 
-|:--:| 
-| *Default View of CEEDS Tool* |
+This displays a map of the world, by default the tool opens over NW europe but the user can pan and zoom to anywhere in the world.
+<div align="center">
+<img src="assets/default-map.png" alt="Default Map of CEEDS Tool">
+<p> Default Map View </p>
+</div>
 
 #### Left Panel
 
 This is the main control for CEEDS, it contains two lists of layers data and map. By default it will show the data layers which can be toggled on and off as required, by default most are disabled when loading. The user can also select the map layers tab which allows the user to remove aspects of the base map layer, e.g. labels. This may be useful for screen shots or similar and allows some tailoring of the appearance of the map.
 
-|![Default left panel](assets/default-left.png)| 
+| ![Default left panel](assets/default-left.png) | 
 |:--:| 
-| *Default left panel* |
+| *Default left panel* | 
 
 Under the data layers are three accordion (they collapse up) menus. By default these are closed but the user can open them as needed. The menu names are download, sources and help. Each one when opened shows some extra information. Source provides links to the source code and data source of CEEDS, help provides a short description of how to use different parts of the tool with a link to the user guide. Finally download shows a download button along with a number of features selected readout. Be default these are greyed out unless a user has drawn a polygon (please see downloading section for me details) 
 
 |![Left panel with all menus extended](assets/extended-left.png)| 
 |:--:| 
-| *Left panel with all menus extended* |
-
+| *Left panel with all menus extended* | 
 
 #### Right Panel
 
