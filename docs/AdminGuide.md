@@ -8,7 +8,13 @@ This guide contains a technical description of the CEEDS Tool, how to make chang
 
 ---
 ##  Technical Description of the Tool
+The CEEDS tool comprises of several components:
 
+    - a react web app
+    - a vector tile server called mbtileserver
+    - nginx reverse proxy server
+    - systemd services
+    - node package manager
 
 ---
 ## Description of layer organisation
