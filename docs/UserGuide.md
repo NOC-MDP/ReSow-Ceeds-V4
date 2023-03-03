@@ -7,13 +7,13 @@ This guide details how to use the CEEDS decision support tool. Most of the opera
 
 ## CEEDS Capabilities
 
-1. The CEEDS tool has the following capabilities
-2. Displays ReSOW project output in visual spatial layers
-3. Can display other sources of data such as third party WMS
-4. Users can enable or disable specific layers
-5. Users can click on features within interactive layers to see data associated with feature
-6. Able to download subsets of layers by drawing a polygon and downloading features inside
-7. Use GIS program (e.g. QGIS) to connect to tile server back-end and get ReSOW data directly
+The CEEDS tool has the following capabilities:
+    - Displays ReSOW project output in visual spatial layers
+    - Can display other sources of data such as third party WMS
+    - Users can enable or disable specific layers
+    - Users can click on features within interactive layers to see data associated with feature
+    - Able to download subsets of layers by drawing a polygon and downloading features inside
+    - Use GIS program (e.g. QGIS) to connect to tile server back-end and get ReSOW data directly
 
 > **NOTE: Third party or download-able layers can only be added by administrators following instructions in admin guide**
 
@@ -66,10 +66,6 @@ Upon opening this panel is minimised, saying no feature selected. Once a user se
         </div>
 	</div>
 </div>
-
-
-
-
 #### Drawing control
 
 Located on the bottom right side of the map, this contains two buttons. The top one allows you to draw a polygon on the map by left clicking vertices. Double left click will complete the polygon. To delete the polygon the user can select it so it is highlighted then click the second button which will delete it. 
@@ -115,10 +111,11 @@ Ultimately the CEEDS tool may be a bit limiting to technical users who wish to d
 1. Open new project
 2. Select import new layer => vector tile
 3. Fill out dialog box with:
- 3.1 URL
+    3.1 URL
     3.2 Name
-    3.3 Expand this!!
+    3.3 Stuff that I have forgotten
 4. Click add
+5. Ignore style missing error message.....
 
 <div align="center">
 <img src="assets/example-QGIS.png" alt="Example of a data layer in QGIS">
@@ -127,4 +124,9 @@ Ultimately the CEEDS tool may be a bit limiting to technical users who wish to d
 
 #### ArcGIS online
 
-Not working yet
+Not working yet, most likely needs domain name with non self signed SSL certificate
+
+#### ArcMap
+
+Not yet tested (any volunteers?)
+
