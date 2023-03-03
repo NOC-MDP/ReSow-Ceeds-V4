@@ -34,16 +34,20 @@ This displays a map of the world, by default the tool opens over NW Europe but t
 
 This is the main control for CEEDS, it contains two lists of layers data and map. By default it will show the data layers which can be toggled on and off as required, by default most are disabled when loading. The user can also select the map layers tab which allows the user to remove aspects of the base map layer, e.g. labels. This may be useful for screen shots or similar and allows some tailoring of the appearance of the map.
 
-<div align="center">
-<img src="assets/default-left.png" alt="Default Left Panel">
-<p> Default left panel </p>
-</div>
 
 Under the data layers are three accordion (they collapse up) menus. By default these are closed but the user can open them as needed. The menu names are download, sources and help. Each one when opened shows some extra information. Source provides links to the source code and data source of CEEDS, help provides a short description of how to use different parts of the tool with a link to the user guide. Finally download shows a download button along with a number of features selected readout. Be default these are greyed out unless a user has drawn a polygon (please see downloading section for me details) 
 
 <div align="center">
-<img src="assets/extended-left.png" alt="Left panel will menus extended">
-<p>Left panel will all menus extended</p>
+	<div style="display: flex; justify-content: space-evenly;">
+		<div>
+			<img src="assets/default-left.png" alt="Default Left Panel">
+			<p> Default left panel </p>
+		</div>
+		<div>
+			<img src="assets/extended-left.png" alt="Left panel will menus extended">
+			<p>Left panel will all menus extended</p>
+		</div>
+	</div>
 </div>
 
 #### Right Panel
@@ -51,14 +55,20 @@ Under the data layers are three accordion (they collapse up) menus. By default t
 Upon opening this panel is minimised, saying no feature selected. Once a user selects a feature in an interactive layer (mouse cursor turns to pointer on hover) then the data held in that feature is populated into the right panel. The panel takes up 60% of the height of the map view and if the data held is longer than this then scroll bars appear allowing the user to scroll and see all the data held. 
 
 <div align="center">
-<img src="assets/default-right.png" alt="Default right panel">
-<p> Default right panel</p>
+    <div style="display: flex; justify-content: space-evenly;">
+        <div>
+            <img src="assets/default-right.png" alt="Default right panel" style="height:45px;">
+			<p> Default right panel</p>
+        </div>
+		<div>
+            <img src="assets/data-right.png" alt="Right panel with example data">
+			<p>Right panel with example data</p>
+        </div>
+	</div>
 </div>
 
-<div align="center">
-<img src="assets/data-right.png" alt="Right panel with example data">
-<p>Right panel with example data</p>
-</div>
+
+
 
 #### Drawing control
 
@@ -106,8 +116,8 @@ Ultimately the CEEDS tool may be a bit limiting to technical users who wish to d
 2. Select import new layer => vector tile
 3. Fill out dialog box with:
  3.1 URL
-  3.2 Name
-  3.3 Expand this!!
+    3.2 Name
+    3.3 Expand this!!
 4. Click add
 
 <div align="center">
