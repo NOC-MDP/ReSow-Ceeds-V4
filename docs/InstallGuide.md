@@ -10,23 +10,21 @@ e.g. systemd
 ---
 ## Requirements
 The host linux system (CEEDS is currently built on Debian 11) has the following requirements:
-    
     - NPM
     - go 1.17+ 
     - git
     - mapbox API token
 
-> **NOTE: do not use the go available in the debian apt repository 
-use install instructions [here](https://go.dev/doc/install)**
+> **NOTE: do not use the go available in the Debian apt repository use install instructions [here](https://go.dev/doc/install)**
 
 ---
 ## Setup/Install CEEDS
-To install CEEDS the project needs to be cloned from the github repository.
+To install CEEDS the project needs to be cloned from the GitHub repository.
 
 ````shell
 $ git clone https://github.com/noc-mdp/ReSow-Ceeds-V4
 ````
-### Setup React Frontend
+### Setup React Front-end
 To set up the react front end use NPM to install the required dependencies
 `````shell
 $ npm install
@@ -43,8 +41,9 @@ http://localhost:8080
 To keep the service going once the terminal window is closed please refer to the systemd services section.
 
 ### Setup MbTileserver
-The backend uses mbtileserver this is a vector tile server written in go. 
+The back-end uses mbtileserver this is a vector tile server written in go. 
 The tileserver needs to be built as follows
+
 ````shell
 $ go install github.com/consbio/mbtileserver@latest
 ````
@@ -58,8 +57,8 @@ To start the server just run the binary in /home/$USER/go/bin:
 ```shell
 $ ./mbtileserver
 ```
-If a https service is desired and a certificate has been generated then the following will start
-mbtileserver in https mode and compatible with the nginx configuration.
+If a HTTPS service is desired and a certificate has been generated then the following will start
+mbtileserver in HTTPS mode and compatible with the nginx configuration.
 
 ```shell
 $ ./mbtileserver -c /etc/ssl/certs/selfsigned.crt -k /etc/ssl/private/selfsigned.key -p 8000
@@ -67,10 +66,10 @@ $ ./mbtileserver -c /etc/ssl/certs/selfsigned.crt -k /etc/ssl/private/selfsigned
 To keep the server going once the terminal window is closed then please refer to the systemd services
 section.
 
-### Setup NginX reverse proxy server
+### Setup nginx reverse proxy server
 Running NPM start directly is not suitable for production instances, it is sensible to use 
 a reverse proxy server to help load balance and protect the identity of the CEEDS Tool server.
-To do this NginX needs to be installed:
+To do this nginx needs to be installed:
 
 ```shell
 $ sudo apt install nginx
@@ -126,7 +125,7 @@ $ sudo nginx -t
 ```
 And resolve any errors, e.g. common errors are forgetting the ; at the end of lines
 
-Then restart nginx so it will read the new config:
+Then restart nginx so it will read the new configuration:
 ```shell
 $ sudo systemctl restart nginx
 ```
@@ -137,7 +136,7 @@ $ sudo ufw allow `Nginx Full`
 
 ### Generating self signed SSL certificate
 The above configuration will not work unless a SSL certificate is in place, ideally a signed certificate
-from let's encrypt or similar will be used but for testing/demo/ip address then a self signed can be used.
+from let's encrypt or similar will be used but for testing/demo/IP address then a self signed can be used.
 
 First create the certificate
 ```shell
@@ -157,7 +156,7 @@ $ sudo systemctl status nginx
 ```
 CEEDS should now be running and accessible on the server_name listed in the server block 
 
-### Create Systemd services
+### Create systemd services
 the web app and tileserver are managed by systemd this will start both as services at boot with the
 required parameters and restart if they happen to fail. The CEEDS repository contains the two services
 in the services subfolder. These need to moved to the systemd system folder and enabled as follows.

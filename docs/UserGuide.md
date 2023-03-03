@@ -13,9 +13,9 @@ This guide details how to use the CEEDS decision support tool. Most of the opera
 4. Users can enable or disable specific layers
 5. Users can click on features within interactive layers to see data associated with feature
 6. Able to download subsets of layers by drawing a polygon and downloading features inside
-7. Use GIS program (e.g. QGIS) to connect to tile server backend and get ReSOW data directly
+7. Use GIS program (e.g. QGIS) to connect to tile server back-end and get ReSOW data directly
 
-> **NOTE: Third party or downloadable layers can only be added by administrators following instructions in admin guide**
+> **NOTE: Third party or download-able layers can only be added by administrators following instructions in admin guide**
 
 ## How to use:
 CEEDS comprises of a map base layer that takes up the whole browser window. Overlaid on this are two panels, the left containing the layer toggles and other options hidden in sub menus and the right which is not usually open unless a feature is selected. There are also various controls on the bottom right of the map screen for drawing and deleting polygons, navigating the map and searching for locations. 
@@ -23,7 +23,7 @@ CEEDS comprises of a map base layer that takes up the whole browser window. Over
 ### Description of User Interface
 
 #### Map view
-This displays a map of the world, by default the tool opens over NW europe but the user can pan and zoom to anywhere in the world.
+This displays a map of the world, by default the tool opens over NW Europe but the user can pan and zoom to anywhere in the world.
 
 <div align="center">
 <img src="assets/default-map.png" alt="Default Map of CEEDS Tool">
@@ -106,8 +106,8 @@ Ultimately the CEEDS tool may be a bit limiting to technical users who wish to d
 2. Select import new layer => vector tile
 3. Fill out dialog box with:
  3.1 URL
- 3.2 Name
- 3.3 Expand this!!
+  3.2 Name
+  3.3 Expand this!!
 4. Click add
 
 <div align="center">
