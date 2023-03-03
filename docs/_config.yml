@@ -10,6 +10,7 @@ sticky_navigation: true
 prev_next_buttons_location: bottom
 search_enabled: true
 hljs_style: github-gist
+logo: https://noc-mdp.github.io/ReSow-Ceeds-V4/docs/assets/resow.svg
 
 url: https://noc-mdp.github.io/ReSow-Ceeds-V4
 
