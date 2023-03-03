@@ -25,7 +25,7 @@ CEEDS comprises of a map base layer that takes up the whole browser window. Over
 #### Map view
 This displays a map of the world, by default the tool opens over NW europe but the user can pan and zoom to anywhere in the world.
 
-<div style="margin:0 auto;">
+<div align="center">
 <img src="assets/default-map.png" alt="Default Map of CEEDS Tool">
 <p> Default Map View </p>
 </div>
@@ -34,25 +34,31 @@ This displays a map of the world, by default the tool opens over NW europe but t
 
 This is the main control for CEEDS, it contains two lists of layers data and map. By default it will show the data layers which can be toggled on and off as required, by default most are disabled when loading. The user can also select the map layers tab which allows the user to remove aspects of the base map layer, e.g. labels. This may be useful for screen shots or similar and allows some tailoring of the appearance of the map.
 
-| ![Default left panel](assets/default-left.png) | 
-|:--:| 
-| *Default left panel* | 
+<div align="center">
+<img src="assets/default-left.png" alt="Default Left Panel">
+<p> Default left panel </p>
+</div>
 
 Under the data layers are three accordion (they collapse up) menus. By default these are closed but the user can open them as needed. The menu names are download, sources and help. Each one when opened shows some extra information. Source provides links to the source code and data source of CEEDS, help provides a short description of how to use different parts of the tool with a link to the user guide. Finally download shows a download button along with a number of features selected readout. Be default these are greyed out unless a user has drawn a polygon (please see downloading section for me details) 
 
-|![Left panel with all menus extended](assets/extended-left.png)| 
-|:--:| 
-| *Left panel with all menus extended* | 
+<div align="center">
+<img src="assets/extended-left.png" alt="Left panel will menus extended">
+<p>Left panel will all menus extended</p>
+</div>
 
 #### Right Panel
 
 Upon opening this panel is minimised, saying no feature selected. Once a user selects a feature in an interactive layer (mouse cursor turns to pointer on hover) then the data held in that feature is populated into the right panel. The panel takes up 60% of the height of the map view and if the data held is longer than this then scroll bars appear allowing the user to scroll and see all the data held. 
 
+<div align="center">
+<img src="assets/default-right.png" alt="Default right panel">
+<p> Default right panel</p>
+</div>
 
-| ![Default right panel](assets/default-right.png) | ![Right panel with example data](assets/data-right.png) |
-|:--:| :--:| 
-| *Default right panel* | *Right panel with example data* |
-
+<div align="center">
+<img src="assets/data-right.png" alt="Right panel with example data">
+<p>Right panel with example data</p>
+</div>
 
 #### Drawing control
 
@@ -66,10 +72,11 @@ At the bottom left there is also a search box, here the user can search for loca
 
 Located in the bottom left above the geo coder and below the drawing control are navigation controls, these allow the user to pan and zoom the map as they desire. There is also a pan to location control where the map can center on the users location. (they will need to provide permission)
 
-![Controls on bottom left of map](assets/controls.png)|
-|:--:|
-| *Controls on bottom left of map* |
- 
+<div align="center">
+<img src="assets/controls.png" alt="Controls on bottom left of map">
+<p>Controls on bottom left of map</p>
+</div>
+
 ### Downloading Data as CSV file
 
 CEEDS provides the option to download a subset of the ReSOW data. This is useful if users wish to have data for a certain area and would like to do some analysis or statistics etc. Not all data layers are downloadable, if they are then they will have a download icon on their enable/disable switch. At the moment only one layer can be downloaded at a time. So ensuring the data layer they want to download is enabled and all others are disabled, the following steps are required.
@@ -84,10 +91,10 @@ CEEDS provides the option to download a subset of the ReSOW data. This is useful
 
 The web browser will download a CSV of the data subset and save it in the default location (usually user downloads directory). This can be easily opened in Excel or similar. 
 
-![Example of a polygon](assets/polygon.png)| 
-|:--:| 
-| *Example of polygon* |
-
+<div align="center">
+<img src="assets/polygon.png" alt="Example of a polygon">
+<p>Example of a polygon</p>
+</div>
 
 ### Connect ReSOW data source to GIS programs
 
@@ -103,10 +110,11 @@ Ultimately the CEEDS tool may be a bit limiting to technical users who wish to d
  3.3 Expand this!!
 4. Click add
 
-![Example of a data layer in QGIS](assets/example-QGIS.png)| 
-|:--:| 
-| *Example of a data layer in QGIS* |
- 
+<div align="center">
+<img src="assets/example-QGIS.png" alt="Example of a data layer in QGIS">
+<p>Example of a data layer in QGIS</p>
+</div>
+
 #### ArcGIS online
 
 Not working yet
