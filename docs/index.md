@@ -11,16 +11,16 @@ an output from the ReSOW research project.
 
 The sidebar links to the different documentation guides:
 
-### Admin Guide
+### [Admin Guide](./AdminGuide.html)
 This Administration guide details how to make changes to the site, e.g. add new layers, 
 make them interactive and/or downloadable if the considerations that need to be made.
 
-### Creating Datasets
+### [Creating Datasets](./CreatingData.html)
 This guide goes through the process in creating datasets for use in CEEDS, e.g how to convert 
 into the required format for the tile server
 
-### Installation Guide
+### [Installation Guide](./InstallGuide.html)
 Details how to set up CEEDS on a server e.g. how to install web app, tile server and set up for production use
 
-### User Guide
+### [User Guide](./UserGuide.html)
 How to use the actual CEEDS web app. Including how to download data
