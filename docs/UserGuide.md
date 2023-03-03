@@ -24,7 +24,8 @@ CEEDS comprises of a map base layer that takes up the whole browser window. Over
 
 #### Map view
 This displays a map of the world, by default the tool opens over NW europe but the user can pan and zoom to anywhere in the world.
-<div align="center">
+
+<div style="margin:0 auto;">
 <img src="assets/default-map.png" alt="Default Map of CEEDS Tool">
 <p> Default Map View </p>
 </div>
