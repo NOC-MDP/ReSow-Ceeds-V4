@@ -76,7 +76,7 @@ At the bottom left there is also a search box, here the user can search for loca
 
 #### Navigation control
 
-Located in the bottom left above the geo coder and below the drawing control are navigation controls, these allow the user to pan and zoom the map as they desire. There is also a pan to location control where the map can center on the users location. (they will need to provide permission)
+Located in the bottom left above the geocoder and below the drawing control are navigation controls, these allow the user to pan and zoom the map as they desire. There is also a pan to location control where the map can center on the users location. (they will need to provide permission)
 
 <div align="center">
 <img src="assets/controls.png" alt="Controls on bottom left of map">
@@ -85,7 +85,7 @@ Located in the bottom left above the geo coder and below the drawing control are
 
 ### Downloading Data as CSV file
 
-CEEDS provides the option to download a subset of the ReSOW data. This is useful if users wish to have data for a certain area and would like to do some analysis or statistics etc. Not all data layers are downloadable, if they are then they will have a download icon on their enable/disable switch. At the moment only one layer can be downloaded at a time. So ensuring the data layer they want to download is enabled and all others are disabled, the following steps are required.
+CEEDS provides the option to download a subset of the ReSOW data. This is useful if users wish to have data for a certain area and would like to do some analysis or statistics etc. Not all data layers are download-able, if they are then they will have a download icon on their enable/disable switch. At the moment only one layer can be downloaded at a time. So ensuring the data layer they want to download is enabled and all others are disabled, the following steps are required.
 
 1. Pan to area of interest
 2. Click draw polygon button in bottom right
@@ -104,16 +104,17 @@ The web browser will download a CSV of the data subset and save it in the defaul
 
 ### Connect ReSOW data source to GIS programs
 
-Ultimately the CEEDS tool may be a bit limiting to technical users who wish to do complicated geo spatial operations/workflows, so the option is also present to allow these users who are familar with GIS programs/workflows to import the ReSOW data directly into the program. This process is detailed below:
+Ultimately the CEEDS tool may be a bit limiting to technical users who wish to do complicated geospatial operations/work-flows, so the option is also present to allow these users who are familiar with GIS programs/work-flows to import the ReSOW data directly into the program. This process is detailed below:
 
 #### QGIS
 
 1. Open new project
 2. Select import new layer => vector tile
 3. Fill out dialog box with:
-    3.1 URL
-    3.2 Name
-    3.3 Stuff that I have forgotten
+    1. URL
+    2. Name 
+    3. Stuff that I have forgotten
+
 4. Click add
 5. Ignore style missing error message.....
 
