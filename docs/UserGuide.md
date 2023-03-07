@@ -104,7 +104,7 @@ The web browser will download a CSV of the data subset and save it in the defaul
 
 ### Connect ReSOW data source to GIS programs
 
-Ultimately the CEEDS tool may be a bit limiting to technical users who wish to do complicated geospatial operations/work-flows, so the option is also present to allow these users who are familiar with GIS programs/work-flows to import the ReSOW data directly into the program. This process is detailed below:
+Ultimately the CEEDS tool may be a bit limiting to technical users who wish to do complicated geo-spatial operations/work-flows, so the option is also present to allow these users who are familiar with GIS programs/work-flows to import the ReSOW data directly into the program. This process is detailed below:
 
 #### QGIS
 
@@ -129,5 +129,5 @@ Not working yet, most likely needs domain name with non self signed SSL certific
 
 #### ArcMap
 
-Not yet tested (any volunteers?)
+Not yet tested
 
