@@ -98,13 +98,12 @@ export default function App() {
           }
           return filtered3
       }, [])
-      // TODO check the robust of this as well....
+      // TODO check the robustness of this as well....
       const newIds4 = layers.reduce((filtered4, layer) => {
-              if (layer.legend)
-                  for (let i in layerSelector){
-                      if(layer.id.includes(layerSelector[i].source)) {
-                          filtered4.push(i)
-                      
+          if (layer.legend)
+              for (let i in layerSelector){
+                  if(layer.id.includes(layerSelector[i].source)) {
+                      filtered4.push(i)
                   }
           }
           return filtered4
