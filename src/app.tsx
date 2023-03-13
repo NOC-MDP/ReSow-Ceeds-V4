@@ -5,6 +5,7 @@ import Map,{NavigationControl,GeolocateControl} from 'react-map-gl';
 import GeocoderControl from './geocoder-control';
 import LeftPanel from './LeftPanel';
 import RightPanel from './RightPanel';
+import Legend from './legend';
 import DrawControl from './draw-control';
 import MapStyle from '../mapstyle.json';
 import AppContext from './AppContext';
@@ -29,6 +30,7 @@ export default function App() {
   const [features, setFeatures] = useState({});
   const [csventries, setCSVentries] = useState(null)
   const [csvleng, setCSVleng] = useState(0)  
+  const [showLedge, setShowLedge] = useState(false);  
   const mapRef = useRef()
   
   /**
@@ -194,18 +196,21 @@ export default function App() {
 
   useEffect(() => {
     }, [csvleng])
-  
+    
+  useEffect(() => {
+    }, [showLedge])
 
   
     return (
     <AppContext.Provider value={{
       visibility,
       setVisibility,
+      setShowLedge,  
       datcats,
       layercats,
       csvleng,
       csventries,
-      downloadablecats  
+      downloadablecats,
     }}>
       <Map
       {...visualViewport} ref={ref => mapRef.current = ref && ref.getMap()}
@@ -220,6 +225,7 @@ export default function App() {
         onMouseLeave={onMouseLeave}
         cursor={cursor}
         interactiveLayerIds={interactiveLayerIds}>
+        <Legend show={showLedge}/>
         <LeftPanel />
         <RightPanel Record2={Record2}/>
         <GeocoderControl mapboxAccessToken={MAPBOX_TOKEN} position="bottom-right" />

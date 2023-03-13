@@ -53,6 +53,7 @@ function Download(csventries){
 function StyleControls() {
   const { visibility,
           setVisibility,
+          setShowLedge,
           datcats,
           layercats,
           csvleng,
@@ -60,6 +61,12 @@ function StyleControls() {
           downloadablecats} = useContext(AppContext)
   const handleVisibilityChange = (e) => {
     setVisibility({...visibility, [e.target.name]: e.target.checked})
+    if(e.target.name=="GEBCO"&& e.target.checked){
+      setShowLedge(true);
+    }
+    if(e.target.name=="GEBCO"&& !e.target.checked){
+      setShowLedge(false);
+    }
   }
   const featureSel = csvleng
   
@@ -67,7 +74,7 @@ function StyleControls() {
     <div className="control-panel">
     <Paper shadow="md" radius="sm" mx="5px">
       <Text fz="xl" fw={700} ta="center" mt="5px" pt="5px" mb="1px" lh="1">CEEDS Tool</Text>
-      <Text fz="md" c="dimmed" ta="center" mt="1px" lh="1">Version 4.2.1</Text>
+      <Text fz="md" c="dimmed" ta="center" mt="1px" lh="1">Version 4.3.0</Text>
       <Tabs defaultValue="Data Layers">
         <Tabs.List>
           <Tabs.Tab value="Data Layers"> <Text fz="sm" fw={700} ta="center" mt="5px" pt="5px" mb="1px" lh="1">Data Layers</Text> </Tabs.Tab>
