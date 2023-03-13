@@ -30,7 +30,8 @@ export default function App() {
   const [features, setFeatures] = useState({});
   const [csventries, setCSVentries] = useState(null)
   const [csvleng, setCSVleng] = useState(0)  
-  const [showLedge, setShowLedge] = useState(false);  
+  const [showLedge, setShowLedge] = useState(null);
+  const [legends, setLegends] = useState(null);
   const mapRef = useRef()
   
   /**
@@ -50,10 +51,11 @@ export default function App() {
           layercats.push(el.category)
       }
     layerSelector[el.category]=el.layerSelector
+     
     visibleLayers[el.category]=el.visible
     
   });
-  const allcats = datcats.concat(layercats) 
+  const allcats = datcats.concat(layercats)
   const [visibility, setVisibility] = useState(visibleLayers);
 
   /**
@@ -96,9 +98,21 @@ export default function App() {
           }
           return filtered3
       }, [])
+      // TODO check the robust of this as well....
+      const newIds4 = layers.reduce((filtered4, layer) => {
+              if (layer.legend)
+                  for (let i in layerSelector){
+                      if(layer.id.includes(layerSelector[i].source)) {
+                          filtered4.push(i)
+                      
+                  }
+          }
+          return filtered4
+      }, [])
     setInteractiveLayerIds(newIds);
     setDownloadableLayerIds(newIds2);
     setDownloadableCats(newIds3)
+    setLegends(newIds4)  
   }, [visibility])
 
     /** when clicking on interactive layer, update right hand panel with feature info
@@ -199,7 +213,9 @@ export default function App() {
     
   useEffect(() => {
     }, [showLedge])
-
+  
+  useEffect(() => {
+    }, [legends])
   
     return (
     <AppContext.Provider value={{
@@ -211,6 +227,7 @@ export default function App() {
       csvleng,
       csventries,
       downloadablecats,
+      legends,  
     }}>
       <Map
       {...visualViewport} ref={ref => mapRef.current = ref && ref.getMap()}

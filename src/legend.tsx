@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Image} from '@mantine/core'
 
 function Legend({show}){
-    if(show){
+    if(show!=null){
     return(
         <div className="legend-panel">
             <Image maw={240} 
@@ -10,7 +10,7 @@ function Legend({show}){
                    radius={"md"}
                    height={400} 
                    fit="contain"
-                   src={"../assets/gebco_depth_colour_key_vertical.jpg"}/>
+                   src={"../assets/".concat(show)}/>
         </div>
     )
 }}

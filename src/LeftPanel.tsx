@@ -58,14 +58,19 @@ function StyleControls() {
           layercats,
           csvleng,
           csventries,
-          downloadablecats} = useContext(AppContext)
+          downloadablecats,
+          legends} = useContext(AppContext)
+  
   const handleVisibilityChange = (e) => {
     setVisibility({...visibility, [e.target.name]: e.target.checked})
-    if(e.target.name=="GEBCO"&& e.target.checked){
-      setShowLedge(true);
-    }
-    if(e.target.name=="GEBCO"&& !e.target.checked){
-      setShowLedge(false);
+    for(let i = 0; i < legends.length;i++) {
+      // if target is a layer with a legend set it to show
+      if (e.target.name == legends[i] && e.target.checked) {
+        setShowLedge(legends[i].concat(".jpg"));
+      }
+      if (e.target.name == legends[i] && !e.target.checked) {
+        setShowLedge(null);
+      }
     }
   }
   const featureSel = csvleng

@@ -81,7 +81,8 @@
             "type": "raster",
             "source": "gebco2022",
             "paint": {"raster-opacity": 0.8},
-            "interactive": true
+            "interactive": true,
+            "legend": true
         },
         {
             "id": "landuse_park",
