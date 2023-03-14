@@ -231,9 +231,9 @@ export default function App() {
       <Map
       {...visualViewport} ref={ref => mapRef.current = ref && ref.getMap()}
         initialViewState={{
-          latitude: 50.7028,
+          latitude: 54.7028,
           longitude: -1.5442,
-          zoom: 4}}
+          zoom: 5}}
         mapStyle={mapStyle}
         mapboxAccessToken={MAPBOX_TOKEN}
         onClick={onClick}
