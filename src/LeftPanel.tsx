@@ -96,10 +96,10 @@ function StyleControls() {
                 labelPosition="right" 
                 size="md"
                 mx={"10px"}
-                radius={"md"}
+                radius={"xs"}
                 label={name}
                 onLabel={<IconDownload size={14}/>}
-                offLabel={<IconDownload size={14}/>}
+                //offLabel={"<IconDownload size={14}/>"}
                 name={name}
                 checked={visibility[name]} 
                 onChange={handleVisibilityChange}>
@@ -110,7 +110,7 @@ function StyleControls() {
                       labelPosition="right"
                       size="md"
                       mx={"10px"}
-                      radius={"md"}
+                      radius={"xs"}
                       label={name}
                       name={name}
                       checked={visibility[name]}

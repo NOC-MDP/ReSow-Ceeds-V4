@@ -5,7 +5,7 @@
 // visible sets if the layer is loaded by default
 export  const dataLayers = [{
                                 category: "Seagrass Distribution",
-                                layerSelector: /seagrass/,
+                                layerSelector: /5xmTtf1fGR/,
                                 visible: false,
                                 data: true
                             },
@@ -17,7 +17,7 @@ export  const dataLayers = [{
                             },
                             {
                                 category: "Seagrass Potential",
-                                layerSelector: /seagrasp/,
+                                layerSelector: /2gqju0ktXP/,
                                 visible: true,
                                 data: true
                             },
