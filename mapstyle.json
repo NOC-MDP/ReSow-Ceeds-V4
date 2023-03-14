@@ -867,7 +867,7 @@
             "source-layer": "country_label"
         },
         {
-            "id": "5xmTtf1fGR",
+            "id": "seagrass-5xmTtf1fGR",
             "type": "fill",
             "source": "CEEDS",
             "source-layer": "reprojectedseagrass",
@@ -880,7 +880,7 @@
             "downloadable": true
         },
         {
-            "id": "5xmTtf1fGR-boundary",
+            "id": "seagrass-boundary-5xmTtf1fGR",
             "type": "line",
             "source": "CEEDS",
             "source-layer": "reprojectedseagrass",
@@ -892,7 +892,7 @@
             "interactive": true
         },
         {
-            "id": "2gqju0ktXP",
+            "id": "SeagrassPotential-2gqju0ktXP",
             "type": "fill",
             "source": "CEEDS2",
             "source-layer": "SeagrassPotential",
@@ -905,7 +905,7 @@
             "downloadable": true
         },
         {
-            "id": "2gqju0ktXP-boundary",
+            "id": "seagrassPotential-boundary-2gqju0ktXP",
             "type": "line",
             "source": "CEEDS2",
             "source-layer": "SeagrassPotential",
