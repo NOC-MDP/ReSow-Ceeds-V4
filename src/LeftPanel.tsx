@@ -94,7 +94,7 @@ function StyleControls() {
               {
                 downloadablecats.includes(name) && <Switch
                 labelPosition="right" 
-                size="md"
+                size="sm"
                 mx={"10px"}
                 radius={"xs"}
                 label={name}
@@ -108,7 +108,7 @@ function StyleControls() {
               {
                   !downloadablecats.includes(name) && <Switch
                       labelPosition="right"
-                      size="md"
+                      size="sm"
                       mx={"10px"}
                       radius={"xs"}
                       label={name}
