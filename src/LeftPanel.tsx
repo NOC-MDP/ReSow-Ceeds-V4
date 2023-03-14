@@ -95,7 +95,8 @@ function StyleControls() {
                 downloadablecats.includes(name) && <Switch
                 labelPosition="right" 
                 size="md"
-                mx="10px"
+                mx={"10px"}
+                radius={"md"}
                 label={name}
                 onLabel={<IconDownload size={14}/>}
                 offLabel={<IconDownload size={14}/>}
@@ -108,7 +109,8 @@ function StyleControls() {
                   !downloadablecats.includes(name) && <Switch
                       labelPosition="right"
                       size="md"
-                      mx="10px"
+                      mx={"10px"}
+                      radius={"md"}
                       label={name}
                       name={name}
                       checked={visibility[name]}
@@ -116,7 +118,7 @@ function StyleControls() {
                   </Switch>
                   
               }
-            <Space my="10px"/>
+            <Space my="5px"/>
             </div>
             </SimpleGrid>
         </div>

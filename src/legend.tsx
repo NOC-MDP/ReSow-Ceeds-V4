@@ -8,7 +8,7 @@ function Legend({show}){
             <Image maw={240} 
                    mx={"Auto"} 
                    radius={"md"}
-                   height={400} 
+                   height={350} 
                    fit="contain"
                    src={"../assets/".concat(show)}/>
         </div>

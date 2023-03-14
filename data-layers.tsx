@@ -4,9 +4,9 @@
 // the words specified can be a substring of the layer name e.g. seagrass and seagrass-highlighted
 // visible sets if the layer is loaded by default
 export  const dataLayers = [{
-                                category: "Seagrass",
+                                category: "Seagrass Distribution",
                                 layerSelector: /seagrass/,
-                                visible: true,
+                                visible: false,
                                 data: true
                             },
                             {
@@ -14,6 +14,12 @@ export  const dataLayers = [{
                                 layerSelector: /label|place|poi/,
                                 visible: true,
                                 data: false
+                            },
+                            {
+                                category: "Seagrass Potential",
+                                layerSelector: /seagrasp/,
+                                visible: true,
+                                data: true
                             },
                             {
                                 category: "Roads",
@@ -46,7 +52,7 @@ export  const dataLayers = [{
                                 data: false
                             },
                             {
-                                category: "GEBCO",
+                                category: "GEBCO Bathymetry",
                                 layerSelector: /gebco/,
                                 visible: false,
                                 data: true

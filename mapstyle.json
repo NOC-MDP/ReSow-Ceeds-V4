@@ -9,6 +9,10 @@
             "url": "http://localhost:8000/services/out",
             "type": "vector"
         },
+        "CEEDS2": {
+            "url": "http://localhost:8000/services/SeagrassP",
+            "type": "vector"
+        },
         "mapbox":{
             "url": "mapbox://mapbox.mapbox-streets-v7",
             "type": "vector"
@@ -885,6 +889,31 @@
                 "line-color": "#FF0000",
                 "line-width": ["case",
                 ["boolean",["feature-state", "select"], false],2,0]},
+            "interactive": true
+        },
+        {
+            "id": "seagrasp",
+            "type": "fill",
+            "source": "CEEDS2",
+            "source-layer": "SeagrassPotential",
+            "paint": {
+                "fill-opacity": ["case",
+                    ["boolean",["feature-state", "select"], false],1.0,0.75],
+                "fill-color": ["case",
+                    ["boolean",["feature-state", "select"], false],"#ee6b6e","#0080ff"]},
+            "interactive": true,
+            "downloadable": true
+        },
+        {
+            "id": "seagrasp-boundary",
+            "type": "line",
+            "source": "CEEDS2",
+            "source-layer": "SeagrassPotential",
+            "paint": {
+                "line-opacity": 1,
+                "line-color": "#FF0000",
+                "line-width": ["case",
+                    ["boolean",["feature-state", "select"], false],2,0]},
             "interactive": true
         }
     ]
