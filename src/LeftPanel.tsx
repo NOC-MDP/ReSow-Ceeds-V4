@@ -169,7 +169,7 @@ function StyleControls() {
                   <Text>Source code:{' '} <a href="https://github.com/NOC-MDP/ReSow-Ceeds-V4">Github</a></Text>
                 </div>
                 <div>
-                  <Text>Source data:{' '} <a href="https://139.166.145.156/services/out">CEEDS</a></Text>
+                  <Text>Source data:{' '} <a href="https://139.166.145.156/services">CEEDS</a></Text>
                 </div>
                 <div>
                   <Text>Map source:{' '} <a href="https://www.mapbox.com/maps">Mapbox</a></Text>
