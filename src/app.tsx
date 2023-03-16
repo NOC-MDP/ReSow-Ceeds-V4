@@ -57,7 +57,6 @@ export default function App() {
   });
   const allcats = datcats.concat(layercats)
   const [visibility, setVisibility] = useState(visibleLayers);
-
   /**
    * effect to update the mapStyle when visibility is updated. 
    * LayerInteractiveIds are also filtered and updated based on 
@@ -65,7 +64,6 @@ export default function App() {
    * Downloadable layers are also updated. 
    * Finally Downloadable categories are also updated
    */
-  
   useEffect(() => {
     if(layers) {
       setMapStyle({...mapStyle, layers: layers.filter(layer => {
@@ -110,6 +108,7 @@ export default function App() {
       }, [])
     setInteractiveLayerIds(newIds);
     setDownloadableLayerIds(newIds2);
+    console.log()
     setDownloadableCats(newIds3)
     setLegends(newIds4)
   }, [visibility])
@@ -146,8 +145,9 @@ export default function App() {
      *     sets the features then does a complicated thing to get data entries from all the features
      *     into a CSV entry array. Finally it sets the CSV length (number of features selected)
      */
-
-  const onUpdate = useCallback(e => {
+    console.log(downloadableLayerIds)
+  const onUpdate = useCallback( e => {
+      console.log(downloadableLayerIds)
         if (downloadableLayerIds.length > 1){
             alert("There are "+downloadableLayerIds.length+" layers enabled please only enable 1")
             return
@@ -174,7 +174,7 @@ export default function App() {
         setCSVentries(csvfeatures)
         setCSVleng(csvfeatures.length)
         
-    }, [downloadableLayerIds]);
+    }, [downloadableLayerIds,visibility]);
     /**
      * Delete polygon callback, deletes the features sets CSV entries to null and sets CSV length to zero
      */
