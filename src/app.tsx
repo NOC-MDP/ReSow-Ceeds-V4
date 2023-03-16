@@ -91,7 +91,7 @@ export default function App() {
           if(allcats.every(name2 => visibility[name2] || !layerSelector[name2].test(layer.id))) {
               if (layer.downloadable)
                 for (let i in layerSelector){
-                    if(layerSelector[i].source.includes(layer.id)) {
+                    if(layer.id.includes(layerSelector[i].source)) {
                         filtered3.push(i)
                     }
                 }
@@ -111,9 +111,8 @@ export default function App() {
     setInteractiveLayerIds(newIds);
     setDownloadableLayerIds(newIds2);
     setDownloadableCats(newIds3)
-    setLegends(newIds4)  
+    setLegends(newIds4)
   }, [visibility])
-
     /** when clicking on interactive layer, update right hand panel with feature info
       remove any feature states that may be present (remove existing highlighted features)
       if layer has "select" boolean as feature state set it to true (enables highlighted style for feature)
@@ -220,7 +219,7 @@ export default function App() {
     <AppContext.Provider value={{
       visibility,
       setVisibility,
-      setShowLedge,  
+      setShowLedge,
       datcats,
       layercats,
       csvleng,

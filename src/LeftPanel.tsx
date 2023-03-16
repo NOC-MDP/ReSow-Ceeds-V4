@@ -40,7 +40,7 @@ function Download(csventries){
     decimalSeparator: '.',
     showLabels: true,
     showTitle: true,
-    title: 'CEEDS Seagrass Data Downloaded on '+datetime,
+    title: 'CEEDS Data Downloaded on '+datetime,
     useTextFile: false,
     useBom: true,
     useKeysAsHeaders: true,
@@ -96,10 +96,10 @@ function StyleControls() {
                 labelPosition="right" 
                 size="sm"
                 mx={"10px"}
-                radius={"xs"}
+                radius={"xl"}
                 label={name}
                 onLabel={<IconDownload size={14}/>}
-                //offLabel={"<IconDownload size={14}/>"}
+                offLabel={"<IconDownload size={14}/>"}
                 name={name}
                 checked={visibility[name]} 
                 onChange={handleVisibilityChange}>
@@ -110,7 +110,7 @@ function StyleControls() {
                       labelPosition="right"
                       size="sm"
                       mx={"10px"}
-                      radius={"xs"}
+                      radius={"xl"}
                       label={name}
                       name={name}
                       checked={visibility[name]}
