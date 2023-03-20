@@ -25,7 +25,7 @@ export default function App() {
   const [featureState, setFeatureState] = useState(null);
   const [cursor, setCursor] = useState<string>('');
   const [interactiveLayerIds, setInteractiveLayerIds] = useState(null);
-  const [downloadableLayerIds, setDownloadableLayerIds] = useState(null);
+  const downloadableLayerIds = useRef(null);
   const [downloadablecats, setDownloadableCats] = useState(null);
   const [features, setFeatures] = useState({});
   const [csventries, setCSVentries] = useState(null)
@@ -107,8 +107,7 @@ export default function App() {
           return filtered4
       }, [])
     setInteractiveLayerIds(newIds);
-    setDownloadableLayerIds(newIds2);
-    console.log()
+    downloadableLayerIds.current = newIds2;
     setDownloadableCats(newIds3)
     setLegends(newIds4)
   }, [visibility])
@@ -145,36 +144,37 @@ export default function App() {
      *     sets the features then does a complicated thing to get data entries from all the features
      *     into a CSV entry array. Finally it sets the CSV length (number of features selected)
      */
-    console.log(downloadableLayerIds)
-  const onUpdate = useCallback( e => {
-      console.log(downloadableLayerIds)
-        if (downloadableLayerIds.length > 1){
-            alert("There are "+downloadableLayerIds.length+" layers enabled please only enable 1")
+ 
+  const onUpdate = useCallback(event => {
+      console.log(downloadableLayerIds.current)
+        if (downloadableLayerIds.current.length > 1){
+            alert("There are "+downloadableLayerIds.current.length+" layers enabled please only enable 1")
             return
         }
         setFeatures(currFeatures => {
             const newFeatures = {...currFeatures};
-            for (const f of e.features) {
+            for (const f of event.features) {
                 newFeatures[f.id] = f;
             }
-            return newFeatures;
+            return newFeatures
         });
         /** filter out rendered features by converting polygon coords into a line, then a bbox then corner points
         // then feed into guery and then loop through cutting properties and adding to new array
         // THEN generating that as a CSV phew! might be a better way
          */
-        const line = lineString(e.features[0].geometry["coordinates"][0]);
+        const line = lineString(event.features[0].geometry["coordinates"][0]);
         const boundaries = bbox(line)
         const SWpoint = mapRef.current.project([boundaries[0],boundaries[1]]);
         const NEpoint = mapRef.current.project([boundaries[2],boundaries[3]]);
-        const features2 = [mapRef.current.queryRenderedFeatures([SWpoint,NEpoint], {layers: downloadableLayerIds })]
+        const features2 = [mapRef.current.queryRenderedFeatures([SWpoint,NEpoint], {layers: downloadableLayerIds.current })]
         const csvfeatures = []
         for (let i = 0; i < features2[0].length; i++){
             csvfeatures.push(features2[0][i].properties)}
         setCSVentries(csvfeatures)
         setCSVleng(csvfeatures.length)
         
-    }, [downloadableLayerIds,visibility]);
+    }, [downloadableLayerIds]);
+
     /**
      * Delete polygon callback, deletes the features sets CSV entries to null and sets CSV length to zero
      */
@@ -199,7 +199,7 @@ export default function App() {
 
   useEffect(() => {
     }, [downloadableLayerIds])
-  
+    
   useEffect(() => {
     }, [downloadablecats])
     
