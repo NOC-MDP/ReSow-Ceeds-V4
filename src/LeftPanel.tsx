@@ -112,7 +112,7 @@ function StyleControls() {
                 radius={"xl"}
                 label={name}
                 onLabel={<IconDownload size={14}/>}
-                offLabel={"<IconDownload size={14}/>"}
+                offLabel={<IconDownload size={14}/>}
                 name={name}
                 checked={visibility[name]} 
                 onChange={handleVisibilityChange}>
