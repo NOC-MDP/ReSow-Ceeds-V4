@@ -31,18 +31,25 @@ function Download(csventries){
       + String(currentdate.getHours()).padStart(2,'0')  + ":"
       + String(currentdate.getMinutes()).padStart(2,'0')  + ":"
       + String(currentdate.getSeconds()).padStart(2,'0') ;
+  let datetime2 = String(currentdate.getDate()).padStart(2,'0')  + "-"
+      + String(currentdate.getMonth()+1).padStart(2,'0')  + "-"
+      + String(currentdate.getFullYear()).padStart(4,'0')  + " at "
+      + String(currentdate.getHours()).padStart(2,'0')  + "-"
+      + String(currentdate.getMinutes()).padStart(2,'0')  + "-"
+      + String(currentdate.getSeconds()).padStart(2,'0') ;
     if(csventries == null){
       alert("No Features Selected")
       return}
   for (const key in csventries){  
+  const layerName = key.split("-");  
   const options = {
     fieldSeparator: ',',
-    filename: key+'-'+datetime,
+    filename: layerName[0]+'_'+datetime2,
     quoteStrings: '"',
     decimalSeparator: '.',
     showLabels: true,
     showTitle: true,
-    title: 'CEEDS Data Downloaded on '+datetime + ' for data layer '+ key,
+    title: 'CEEDS Data Downloaded on '+datetime + ' for data layer '+ layerName[0],
     useTextFile: false,
     useBom: true,
     useKeysAsHeaders: true,

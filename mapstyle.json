@@ -867,7 +867,7 @@
             "source-layer": "country_label"
         },
         {
-            "id": "seagrass-5xmTtf1fGR",
+            "id": "SeagrassDistribution-5xmTtf1fGR",
             "type": "fill",
             "source": "CEEDS",
             "source-layer": "reprojectedseagrass",
@@ -880,7 +880,7 @@
             "downloadable": true
         },
         {
-            "id": "seagrass-boundary-5xmTtf1fGR",
+            "id": "SeagrassDistribution-boundary-5xmTtf1fGR",
             "type": "line",
             "source": "CEEDS",
             "source-layer": "reprojectedseagrass",
