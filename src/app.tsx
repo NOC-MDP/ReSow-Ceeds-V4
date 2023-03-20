@@ -146,11 +146,7 @@ export default function App() {
      */
  
   const onUpdate = useCallback(event => {
-      console.log(downloadableLayerIds.current)
-        if (downloadableLayerIds.current.length > 1){
-            alert("There are "+downloadableLayerIds.current.length+" layers enabled please only enable 1")
-            return
-        }
+
         setFeatures(currFeatures => {
             const newFeatures = {...currFeatures};
             for (const f of event.features) {
@@ -166,12 +162,20 @@ export default function App() {
         const boundaries = bbox(line)
         const SWpoint = mapRef.current.project([boundaries[0],boundaries[1]]);
         const NEpoint = mapRef.current.project([boundaries[2],boundaries[3]]);
-        const features2 = [mapRef.current.queryRenderedFeatures([SWpoint,NEpoint], {layers: downloadableLayerIds.current })]
-        const csvfeatures = []
-        for (let i = 0; i < features2[0].length; i++){
-            csvfeatures.push(features2[0][i].properties)}
-        setCSVentries(csvfeatures)
-        setCSVleng(csvfeatures.length)
+        const csv_obj = {};
+        const csv_leng = {};
+        for (let i = 0; i < downloadableLayerIds.current.length; i++) {
+            const csvfeatures = []
+            const features2 = [mapRef.current.queryRenderedFeatures([SWpoint, NEpoint], {layers: [downloadableLayerIds.current[i]]})]
+            for (let j = 0; j < features2[0].length; j++) {
+                csvfeatures.push(features2[0][j].properties)
+            }
+            csv_obj[downloadableLayerIds.current[i]] = csvfeatures
+            csv_leng[downloadableLayerIds.current[i]] = csvfeatures.length
+
+        }
+        setCSVentries(csv_obj)
+        setCSVleng(csv_leng)
         
     }, [downloadableLayerIds]);
 

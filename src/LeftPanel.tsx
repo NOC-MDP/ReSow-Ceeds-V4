@@ -34,20 +34,22 @@ function Download(csventries){
     if(csventries == null){
       alert("No Features Selected")
       return}
+  for (const key in csventries){  
   const options = {
     fieldSeparator: ',',
+    filename: key+'-'+datetime,
     quoteStrings: '"',
     decimalSeparator: '.',
     showLabels: true,
     showTitle: true,
-    title: 'CEEDS Data Downloaded on '+datetime,
+    title: 'CEEDS Data Downloaded on '+datetime + ' for data layer '+ key,
     useTextFile: false,
     useBom: true,
     useKeysAsHeaders: true,
   };
-
   const csvExporter = new ExportToCsv(options);
-    csvExporter.generateCsv(csventries);
+    csvExporter.generateCsv(csventries[key]);
+  }
 }
 
 function StyleControls() {
@@ -73,7 +75,11 @@ function StyleControls() {
       }
     }
   }
-  const featureSel = csvleng
+  let featureSel = 0
+  for (const key in csvleng){
+    featureSel = featureSel+csvleng[key]
+  }
+  
   
   return (
     <div className="control-panel">
