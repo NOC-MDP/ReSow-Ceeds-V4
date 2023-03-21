@@ -873,9 +873,9 @@
             "source-layer": "reprojectedseagrass",
             "paint": {
                 "fill-opacity": ["case",
-                ["boolean",["feature-state", "select"], false],1.0,0.75],
+                ["boolean",["feature-state", "select"], false],0.75,1.00],
                 "fill-color": ["case",
-                ["boolean",["feature-state", "select"], false],"#ee6b6e","#0080ff"]},
+                ["boolean",["feature-state", "select"], false],"#ee6b6e","#be4bdb"]},
             "interactive": true,
             "downloadable": true
         },
@@ -898,9 +898,9 @@
             "source-layer": "SeagrassPotential",
             "paint": {
                 "fill-opacity": ["case",
-                    ["boolean",["feature-state", "select"], false],1.0,0.75],
+                    ["boolean",["feature-state", "select"], false],0.75,1.00],
                 "fill-color": ["case",
-                    ["boolean",["feature-state", "select"], false],"#ee6b6e","#0080ff"]},
+                    ["boolean",["feature-state", "select"], false],"#ee6b6e","#37b24d"]},
             "interactive": true,
             "downloadable": true
         },

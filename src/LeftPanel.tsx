@@ -10,7 +10,7 @@ import {
   Space,
   Accordion, 
   Divider,
-  List  
+  List
 } from '@mantine/core';
 import {IconDownload, IconBook, IconHelp} from '@tabler/icons';
 import AppContext from './AppContext';
@@ -63,13 +63,14 @@ function StyleControls() {
   const { visibility,
           setVisibility,
           setShowLedge,
+          colourSwitches,
           datcats,
           layercats,
           csvleng,
           csventries,
           downloadablecats,
           legends} = useContext(AppContext)
-  
+
   const handleVisibilityChange = (e) => {
     setVisibility({...visibility, [e.target.name]: e.target.checked})
     for(let i = 0; i < legends.length;i++) {
@@ -107,19 +108,21 @@ function StyleControls() {
               {
                 downloadablecats.includes(name) && <Switch
                 labelPosition="right" 
+                color={colourSwitches[name]}
                 size="sm"
                 mx={"10px"}
                 radius={"xl"}
-                label={name}
                 onLabel={<IconDownload size={14}/>}
                 offLabel={<IconDownload size={14}/>}
                 name={name}
+                label={name}
                 checked={visibility[name]} 
                 onChange={handleVisibilityChange}>
               </Switch>
               }
               {
                   !downloadablecats.includes(name) && <Switch
+                      color={colourSwitches[name]}
                       labelPosition="right"
                       size="sm"
                       mx={"10px"}
@@ -131,7 +134,7 @@ function StyleControls() {
                   </Switch>
                   
               }
-            <Space my="5px"/>
+            <Space my="10px"/>
             </div>
             </SimpleGrid>
         </div>

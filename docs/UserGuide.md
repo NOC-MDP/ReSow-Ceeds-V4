@@ -96,6 +96,7 @@ CEEDS provides the option to download a subset of the ReSOW data. This is useful
 7. Click Download
 
 The web browser will download a CSV of the data subset and save it in the default location (usually user downloads directory). This can be easily opened in Excel or similar. 
+If there is more than one downloadable layer selected then the features inside the polygon for each layer will be downloaded as seperate CSV files.
 
 <div align="center">
 <img src="assets/polygon.png" alt="Example of a polygon">

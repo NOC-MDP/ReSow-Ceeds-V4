@@ -43,6 +43,7 @@ export default function App() {
   const layercats = []  
   const layerSelector = {};
   const visibleLayers = {};
+  const colourSwitches = {};
   dataLayers.filter(function (el){
       if(el.data == true){
           datcats.push(el.category);
@@ -53,6 +54,8 @@ export default function App() {
     layerSelector[el.category]=el.layerSelector
      
     visibleLayers[el.category]=el.visible
+      
+    colourSwitches[el.category]=el.colour;  
     
   });
   const allcats = datcats.concat(layercats)
@@ -224,6 +227,7 @@ export default function App() {
       visibility,
       setVisibility,
       setShowLedge,
+      colourSwitches,  
       datcats,
       layercats,
       csvleng,
