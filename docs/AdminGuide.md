@@ -27,7 +27,8 @@ Therefore the administrator will need to define each layer in mapstyle.json, the
 data-layers.tsx containing each layer. Categories can have one or more layers. Please see adding new layers
 section for more information.
 
-Layers can also be set to be interactive and down-loadable depending on the requirements of the layer. If the layer has an legend, e.g. raster layer then a legend can also be enabled.
+Layers can also be set to be interactive and down-loadable depending on the requirements of the layer. If the 
+layer has an legend, e.g. raster layer then a legend can also be enabled.
 The next sections describe the two types of layer and define interactive and down-loadable with respect to a layer.
 
 ### Map Layers
@@ -52,7 +53,8 @@ the layer needs to be explicitly enabled to be downloaded.
 
 ### Legend Layers
 
-If a layer has an associated legend (this should be an jpg that has the same name as the data layer) this can be saved to the assets folder in the main application folder and a boolean term added to the mapstyle json file.
+If a layer has an associated legend (this should be an jpg that has the same name as the data layer) this can 
+be saved to the assets folder in the main application folder and a boolean term added to the mapstyle json file.
 
 ---
 
@@ -88,7 +90,9 @@ are any third party sources they will also be defined here. Below is an example:
         }
     }
 ```
-This shows the CEEDS, and mapbox sources, they are both defined as vector sources. There is also a third party WMS layer defined, this is set as a raster. Different tilesets in the CEEDS tileserver will need their own source entry.
+This shows the CEEDS, and mapbox sources, they are both defined as vector sources. There is also a third party 
+WMS layer defined, this is set as a raster. Different tilesets in the CEEDS tileserver will need their own source 
+entry.
 
 > **NOTE: the WMS url request parameters have been removed for formatting purposes see the mapstyle json file for full url**
 
@@ -112,18 +116,46 @@ After source in this file is where layers are defined. An example from the CEEDS
             "legend": true
         }
 ```
-The administrator can define things like id (this should be unique and noted for use in the data-layers.tsx file) and source (defined above in sources section). In the mbtileserver example, there are multiple layers in the source and source-layer is where it would be defined. The admin can then set the paint parameters, this will define the color and opacity of the layer. If the layer contains features that should be highlighted when clicked then this will need to be defined here. Both fill-opacity and fill-color defined above have two states, when highlighted and when not. The boolean feature-state, select is what sets this (is set to true when clicked) therefore the administrator will put both the true and false states in here. E.g. the seagrass example above sets opacity as 1 when clicked and 0.75 when not. And likewise the colour is #ee6b6e (red) when clicked and #0080ff (blue) when not.
+The administrator can define things like id (this should be unique and noted for use in the data-layers.tsx file) 
+and source (defined above in sources section). In the mbtileserver example, there are multiple layers in the source 
+and source-layer is where it would be defined. The admin can then set the paint parameters, this will define the 
+color and opacity of the layer. If the layer contains features that should be highlighted when clicked then this 
+will need to be defined here. Both fill-opacity and fill-color defined above have two states, when highlighted and 
+when not. The boolean feature-state, select is what sets this (is set to true when clicked) therefore the 
+administrator will put both the true and false states in here. E.g. the seagrass example above sets opacity 
+as 1 when clicked and 0.75 when not. And likewise the colour is #ee6b6e (red) when clicked and #0080ff (blue) 
+when not.
 
-Finally the last three terms set the interactive, down-loadable and legend states of the layers. These are independent but it is expected that a down-loadable layer is also interactive as otherwise users would not be able to see any data when clicking the layer. Also if a layer is not interactive it does not need the boolean feature state parameters setting as it will not be possible to highlight it. If legend is set to true then any jpeg file that is saved to the /assets folder of the main application will be overlaid on the map. The filename needs to match the layer name e.g. GEBCO Bathymetry.jpg. The legend will be placed in the bottom left and scaled to 350 pixels high with the width automatically scaled to match the original aspect ratio of the legend. Therefore some care in the layout of the legend is needed. The image below shows an example that is suitable.
+Finally the last three terms set the interactive, down-loadable and legend states of the layers. These are 
+independent but it is expected that a down-loadable layer is also interactive as otherwise users would not 
+be able to see any data when clicking the layer. If a layer is not interactive it does not need the boolean 
+feature state parameters setting as it will not be possible to highlight it. If a layer is set to be downloadable 
+some care in the id is required as the tool will use this name to set the download file name prefix. The format is
+as follows.
+
+> "prefix-uniquekey" example: "SeagrassPotential-hf34v98y531"
+
+The prefix part of the ID is used as a filename if the layer is set to be downloadable, the unique key suffix is 
+used to collate layers into a data category, (see define or add to category section). The "-" separator MUST be 
+used, no other separators are currently supported. Using a different format of ID may result in unexpected behaviour. 
+
+If legend is set to true then any 
+jpeg file that is saved to the /assets folder of the main application will be overlaid on the map. The filename 
+needs to match the layer name e.g. GEBCO Bathymetry.jpg. The legend will be placed in the bottom left and scaled 
+to 350 pixels high with the width automatically scaled to match the original aspect ratio of the legend. Therefore 
+some care in the layout of the legend is needed. The image below shows an example that is suitable.
 
 <div align="center">
 <img src="assets/GEBCO.jpg" alt="Example Legend">
 <p> GEBCO Legend example </p>
 </div>
 
-It is expected that raster WMS layers that are provided by third party sources will provide a legend that can be added to CEEDS. If it doesn't match the requirements, e.g. it is horizontal then it will have to be edited or recreated to meet requirements. 
+It is expected that raster WMS layers that are provided by third party sources will provide a legend that can be 
+added to CEEDS. If it doesn't match the requirements, then it will have to be edited or recreated to meet requirements. 
 
-To make highlighting more prominent,a outline layer can also be used. This when clicked will create a outline around the feature to display it more prominently. The example below shows what would be used for the seagrass example above
+To make highlighting more prominent,a outline layer can also be used. This when clicked will create a outline 
+around the feature to display it more prominently. The example below shows what would be used for the seagrass 
+example above
 
 ```json
         {
@@ -139,23 +171,34 @@ To make highlighting more prominent,a outline layer can also be used. This when 
             "interactive": true
         }
 ```
-This is basically an identical layer to the sea-grass but with the type set to line rather than fill (since it is creating) the boundary. In the paint section the colour and opacity of the line is set with a boolean feature state select on the width to determine what width it should be when true or false. In this case it is 2 when true and 0 when false. Therefore when a feature is clicked this layer will draw a boundary around the fill layer it matches and when it is not clicked it will not draw a boundary. To work this layer must also be set to interactive. 
+This is basically an identical layer to the sea-grass but with the type set to line rather than fill (since it is 
+creating) the boundary. In the paint section the colour and opacity of the line is set with a boolean feature state 
+select on the width to determine what width it should be when true or false. In this case it is 2 when true and 0 
+when false. Therefore when a feature is clicked this layer will draw a boundary around the fill layer it matches 
+and when it is not clicked it will not draw a boundary. To work this layer must also be set to interactive. 
 
-> **NOTE: it is important that the id name must contain the id from the layer it is drawing a line around. In this case it is seagrass. The convention suggested is to use the same name with a boundary suffix. e.g. seagrass-boundary**
+> **NOTE: it is important that the id name must contain the id from the layer it is drawing a line around. In this 
+> case it is seagrass. The convention suggested is to use the same name with a boundary suffix. e.g. 
+> seagrass-boundary**
 
-Finally it is important to consider the order of layers in the mapstyle.json file. The app will plot each layer on top of the other. Which can be important depending on what is being plotted. For the sea-grass example above this is added to the end of the file as it should overlay everything. But the WMS source layer is added much sooner, in this case after the background and before the roads, labels and sea-grass etc. As it is a continuous layer it will cover everything so it is important to add it before anything you want to see at the same time as it.
+Finally it is important to consider the order of layers in the mapstyle.json file. The app will plot each layer 
+on top of the other. Which can be important depending on what is being plotted. For the sea-grass example above 
+this is added to the end of the file as it should overlay everything. But the WMS source layer is added much sooner,
+in this case after the background and before the roads, labels and sea-grass etc. As it is a continuous layer it 
+will cover everything so it is important to add it before anything you want to see at the same time as it.
 
 ### Define or add to category (data-layers.txt)
 Now that the layers are defined in the mapstyle.json file they need to be categorised before they will appear in the 
-CEEDS app. This is designed so that multiple layers can be part of one "layer" in CEEDS, this allows multiple source 
+CEEDS app. This is designed so that multiple layers can be part of one "layer" in CEEDS, this allows multiple 
+source 
 layers to act as one. Examples of this are plotting roads, bridges and tunnels as roads and seagrass and
 seagrass-boundary as seagrass. To do this the administrator must add entries to the data-layers.tsx file.
 
 This is an array of categories. A seagrass example is shown below:
 ```typescript
     [{
-        category: "Seagrass",
-        layerSelector: /seagrass/,
+        category: "Seagrass Distribution",
+        layerSelector: /5xmTtf1fGR/,
         visible: true,
         data: true
     }]
@@ -164,8 +207,8 @@ There are four parameters to set, the first is the category name, this is what w
 on the left panel of CEEDS Tool. Care should be taken with the name, too long and it will impact the site layout.
 
 The next parameter is the layerSelector, this is what is used to link layers in mapstyles.json with the category 
-defined here. In the example above any layer with seagrass in its id (e.g. seagrass and seagrass-boundary) 
-will be added to this category. Multiple selectors can be used as follows:
+defined here. In the example above any layer with "5xmTtf1fGR" in its id (e.g. seagrass-5xmTtf1fGR and 
+seagrass-5xmTtf1fGR-boundary) will be added to this category. Multiple selectors can be used as follows:
 
 ```typescript
     layerSelector: /bridge|road|tunnel/
@@ -173,12 +216,13 @@ will be added to this category. Multiple selectors can be used as follows:
 In this example all layers with bridge, road and tunnel in their id's will be added to this category. 
 
 This shows it is important to consider the id name carefully and ensure the selector used only relates to the 
-desired layers. e.g. calling a layer that plots the ocean "sea" would result in it appearing with the sea-grass category (in CEEDS it has been called water). The recommendations have been updated in CEEDS version 4.2.3 to recommend the use of "keys", random sets of characters to reduce the chance of name collisions. 
+desired layers. The recommendations have been updated in CEEDS version 4.2.3 to recommend the use of "keys", 
+random sets of characters to reduce the chance of name collisions.
 
 Finally the admin can set if the layer is enabled by default (most will be set to false and invisible to reduce
-loading times and reduce layers overlaying each other) and if it is a data layer. If set to true this layer will 
-be in the data layer tab in the CEEDS tool (one shown by default) and if false the layer will be put in the map
-layer tab (this is primarily for base map layers)
+loading times and reduce layers overlaying each other on initial load) and if it is a data layer. If set to true 
+this layer will be in the data layer tab in the CEEDS tool (one shown by default) and if false the layer will be 
+put in the map layer tab, this is primarily for base map layers but other layers could be added here if required.
 
 
 
