@@ -39,7 +39,7 @@ export  const dataLayers = [{
                             {
                                 category: "Parks",
                                 layerSelector: /park/,
-                                visible: true,
+                                visible: false,
                                 data: false,
                             },
                             {

@@ -187,7 +187,7 @@ this is added to the end of the file as it should overlay everything. But the WM
 in this case after the background and before the roads, labels and sea-grass etc. As it is a continuous layer it 
 will cover everything so it is important to add it before anything you want to see at the same time as it.
 
-### Define or add to category (data-layers.txt)
+### Define or add to category (data-layers.tsx)
 Now that the layers are defined in the mapstyle.json file they need to be categorised before they will appear in the 
 CEEDS app. This is designed so that multiple layers can be part of one "layer" in CEEDS, this allows multiple 
 source 
@@ -200,10 +200,11 @@ This is an array of categories. A seagrass example is shown below:
         category: "Seagrass Distribution",
         layerSelector: /5xmTtf1fGR/,
         visible: true,
-        data: true
+        data: true,
+        colour: "green.4"
     }]
 ```
-There are four parameters to set, the first is the category name, this is what will be displayed as the layer name
+There are up to five parameters to set, the first is the category name, this is what will be displayed as the layer name
 on the left panel of CEEDS Tool. Care should be taken with the name, too long and it will impact the site layout.
 
 The next parameter is the layerSelector, this is what is used to link layers in mapstyles.json with the category 
@@ -219,10 +220,17 @@ This shows it is important to consider the id name carefully and ensure the sele
 desired layers. The recommendations have been updated in CEEDS version 4.2.3 to recommend the use of "keys", 
 random sets of characters to reduce the chance of name collisions.
 
-Finally the admin can set if the layer is enabled by default (most will be set to false and invisible to reduce
-loading times and reduce layers overlaying each other on initial load) and if it is a data layer. If set to true 
-this layer will be in the data layer tab in the CEEDS tool (one shown by default) and if false the layer will be 
-put in the map layer tab, this is primarily for base map layers but other layers could be added here if required.
+Finally the admin can set if the layer is enabled by default (generally true for map layers and generally false for 
+data layers) and if it is a data layer. If set to true this layer will be entered in the data layer tab in the CEEDS
+tool (one shown by default) and if false the layer will be put in the map layer tab, this is primarily for base map
+layers but other layers could be added here if required. 
+
+If desired the colour of the layer switch can be set here, this is particularly useful for feature layers as the 
+switch colour can match the feature colour. CEEDS uses default colours from the UI components library which is 
+defined here : https://mantine.dev/theming/colors/ The colours consist of values like "green.4" which is the 4th 
+green value in the palette. The admin will need to ensure the hex code that accompanies the component code is added to the layer 
+in the mapstyle file (see mapstyle section) to ensure the features are drawn in the same colour. 
+
 
 
 
