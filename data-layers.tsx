@@ -7,21 +7,21 @@
 export  const dataLayers = [{
                                 category: "Seagrass Distribution",
                                 layerSelector: /5xmTtf1fGR/,
-                                visible: false,
+                                visible: true,
                                 data: true,
                                 colour: "grape.6"
                             },
                             {
                                 category: "Seagrass Cover",
                                 layerSelector: /b9KROd6oHV/,
-                                visible: false,
+                                visible: true,
                                 data: true,
                                 colour: "yellow.4"
                             },
                             {
                                 category: "Habitat Points",
                                 layerSelector: /rDCB9vCjKH/,
-                                visible: false,
+                                visible: true,
                                 data: true,
                                 colour: "pink.3"
                             },

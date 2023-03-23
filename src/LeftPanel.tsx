@@ -101,11 +101,11 @@ function StyleControls() {
     <div className="control-panel">
     <Paper shadow="md" radius="sm" mx="5px">
       <Text fz="xl" fw={700} ta="center" mt="5px" pt="5px" mb="1px" lh="1">CEEDS Tool</Text>
-      <Text fz="md" c="dimmed" ta="center" mt="1px" lh="1">Version 4.4.1</Text>
+      <Text fz="md" c="dimmed" ta="center" mt="1px" lh="1">Version 4.4.2</Text>
       <Space my="10px"/>
       <Tabs defaultValue="Data Layers" variant="outline" radius="md">
         <Tabs.List grow>
-          <Tabs.Tab value="Data Layers" icon={<IconHome/>}> </Tabs.Tab>
+          <Tabs.Tab value="Data Layers" icon={<IconHome/>}> <Text fz="sm" fw={700} > Home </Text> </Tabs.Tab>
           <Tabs.Tab value="Map Layers" icon={<IconAdjustments/>}> <Text fz="sm" fw={700} > Settings </Text> </Tabs.Tab>
         </Tabs.List>
       <Tabs.Panel value="Data Layers">
