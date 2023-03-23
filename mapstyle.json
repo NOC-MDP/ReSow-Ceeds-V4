@@ -13,6 +13,18 @@
             "url": "http://localhost:8000/services/SeagrassP",
             "type": "vector"
         },
+        "CEEDS3": {
+            "url": "http://localhost:8000/services/habitat_pts",
+            "type": "vector"
+        },
+        "CEEDS4": {
+            "url": "http://localhost:8000/services/eov_seagrasscover_pts",
+            "type": "vector"
+        },
+        "CEEDS5": {
+            "type": "raster",
+            "tiles": ["http://localhost:8000/services/ens_uk4/tiles/{z}/{x}/{y}.png"]
+        },
         "mapbox":{
             "url": "mapbox://mapbox.mapbox-streets-v7",
             "type": "vector"
@@ -87,6 +99,13 @@
             "paint": {"raster-opacity": 0.8},
             "interactive": true,
             "legend": true
+        },
+        {
+            "id": "ens_uk4-KSlHER1Hk3",
+            "type": "raster",
+            "paint": {"raster-opacity": 0.8},
+            "source": "CEEDS5",
+            "interactive": true
         },
         {
             "id": "landuse_park",
@@ -915,6 +934,39 @@
                 "line-width": ["case",
                     ["boolean",["feature-state", "select"], false],2,0]},
             "interactive": true
+        },
+        {
+            "id": "HabitatPoints-rDCB9vCjKH",
+            "type": "circle",
+            "source": "CEEDS3",
+            "source-layer": "habitat_pts",
+            "paint": {
+                "circle-opacity": ["case",
+                    ["boolean",["feature-state", "select"], false],0.75,1.00],
+                "circle-color": ["case",
+                    ["boolean",["feature-state", "select"], false],"#ee6b6e","#faa2c1"],
+                "circle-stroke-color": "#FF0000",
+                "circle-stroke-width": ["case",
+                ["boolean",["feature-state", "select"], false],2,0]},
+            
+            "interactive": true,
+            "downloadable": true
+        },
+        {
+            "id": "SeagrassCover-b9KROd6oHV",
+            "type": "circle",
+            "source": "CEEDS4",
+            "source-layer": "eov_seagrasscover_pts",
+            "paint": {
+                "circle-opacity": ["case",
+                    ["boolean",["feature-state", "select"], false],0.75,1.00],
+                "circle-color": ["case",
+                    ["boolean",["feature-state", "select"], false],"#ee6b6e","#ffd43b"],
+                "circle-stroke-color": "#FF0000",
+                "circle-stroke-width": ["case",
+                    ["boolean",["feature-state", "select"], false],2,0]},
+            "interactive": true,
+            "downloadable": true
         }
     ]
 }

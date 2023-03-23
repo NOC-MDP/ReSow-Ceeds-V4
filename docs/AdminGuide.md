@@ -139,6 +139,10 @@ The prefix part of the ID is used as a filename if the layer is set to be downlo
 used to collate layers into a data category, (see define or add to category section). The "-" separator MUST be 
 used, no other separators are currently supported. Using a different format of ID may result in unexpected behaviour. 
 
+> NOTE: it is currently extremely important to only have ONE downloadable layer per data category, (see data-layers.tsx)
+> more than one downloadable layer is NOT supported and will result in undefined behaviour. Multiple interactive and
+> non interactive layers in one category ARE supported.
+
 If legend is set to true then any 
 jpeg file that is saved to the /assets folder of the main application will be overlaid on the map. The filename 
 needs to match the layer name e.g. GEBCO Bathymetry.jpg. The legend will be placed in the bottom left and scaled 
@@ -227,9 +231,10 @@ layers but other layers could be added here if required.
 
 If desired the colour of the layer switch can be set here, this is particularly useful for feature layers as the 
 switch colour can match the feature colour. CEEDS uses default colours from the UI components library which is 
-defined here : https://mantine.dev/theming/colors/ The colours consist of values like "green.4" which is the 4th 
+defined [here](https://mantine.dev/theming/colors/) The colours consist of values like "green.4" which is the 4th 
 green value in the palette. The admin will need to ensure the hex code that accompanies the component code is added to the layer 
-in the mapstyle file (see mapstyle section) to ensure the features are drawn in the same colour. 
+in the mapstyle file (see mapstyle section) to ensure the features are drawn in the same colour. The colour will be a 
+default colour (currently blue) if it is not specified.
 
 
 

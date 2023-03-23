@@ -12,7 +12,15 @@ import {
   Divider,
   List
 } from '@mantine/core';
-import {IconDownload, IconBook, IconHelp} from '@tabler/icons';
+import {
+  IconDownload,
+  IconBook,
+  IconHelp,
+  IconLayersSubtract,
+  IconAdjustments,
+  IconArticle,
+  IconHome
+} from '@tabler/icons';
 import AppContext from './AppContext';
 import {ExportToCsv} from 'export-to-csv';
 
@@ -94,13 +102,22 @@ function StyleControls() {
     <Paper shadow="md" radius="sm" mx="5px">
       <Text fz="xl" fw={700} ta="center" mt="5px" pt="5px" mb="1px" lh="1">CEEDS Tool</Text>
       <Text fz="md" c="dimmed" ta="center" mt="1px" lh="1">Version 4.4.1</Text>
-      <Tabs defaultValue="Data Layers">
-        <Tabs.List>
-          <Tabs.Tab value="Data Layers"> <Text fz="sm" fw={700} ta="center" mt="5px" pt="5px" mb="1px" lh="1">Data Layers</Text> </Tabs.Tab>
-          <Tabs.Tab value="Map Layers"> <Text fz="sm" fw={700} ta="center" mt="5px" pt="5px" mb="1px" lh="1">Map Layers</Text> </Tabs.Tab>
+      <Space my="10px"/>
+      <Tabs defaultValue="Data Layers" variant="outline" radius="md">
+        <Tabs.List grow>
+          <Tabs.Tab value="Data Layers" icon={<IconHome/>}> </Tabs.Tab>
+          <Tabs.Tab value="Map Layers" icon={<IconAdjustments/>}> <Text fz="sm" fw={700} > Settings </Text> </Tabs.Tab>
         </Tabs.List>
       <Tabs.Panel value="Data Layers">
         <Space my="10px"/>
+        <Accordion variant="filled"
+                   radius="md"
+                   children={undefined} >
+          <Accordion.Item value="Layers">
+            <Accordion.Control icon={<IconLayersSubtract />}>
+              <Text fz="sm" fw="700" mt="1px" pt="1px" mb="1px" lh="1">Enable/Disable Layers</Text>
+            </Accordion.Control>
+            <Accordion.Panel>
           {datcats.map(name => (
           <div key={name} className="input">
             <SimpleGrid cols={1}>
@@ -137,10 +154,14 @@ function StyleControls() {
             <Space my="10px"/>
             </div>
             </SimpleGrid>
+            
         </div>
       ))}
         <Space my="5px"/>
         <Divider size="sm" ></Divider>
+        </Accordion.Panel>
+        </Accordion.Item>
+        </Accordion>
       <div className="accordion">
         <Accordion
             variant="filled"
@@ -152,7 +173,7 @@ function StyleControls() {
             </Accordion.Control>
               <Accordion.Panel>
                 <SimpleGrid cols={1} verticalSpacing="2px">
-                  <Text fz="sm" mx="10px">Features inside polygon: {featureSel}</Text>
+                  <Text fz="sm" mx="10px">Features selected: {featureSel}</Text>
                   <Button
                     onClick={()=> Download(csventries)}  
                     disabled={featureSel<1}

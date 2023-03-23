@@ -12,6 +12,20 @@ export  const dataLayers = [{
                                 colour: "grape.6"
                             },
                             {
+                                category: "Seagrass Cover",
+                                layerSelector: /b9KROd6oHV/,
+                                visible: false,
+                                data: true,
+                                colour: "yellow.4"
+                            },
+                            {
+                                category: "Habitat Points",
+                                layerSelector: /rDCB9vCjKH/,
+                                visible: false,
+                                data: true,
+                                colour: "pink.3"
+                            },
+                            {
                                 category: "Labels",
                                 layerSelector: /label|place|poi/,
                                 visible: true,
@@ -57,6 +71,12 @@ export  const dataLayers = [{
                             {
                                 category: "GEBCO Bathymetry",
                                 layerSelector: /gebco/,
+                                visible: false,
+                                data: true,
+                            },
+                            {
+                                category: "ENS UK4",
+                                layerSelector: /KSlHER1Hk3/,
                                 visible: false,
                                 data: true,
                             }
