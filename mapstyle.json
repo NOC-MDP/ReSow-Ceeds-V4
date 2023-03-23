@@ -105,7 +105,8 @@
             "type": "raster",
             "paint": {"raster-opacity": 0.8},
             "source": "CEEDS5",
-            "interactive": true
+            "interactive": true,            
+            "legend": true
         },
         {
             "id": "landuse_park",
