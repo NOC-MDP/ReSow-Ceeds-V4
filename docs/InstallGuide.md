@@ -80,7 +80,7 @@ This should be located in /etc/nginx/sites-available.
 ```shell
 $ sudo nano /etc/nginx/sites-available/CEEDS
 ```
-Add the following following to the file.
+Add the following to the file.
 ```
 server {
 listen 80;

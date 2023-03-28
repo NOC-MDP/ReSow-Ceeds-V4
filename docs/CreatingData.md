@@ -15,13 +15,13 @@ Using QGIS to plot the data and ensure it is correct is a sensible starting poin
     - import shpfile and check it plots correctly
     - export as geojson file (right click layer, export set geojson as format)
 
-Then install Tippecanoe and run the following command to create the MBtiles file.
+Then install [Tippecanoe](https://github.com/mapbox/tippecanoe) and run the following command to create the MBtiles file.
 
 ```shell
 $ tippecanoe -o output.mbtiles --drop-densest-as-needed --generate-id input.geojson
 ```
 
-This will output a MBtiles file that can be places in the MBtileserver tilesets folder where it will be automatically added to the server upon restart.
+This will output a MBtiles file that can be placed in the MBtileserver tilesets folder where it will be automatically added to the server upon restart.
 
 ### raster
  
@@ -32,12 +32,12 @@ This will output a MBtiles file that can be places in the MBtileserver tilesets 
 
 QGIS will export the map canvas rather than the actual data so it is important to style the raster data in QGIS ready for visualisation. 
 E.g. define colour maps and classes etc. The export dialog box has numerous options but these can all be left as their defaults
-aside from setting the zoom layers and the location of the output file, (by default it doesn't write out). 
+aside from setting the zoom layers and the location of the output file, (by default it doesn't write an output file). 
 Determining what zoom layers to use is important, a good explanation of these layers can be found [here](https://wiki.openstreetmap.org/wiki/Zoom_levels)
-. It will depend on the resolution of the data but assuming regional scale data, zoom levels 0 to 13 are a good default. This will cover global scale upto village with pixels of around 20 m.
+. It will depend on the resolution of the data but assuming regional scale data, zoom levels 0 to 13 are a good default. This will cover global scale upto village/suburb scale with pixels of around 20 m.
 If the data has a higher resolution then higher zoom levels can be used but this will increase the output size dramtically and also increase the processing time in QGIS. Finally if a legend is desired, it can be created in QGIS and saved as an jpg and uploaded to the server. See adding legend section.
 
-### Creating a legend
+#### Creating a legend
 If a raster has been converted to a mbtiles format it can be used within CEEDS, to make a legend display when this layer is enabled then the following steps need to be taken.
 
 - create a suitable legend (using QGIS or similar)
@@ -57,7 +57,7 @@ Example legend (GEBCO Bathymetry):
 ## Add to mbtileserver on CEEDS Tool Server
 
 Save the mbtiles file in the tile-sets folder that is located on the CEEDS Tool server.
-By default the mbtileserver is located at /home/$USER/mbtileserver and the tilesets folder will also be
+By default the mbtileserver is located at /home/$USER/go/bin and the tilesets folder will also be
 located here. The mbtileserver checks this folder for tile-sets on start so it will need to be restarted 
 as follows:
 
