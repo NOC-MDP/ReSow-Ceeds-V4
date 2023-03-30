@@ -101,7 +101,7 @@ function StyleControls() {
     <div className="control-panel">
     <Paper shadow="md" radius="sm" mx="5px">
       <Text fz="xl" fw={700} ta="center" mt="5px" pt="5px" mb="1px" lh="1">CEEDS Tool</Text>
-      <Text fz="md" c="dimmed" ta="center" mt="1px" lh="1">Version 4.4.2</Text>
+      <Text fz="md" c="dimmed" ta="center" mt="1px" lh="1">Version 4.4.3</Text>
       <Space my="10px"/>
       <Tabs defaultValue="Data Layers" variant="outline" radius="md" children={undefined}>
         <Tabs.List grow>
