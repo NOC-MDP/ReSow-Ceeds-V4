@@ -48,22 +48,25 @@ function Download(csventries){
     if(csventries == null){
       alert("No Features Selected")
       return}
-  for (const key in csventries){  
-  const layerName = key.split("-");  
-  const options = {
-    fieldSeparator: ',',
-    filename: layerName[0]+'_'+datetime2,
-    quoteStrings: '"',
-    decimalSeparator: '.',
-    showLabels: true,
-    showTitle: true,
-    title: 'CEEDS Data Downloaded on '+datetime + ' for data layer '+ layerName[0],
-    useTextFile: false,
-    useBom: true,
-    useKeysAsHeaders: true,
-  };
-  const csvExporter = new ExportToCsv(options);
+  for (const key in csventries){
+    // if there is no data skip creating CSV
+    if (csventries[key].length==0){continue}
+    const layerName = key.split("-");
+    const options = {
+      fieldSeparator: ',',
+      filename: layerName[0] + '_' + datetime2,
+      quoteStrings: '"',
+      decimalSeparator: '.',
+      showLabels: true,
+      showTitle: true,
+      title: 'CEEDS Data Downloaded on ' + datetime + ' for data layer ' + layerName[0],
+      useTextFile: false,
+      useBom: true,
+      useKeysAsHeaders: true,
+    };
+    const csvExporter = new ExportToCsv(options);
     csvExporter.generateCsv(csventries[key]);
+
   }
 }
 
